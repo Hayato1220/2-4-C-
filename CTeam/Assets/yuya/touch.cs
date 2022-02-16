@@ -22,14 +22,27 @@ public class touch : MonoBehaviour
         boxcollider = box.GetComponent<BoxCollider>();
     }
 
-    void OnCollisionStay(Collision collision)
+    void OnCollisionStay(Collision other)
     {
-        if (Input.GetButton("A"))
+        if(other.gameObject.tag == "Floor")
         {
-            floorcollider.material = slip;
-            boxcollider.material = slip;
-            Apush = true;
+            if (Input.GetButton("A"))
+            {
+                floorcollider.material = slip;
+                boxcollider.material = slip;
+                Apush = true;
+            }
         }
+
+        //if(other.gameObject.tag == "Object")
+        //{
+        //    if (Input.GetButton("A"))
+        //    {
+        //        boxcollider.material = slip;
+        //        Apush = true;
+        //    }
+        //}
+
     }
 
     static public bool Apushflag()
