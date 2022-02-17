@@ -17,9 +17,9 @@ public class Shot : MonoBehaviour
     {
         rb.velocity = transform.forward * speed;
 
-        if(transform.position.x >= 10 || transform.position.x <= -10 || transform.position.z >= 10 || transform.position.z <= -10)
-        {
-            Destroy(gameObject);
-        }
+        //if(transform.position.x >= 10 || transform.position.x <= -10 || transform.position.z >= 10 || transform.position.z <= -10)
+        //{
+        //    Destroy(gameObject);
+        //}
     }
 }
