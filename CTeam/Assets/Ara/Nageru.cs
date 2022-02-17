@@ -39,7 +39,7 @@ public class Nageru : MonoBehaviour
 
         if (other.gameObject.tag == "Player")
         {
-            if(Input.GetKeyDown(KeyCode.F))
+            if(Input.GetButton("A"))
             {
                 this.sph.isTrigger = true;
 
