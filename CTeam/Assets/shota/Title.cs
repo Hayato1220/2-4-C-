@@ -4,8 +4,12 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class Title : MonoBehaviour
 {
-    public void Onclick()
+    public void sube()
     {
         SceneManager.LoadScene("yuyaStage");
+    }
+    public void suke()
+    {
+        SceneManager.LoadScene("yuyaStage2");
     }
 }
