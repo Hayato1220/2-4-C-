@@ -26,7 +26,7 @@ public class touch : MonoBehaviour
     {
         if(other.gameObject.tag == "Floor")
         {
-            if (Input.GetButton("A"))
+            if (Input.GetButton("B"))
             {
                 floorcollider.material = slip;
                 boxcollider.material = slip;
