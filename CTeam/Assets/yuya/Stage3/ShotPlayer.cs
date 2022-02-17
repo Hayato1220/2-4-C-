@@ -7,7 +7,7 @@ public class ShotPlayer : MonoBehaviour
     public GameObject shotObject;
     public float force = 10.0f;
     public Rigidbody rb;
-    public int shotcount = 100;
+    public int shotcount = 1;
 
     void Start()
     {
@@ -18,14 +18,20 @@ public class ShotPlayer : MonoBehaviour
     {
         if (Input.GetButton("B"))
         {
-            if(shotcount < 1)
-            {
-                return;
-            }
+            //if (shotcount < 1)
+            //{
+            //    return;
+            //}
 
-            Instantiate(shotObject, transform.position + transform.forward + transform.up, transform.rotation);
-            //Instantiate(shotObject, transform.position + transform.up / 1000, transform.rotation);
-            shotcount -= 1; ;
+            Shot();
+            //Instantiate(shotObject, transform.position + transform.forward + transform.up, transform.rotation);
+
+            //shotcount -= 1;
+        }
+
+        void Shot()
+        {
+            Instantiate(shotObject, transform.position/* + transform.forward * 2 + transform.up*/, transform.rotation);
         }
     }
 }
