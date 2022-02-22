@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Floor
   - Object
+  - Wall
+  - SwitchON
+  - Blook
   layers:
   - Default
   - TransparentFX
