@@ -15,7 +15,7 @@
 
 //    //マテリアルを保持します。
 //    public Material yellow;
-//    public Material Red;
+//    public Material red;
 //    public Material blue;
 
 //    //Prefabを生成する高さを定義します。
@@ -28,12 +28,12 @@
 
 //    void Update()
 //    {
-//        Transform parentObj = ParentObj.transform; //targetObjectに変更
+
 //    }
 
 //    void OnCollisionStay(Collision other)
 //    {
-//        if(other.gameObject.tag == "Object")
+//        if (other.gameObject.tag == "Object")
 //        {
 //            if (Input.GetButton("B"))
 //            {
@@ -54,6 +54,8 @@
 
 //        ////ゲームオブジェクトの親オブジェクトを設定します。
 //        //obj.transform.SetParent(parentTran);
+
+//        Transform parentObj = ParentObj.transform; //targetObjectに変更
 
 //        //ゲームオブジェクトの位置を設定します。
 //        obj.transform.position = parentObj.position;
