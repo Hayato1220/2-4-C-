@@ -9,7 +9,7 @@ public class touch : MonoBehaviour
 
 
     private BoxCollider boxcollider;    //正四角形のオブジェクトのコライダー
-    private BoxCollider floorcollider;  //滑らせる床のコライダー
+    private MeshCollider floorcollider;  //滑らせる床のコライダー
 
 
     public PhysicMaterial slip;     //摩擦を無くすPhysicMaterialを入れる変数
@@ -21,7 +21,7 @@ public class touch : MonoBehaviour
 
     void Start()
     {
-        floorcollider = floor.GetComponent<BoxCollider>();  //正四角形のコライダー取得
+        floorcollider = floor.GetComponent<MeshCollider>();  //正四角形のコライダー取得
         boxcollider = box.GetComponent<BoxCollider>();      //滑らせる床のコライダー取得
     }
 
