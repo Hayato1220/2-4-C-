@@ -10,6 +10,6 @@ public class Title : MonoBehaviour
     }
     public void suke()
     {
-        SceneManager.LoadScene("yuyaStage2");
+        SceneManager.LoadScene("asato");
     }
 }

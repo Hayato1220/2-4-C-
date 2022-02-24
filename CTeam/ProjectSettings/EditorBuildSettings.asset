@@ -12,6 +12,6 @@ EditorBuildSettings:
     path: Assets/Scenes/yuyaStage.unity
     guid: 760ca5e7de369b04cbfdd2da0f238a38
   - enabled: 1
-    path: Assets/Scenes/yuyaStage2.unity
-    guid: 613136fd778af054b901a152a036185a
+    path: Assets/asato/Scenes/asato.unity
+    guid: c9edb73de4d6c1e4aadec53eee1be10f
   m_configObjects: {}
