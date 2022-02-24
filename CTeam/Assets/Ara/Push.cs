@@ -22,7 +22,9 @@ public class Push : MonoBehaviour
 	private Vector3 leftHandPosition;
 	//　左手の角度
 	private Quaternion leftHandRotation;
+
 	private Animator animator;
+
 	//　右手のIKのウエイト
 	private float rightHandWeight = 0f;
 	//　左手のIKのウエイト
@@ -43,6 +45,8 @@ public class Push : MonoBehaviour
 	[SerializeField]
 	private float wallHandOffset = 0.1f;
 
+	private Vector3 dir;
+
 	void Start()
 	{
 		animator = GetComponent<Animator>();
@@ -60,7 +64,8 @@ public class Push : MonoBehaviour
 		if (Physics.Raycast(rightRayTransform.position, rightRayTransform.forward, out hit, rayDistance, LayerMask.GetMask("Block")))
 		{
 			rightHandPosition = hit.point + hit.normal * wallHandOffset;
-			rightHandRotation = Quaternion.FromToRotation(Vector3.up, hit.normal) * transform.rotation;
+
+			rightHandRotation = Quaternion.FromToRotation(transform.up, hit.normal) * transform.rotation;
 			isTouchRight = true;
 		}
 		else
