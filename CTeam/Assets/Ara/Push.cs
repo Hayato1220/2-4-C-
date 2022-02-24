@@ -30,6 +30,9 @@ public class Push : MonoBehaviour
 	//　手を付けるスピード
 	[SerializeField]
 	private float touchSpeed = 1.5f;
+
+	[SerializeField]
+	private float removeSpeed = 3f;
 	//　押す力
 	[SerializeField]
 	private float pushPower = 2000f;
@@ -57,7 +60,7 @@ public class Push : MonoBehaviour
 		if (Physics.Raycast(rightRayTransform.position, rightRayTransform.forward, out hit, rayDistance, LayerMask.GetMask("Block")))
 		{
 			rightHandPosition = hit.point + hit.normal * wallHandOffset;
-			rightHandRotation = Quaternion.FromToRotation(transform.up, hit.normal) * transform.rotation;
+			rightHandRotation = Quaternion.FromToRotation(Vector3.up, hit.normal) * transform.rotation;
 			isTouchRight = true;
 		}
 		else
@@ -88,7 +91,7 @@ public class Push : MonoBehaviour
 		}
 		else
 		{
-			rightHandWeight = 0f;
+			rightHandWeight = Mathf.MoveTowards(rightHandWeight, 0f, removeSpeed * Time.deltaTime);
 		}
 		//　左手用のウエイトを変化させる
 		if (isTouchLeft)
@@ -100,7 +103,8 @@ public class Push : MonoBehaviour
 		}
 		else
 		{
-			leftHandWeight = 0f;
+
+			leftHandWeight = Mathf.MoveTowards(leftHandWeight, 0f, removeSpeed * Time.deltaTime);
 		}
 	}
 
@@ -116,14 +120,14 @@ public class Push : MonoBehaviour
 
 	void OnAnimatorIK()
 	{
-		//　右手のIKのウエイト設定
-		animator.SetIKPositionWeight(AvatarIKGoal.RightHand, rightHandWeight);
-		animator.SetIKRotationWeight(AvatarIKGoal.RightHand, rightHandWeight);
-		//　左手のIKのウエイト設定
-		animator.SetIKPositionWeight(AvatarIKGoal.LeftHand, leftHandWeight);
-		animator.SetIKRotationWeight(AvatarIKGoal.LeftHand, leftHandWeight);
-		//　右手の位置設定
-		animator.SetIKPosition(AvatarIKGoal.RightHand, rightHandPosition);
+        //　右手のIKのウエイト設定
+        animator.SetIKPositionWeight(AvatarIKGoal.RightHand, rightHandWeight);
+        animator.SetIKRotationWeight(AvatarIKGoal.RightHand, rightHandWeight);
+        //　左手のIKのウエイト設定
+        animator.SetIKPositionWeight(AvatarIKGoal.LeftHand, leftHandWeight);
+        animator.SetIKRotationWeight(AvatarIKGoal.LeftHand, leftHandWeight);
+        //　右手の位置設定
+        animator.SetIKPosition(AvatarIKGoal.RightHand, rightHandPosition);
 		animator.SetIKRotation(AvatarIKGoal.RightHand, rightHandRotation);
 		//　左手の位置設定
 		animator.SetIKPosition(AvatarIKGoal.LeftHand, leftHandPosition);
