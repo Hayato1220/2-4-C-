@@ -9,4 +9,8 @@ public class Stage1Retry : MonoBehaviour
     {
         SceneManager.LoadScene("yuyaStage");
     }
+    public void OnClickStageRetry()
+    {
+        SceneManager.LoadScene("asato");
+    }
 }
