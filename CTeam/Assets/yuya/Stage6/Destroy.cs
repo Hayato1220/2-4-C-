@@ -4,31 +4,39 @@ using UnityEngine;
 
 public class Destroy : MonoBehaviour
 {
-    public GameObject DestroyWall;
+    public GameObject DestroyCube;
 
-    float getCubeSpeed;
+    private Rigidbody rb;
+
+    bool speedflag = false;
 
     void Start()
     {
-        
+        rb = DestroyCube.transform.GetComponent<Rigidbody>();
     }
 
     void Update()
     {
-        getCubeSpeed = Speed.CubeSpeed();
+        Debug.Log(rb.velocity.magnitude);
+
+        if(rb.velocity.magnitude >= 3.0f)
+        {
+            speedflag = true;
+        }
     }
 
     void OnCollisionEnter(Collision other)
     {
-        if(other.gameObject.tag == "Wall")
+        if (other.gameObject.tag == "Ball")
         {
-            if(getCubeSpeed >= 10.0f)
+
+            if (speedflag == true)
             {
-                Destroy(DestroyWall);
+
+                Destroy(DestroyCube);
 
                 Destroy(this.gameObject);
             }
-
         }
     }
 }

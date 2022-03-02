@@ -1,48 +1,60 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿//using System.Collections;
+//using System.Collections.Generic;
+//using UnityEngine;
 
-public class Speed : MonoBehaviour
-{
-    //1フレーム前の位置
-    private Vector3 _prevPosition;
+//public class Speed : MonoBehaviour
+//{
+//    public GameObject DestroyWall;
 
-    private static float speed;
+//    private Rigidbody rb;
 
+//    void Start()
+//    {
+//        rb = this.transform.GetComponent<Rigidbody>();
+//    }
 
-    private void Start()
-    {
-        //初期位置を保持
-        _prevPosition = transform.position;
-
-    }
-
-    private void Update()
-    {
-        //deltaTimeが0の場合は何もしない
-        if (Mathf.Approximately(Time.deltaTime, 0))
-        {
-            return;
-        }
-
-        //現在位置取得
-        var position = transform.position;
-
-        //現在速度計算
-        var speed = (position - _prevPosition) / Time.deltaTime;
+//    void Update()
+//    {
 
 
-        //現在速度をログ出力
-        print($"velocity = {speed}");
 
-        Debug.Log(speed);
+//        Debug.Log(rb.velocity.magnitude);
 
-        //前フレーム位置を取得
-        _prevPosition = position;
-    }
 
-    public static float CubeSpeed()
-    {
-        return speed;
-    }
-}
+
+//        deltaTimeが0の場合は何もしない
+//        if (Mathf.Approximately(Time.deltaTime, 0))
+//        {
+//            return;
+//        }
+
+//        //現在位置取得
+//        var position = transform.position;
+
+//        //現在速度計算
+//        var speed = (position - _prevPosition) / Time.deltaTime;
+
+//        speed.x += speed.x;
+
+//        //現在速度をログ出力
+//        //Debug.Log(speed.x);
+
+//        //前フレーム位置を取得
+//        _prevPosition = position;
+//    }
+
+//    void OnCollisionEnter(Collision other)
+//    {
+//        if (other.gameObject.tag == "Wall")
+//        {
+
+//            if (rb.velocity.magnitude >= 3.0f)
+//            {
+
+//                Destroy(DestroyWall);
+
+//                Destroy(this.gameObject);
+//            }
+//        }
+//    }
+//}
