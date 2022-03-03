@@ -8,6 +8,10 @@ TagManager:
   - Object
   - Wall
   - Ball
+  - Blue
+  - Red
+  - Green
+  - Orange
   layers:
   - Default
   - TransparentFX
