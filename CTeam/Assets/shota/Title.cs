@@ -6,10 +6,10 @@ public class Title : MonoBehaviour
 {
     public void sube()
     {
-        SceneManager.LoadScene("yuyaStage");
+        SceneManager.LoadScene("asato");
     }
     public void suke()
     {
-        SceneManager.LoadScene("asato");
+        SceneManager.LoadScene("");
     }
 }
