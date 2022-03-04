@@ -4,25 +4,72 @@ using UnityEngine;
 
 public class Gion : MonoBehaviour
 {
+    private GameObject obj;
+
+    private BoxCollider ObjCollider;
+
     public PhysicMaterial slip;
 
-    public GameObject cube;
+    private int number = 0;
 
-    private BoxCollider CubeCollider;
+    private bool subeflag = true;  //すべすべ
+    private bool huwaflag = false;  //ふわふわ
+    private bool baraflag = false;  //バラバラ
+    private bool byunflag = false;  //ビューン
 
     void Start()
     {
-        CubeCollider = cube.GetComponent<BoxCollider>();
+
+    }
+
+    void Update()
+    {
+        if (Input.GetButton("X")){
+            number++;
+            if(number >= 4)
+            {
+                number = 0;
+            }
+        }
+        GionChange();
     }
 
     void OnCollisionStay(Collision other)
     {
-        if(other.gameObject.tag == "Ball")
+
+
+        if (other.gameObject.tag == "Object")
         {
+            ObjCollider = other.gameObject.GetComponent<BoxCollider>();
+
+            Debug.Log(ObjCollider);
+
+
+            //すべすべにする
             if (Input.GetButton("B"))
             {
-                CubeCollider.material = slip;
+                ObjCollider.material = slip;
             }
+
+        }
+    }
+
+    void GionChange()
+    {
+        switch (number)
+        {
+            case 0:
+                Debug.Log(subeflag);
+                break;
+            case 1:
+                Debug.Log(huwaflag);
+                break;
+            case 2:
+                Debug.Log(baraflag);
+                break;
+            case 3:
+                Debug.Log(byunflag);
+                break;
         }
     }
 }
