@@ -73842,7 +73842,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c70cc86b81239e84f9ff570fbe895fc3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slip: {fileID: 0}
+  slip: {fileID: 13400000, guid: 3d766f7153558864cb1c2a9a005eb840, type: 2}
 --- !u!1 &2104757525
 GameObject:
   m_ObjectHideFlags: 3
