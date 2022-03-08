@@ -4,137 +4,51 @@ using UnityEngine;
 
 public class Gion : MonoBehaviour
 {
-    private GameObject obj;
+    private GameObject obj;             //このスクリプトがアタッチされているオブジェクトを参照する
 
-    private BoxCollider ObjCollider;
+    private BoxCollider ObjCollider;    //このスクリプトがアタッチされているオブジェクトの BoxCollider を参照する
 
-    public PhysicMaterial slip;
+    public PhysicMaterial slip;         //他の PhysicMaterial を　slip に入れる
 
-    private int number = 0;
+    private int number = 0;             //擬音の動作を切り替える時に使う変数
 
-    private bool subeflag = false;  //すべすべ
-    private bool huwaflag = false;  //ふわふわ
-    private bool baraflag = false;  //バラバラ
-    private bool byunflag = false;  //ビューン
-    private bool sukeflag = false;  //スケスケ
+    private bool subeflag = false;      //すべすべを管理する bool 型変数
+    private bool huwaflag = false;      //ふわふわを管理する bool 型変数
+    private bool baraflag = false;      //バラバラを管理する bool 型変数
+    private bool byunflag = false;      //ビューンを管理する bool 型変数
+    private bool sukeflag = false;      //スケスケを管理する bool 型変数
 
-    bool buttonflag = false;
-    bool flag = false;
+    bool pushflag = false;              //切り替えるボタンが押されたかどうか管理する bool 型変数
+
+
 
     void Start()
     {
-
+        
     }
+
+
+    /* 
+     * ここから 
+     */
 
     void Update()
     {
-        if (buttonflag == false)
+
+        GionChange();   //使える擬音をXボタンで切り替える
+
+        GionAttach();   //切り替えた擬音の処理動作
+
+        //Debug.Log(pushflag);
+
+        if (number == 0)
         {
-            if (Input.GetButton("X"))
-            {
-                buttonflag = true;
-            }
+            subeflag = true;             // true の状態の時にしか処理が出来ないようにに管理しようとしてる
         }
-
-        if (buttonflag == true)
+        else
         {
-            if (subeflag == true)
-            {
-                number = 1;
-                buttonflag = false;
-            }
-            else if (huwaflag == true)
-            {
-                number = 2;
-                buttonflag = false;
-            }
-            else if (baraflag == true)
-            {
-                number = 3;
-                buttonflag = false;
-            }
-            else if (sukeflag == true)
-            {
-                number = 4;
-                buttonflag = false;
-            }
-            else if (byunflag == true)
-            {
-
-                number = 0;
-                buttonflag = false;
-            }
+            subeflag = false;
         }
-
-        //buttonflag = true;
-        //if (buttonflag == true)
-        //{
-        //    number++;
-        //    buttonflag = false;
-        //}
-
-        if (buttonflag == true)
-        {
-            if (subeflag == false && huwaflag == false && baraflag == false && sukeflag == false && byunflag == false)
-            {
-                subeflag = true;  //すべすべ
-                huwaflag = false;  //ふわふわ
-                baraflag = false;  //バラバラ
-                byunflag = false;  //ビューン
-                sukeflag = false;  //スケスケ
-
-                buttonflag = false;
-            }
-
-            if (subeflag == true && huwaflag == false && baraflag == false && sukeflag == false && byunflag == false)
-            {
-
-                subeflag = false;  //すべすべ
-                huwaflag = true;  //ふわふわ
-                baraflag = false;  //バラバラ
-                byunflag = false;  //ビューン
-                sukeflag = false;  //スケスケ
-
-                buttonflag = false;
-            }
-
-            if (subeflag == false && huwaflag == true && baraflag == false && sukeflag == false && byunflag == false)
-            {
-                subeflag = false;  //すべすべ
-                huwaflag = false;  //ふわふわ
-                baraflag = true;  //バラバラ
-                byunflag = false;  //ビューン
-                sukeflag = false;  //スケスケ
-
-                buttonflag = false;
-            }
-
-            if(subeflag == false && huwaflag == false && baraflag == true && sukeflag == false && byunflag == false)
-            {
-                subeflag = false;  //すべすべ
-                huwaflag = false;  //ふわふわ
-                baraflag = false;  //バラバラ
-                sukeflag = true;  //スケスケ
-                byunflag = false;  //ビューン
-
-                buttonflag = false;
-            }
-
-            if (subeflag == false && huwaflag == false && baraflag == true && sukeflag == true && byunflag == false)
-            {
-                subeflag = false;  //すべすべ
-                huwaflag = false;  //ふわふわ
-                baraflag = false;  //バラバラ
-                sukeflag = false;  //スケスケ
-                byunflag = true;  //ビューン
-
-                buttonflag = false;
-            }
-        }
-
-        GionChange();
-
-        Debug.Log(buttonflag);
 
         if (Input.GetButton("A"))
         {
@@ -144,141 +58,179 @@ public class Gion : MonoBehaviour
 
 
 
+    //擬音をXボタンで切り替える処理
     void GionChange()
     {
-        if (subeflag == true)
+        //もしXボタンを押したら
+        if (Input.GetButton("X"))
         {
-            if (Input.GetButton("B"))
+            // pushflag が true なら
+            if (pushflag == true)
             {
-                SubeSube();
+                pushflag = false;      //何回も処理しないように pushflag を false にする
+
+                //もし number が4以下なら
+                if (number < 4)
+                {
+
+                    number++;         // number を1ずつ増やす
+
+                }
+                //もし number が4以下以外なら
+                else
+                {
+
+                    number = 0;      // number を0にして最初に戻す
+
+                }
             }
         }
-        else if (huwaflag == true)
+        //Xボタンを押していない間は
+        else
         {
-            Huwahuwa();
-            Debug.Log("ふわふわ");
+
+            pushflag = true;         // pushflag を true にする
+
         }
-        else if (baraflag == true)
-        {
-            Barabara();
-            Debug.Log("バラバラ");
-        }
-        else if (sukeflag == true)
-        {
-            Sukesuke();
-            Debug.Log("スケスケ");
-        }
-        else if (byunflag == true)
-        {
-            Byunbyun();
-            Debug.Log("ビュンビュン");
-        }
-
-        //switch (number)
-        //{
-        //    case 0: //すべすべ
-        //        if (subeflag == true)
-        //        {
-        //            Debug.Log("すべすべ");
-        //            if (Input.GetButton("B"))
-        //            {
-        //                SubeSube();
-        //            }
-        //        }
-        //        huwaflag = true;
-        //        break;
-
-        //    case 1: //ふわふわ
-        //        subeflag = false;
-        //        if (huwaflag == true)
-        //        {
-        //            Huwahuwa();
-        //            Debug.Log("ふわふわ");
-        //        }
-        //        baraflag = true;
-        //        break;
-
-        //    case 2: //バラバラ
-        //        huwaflag = false;
-        //        if (baraflag == true)
-        //        {
-        //            Barabara();
-        //            Debug.Log("バラバラ");
-        //        }
-        //        sukeflag = true;
-        //        break;
-
-        //    case 3: //スケスケ
-        //        baraflag = false;
-        //        if (sukeflag == true)
-        //        {
-        //            Sukesuke();
-        //            Debug.Log("スケスケ");
-        //        }
-        //        byunflag = false;
-        //        break;
-
-        //    case 4: //ビュンビュン
-        //        sukeflag = false;
-        //        if (byunflag == true)
-        //        {
-        //            Byunbyun();
-        //            Debug.Log("ビュンビュン");
-        //        }
-        //        subeflag = true;
-        //        break;
-        //}
     }
 
 
+
+    //切り替えた擬音に対応する処理
+    void GionAttach()
+    {
+        // number でどの擬音の動作をするかを管理
+        switch (number)
+        {
+            //すべすべ
+            case 0:
+                if (pushflag == true)   // pushflag が true なら（このif文処理いらないかも）
+                {
+                    Subesube();     //すべすべの動作
+                }
+                break;
+
+            //ふわふわ
+            case 1:
+                if (pushflag == true)   // pushflag が true なら（このif文処理いらないかも）
+                {
+                    Huwahuwa();     //ふわふわの動作
+                }
+                break;
+
+            //バラバラ
+            case 2:
+                if (pushflag == true)   // pushflag が true なら（このif文処理いらないかも）
+                {
+                    Barabara();     //バラバラの動作
+                }
+                break;
+
+            //スケスケ
+            case 3:
+                if (pushflag == true)   // pushflag が true なら（このif文処理いらないかも）
+                {
+                    Sukesuke();     //スケスケの動作
+                }
+                break;
+
+            //ビュンビュン
+            case 4:
+                if (pushflag == true)   // pushflag が true なら（このif文処理いらないかも）
+                {
+                    Byunbyun();     //ビュンビュンの動作
+                }
+                break;
+        }
+    }
+
+
+
+    //プレイヤーが当たっている他のオブジェクトについての処理
     void OnCollisionStay(Collision other)
     {
-
-
+        //もし当たったオブジェクトのタグが"Object"なら
         if (other.gameObject.tag == "Object")
         {
-            ObjCollider = other.gameObject.GetComponent<BoxCollider>();
-
+            ObjCollider = other.gameObject.GetComponent<BoxCollider>();     // objCollider に触れている他のオブジェクトの BoxCollider を取得する
             //Debug.Log(ObjCollider);
 
-            //すべすべにする
-            //if (Input.GetButton("B"))
-            //{
-            //    ObjCollider.material = slip;
-            //}
+            //すべすべのフラグが true なら
+            if (subeflag == true)
+            {
+                //他のオブジェクトに当たっている状態でBボタンを押すと
+                if (Input.GetButton("B"))
+                {
+                    //すべすべにする
+                    ObjCollider.material = slip;    // ObjCollider の PhysicMaterial を slip に入っているものを入れる
+                }
+            }
+        }
 
+    }
+
+
+
+    //すべすべの処理
+    private void Subesube()
+    {
+
+
+        //もしBボタンを押したら
+        if (Input.GetButton("B"))
+        {
+            Debug.Log("すべすべ");
         }
     }
 
 
-    //すべすべの処理
-    void SubeSube()
+    //ふわふわの処理
+    private void Huwahuwa()
     {
-        //すべすべにする
-        ObjCollider.material = slip;
+        huwaflag = true;            // true の状態の時にしか処理が出来ないようにに管理しようとしてる
+
+        //もしBボタンを押したら
+        if (Input.GetButton("B")){
+            Debug.Log("ふわふわ");
+        }
     }
+
 
     //バラバラの処理
-    void Barabara()
+    private void Barabara()
     {
+        baraflag = true;             // true の状態の時にしか処理が出来ないようにに管理しようとしてる
 
+        //もしBボタンを押したら
+        if (Input.GetButton("B"))
+        {
+            Debug.Log("バラバラ");
+        }
     }
+
 
     //スケスケの処理
-    void Sukesuke()
+    private void Sukesuke()
     {
+        sukeflag = true;             // true の状態の時にしか処理が出来ないようにに管理しようとしてる
 
+        //もしBボタンを押したら
+        if (Input.GetButton("B"))
+        {
+            Debug.Log("スケスケ");
+        }
     }
 
-    //すべすべの処理
-    void Byunbyun()
+
+    //ビュンビュンの処理
+    private void Byunbyun()
     {
+        byunflag = true;             // true の状態の時にしか処理が出来ないようにに管理しようとしてる
 
-    }
-
-    //ふわふわの処理
-    void Huwahuwa()
-    {
-
+        //もしBボタンを押したら
+        if (Input.GetButton("B"))
+        {
+            Debug.Log("ビュンビュン");
+        }
     }
 }
