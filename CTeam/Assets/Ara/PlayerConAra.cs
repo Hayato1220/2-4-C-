@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerControlAra : MonoBehaviour
+public class PlayerConAra : MonoBehaviour
 {
+
     // Rigidbodyコンポーネント
     private Rigidbody rigidBody;
     //　キャラクターのコライダ
@@ -19,11 +20,10 @@ public class PlayerControlAra : MonoBehaviour
     [SerializeField]
     private float moveSpeed = 2f;
 
-    //　ジャンプ力
-    [SerializeField]
-    private float jumpPower = 6f;
-
     private Animator animator;
+
+    private Transform m_Cam;                  // A reference to the main camera in the scenes transform
+    private Vector3 m_CamForward;
 
     // Start is called before the first frame update
     void Start()
@@ -31,6 +31,19 @@ public class PlayerControlAra : MonoBehaviour
         rigidBody = GetComponent<Rigidbody>();
         myCollider = GetComponent<CapsuleCollider>();
         animator = GetComponent<Animator>();
+
+
+        // get the transform of the main camera
+        if (UnityEngine.Camera.main != null)
+        {
+            m_Cam = UnityEngine.Camera.main.transform;
+        }
+        else
+        {
+            Debug.LogWarning(
+                "Warning: no main camera found. Third person character needs a Camera tagged \"MainCamera\", for camera-relative controls.", gameObject);
+            // we use self-relative controls in this case, which probably isn't what the user wants, but hey, we warned them!
+        }
     }
 
     // Update is called once per frame
@@ -40,10 +53,9 @@ public class PlayerControlAra : MonoBehaviour
         CheckGround();
         //　移動速度の計算
         Move();
-        //　ジャンプ処理
-        Jump();
-
     }
+
+
     //　地面のチェック
     private void CheckGround()
     {
@@ -51,9 +63,8 @@ public class PlayerControlAra : MonoBehaviour
         {
             return;
         }
-        //　アニメーションパラメータのRigidbodyのYが0.1以下でGroundまたはEnemyレイヤーと球のコライダがぶつかった場合は地面に接地
-        if (animator.GetFloat("JumpPower") <= 0.1f
-            && Physics.CheckSphere(rigidBody.position, myCollider.radius - 0.1f, LayerMask.GetMask("Ground"))
+        //　GroundまたはEnemyレイヤーと球のコライダがぶつかった場合は地面に接地
+        if (Physics.CheckSphere(rigidBody.position, myCollider.radius - 0.1f, LayerMask.GetMask("Ground"))
             )
         {
             isGrounded = true;
@@ -63,8 +74,8 @@ public class PlayerControlAra : MonoBehaviour
         {
             isGrounded = false;
         }
-        animator.SetBool("IsGrounded", isGrounded);
     }
+
 
     //　移動値と向きの計算
     private void Move()
@@ -84,31 +95,16 @@ public class PlayerControlAra : MonoBehaviour
             //　移動速度を初期化
             velocity = Vector3.zero;
         }
-        //　移動入力値
-        input = new Vector3(Input.GetAxis("L_Stick_H"), 0f, Input.GetAxis("L_Stick_V"));
-        //　速度の計算
-        velocity = new Vector3(input.normalized.x * moveSpeed, 0f, input.normalized.z * moveSpeed);
-    }
 
-    //　ジャンプ処理
-    private void Jump()
-    {
-        //　接地している場合
-        if (isGrounded)
-        {
-            //　ジャンプ処理
-            if (Input.GetButtonDown("Y"))
-            {
-                isGrounded = false;
-                animator.SetBool("IsGrounded", isGrounded);
-                //velocity.y += jumpPower;
-                //rigidBody.velocity = new Vector3(rigidBody.velocity.x, rigidBody.velocity.y + jumpPower, rigidBody.velocity.z);
-                rigidBody.velocity = new Vector3(rigidBody.velocity.x, jumpPower, rigidBody.velocity.z);
-                animator.SetTrigger("Jump");
-            }
-        }
-        //　ジャンプ力をアニメーションパラメータに設定
-        animator.SetFloat("JumpPower", rigidBody.velocity.y);
+        float h = Input.GetAxis("L_Stick_H");
+
+        float v = Input.GetAxis("L_Stick_V");
+
+        m_CamForward = Vector3.Scale(m_Cam.forward, new Vector3(1, 0, 1)).normalized;
+
+        //　移動入力値
+        input = v * m_CamForward + h * m_Cam.right;        //　速度の計算
+        velocity = new Vector3(input.normalized.x * moveSpeed, 0f, input.normalized.z * moveSpeed);
     }
 
     //　ギズモの表示
@@ -118,6 +114,8 @@ public class PlayerControlAra : MonoBehaviour
         //　接地判断時の範囲表示
         Gizmos.DrawLine(transform.position + Vector3.up * 0.1f, transform.position + Vector3.down * 0.2f);
     }
+
+
     //　固定フレームレートで実行される
     private void FixedUpdate()
     {
@@ -127,12 +125,11 @@ public class PlayerControlAra : MonoBehaviour
             //　入力方向に向ける
             rigidBody.MoveRotation(Quaternion.LookRotation(input.normalized));
         }
-        // 入力がある時だけ実行
-        if (input.magnitude > 0f)
-        {
-            //　入力方向に向ける
-            rigidBody.MoveRotation(Quaternion.LookRotation(input.normalized));
-        }
+        //// 入力がある時だけ実行
+        //if (input.magnitude > 0f) {
+        //	//　入力方向に向ける
+        //	rigidBody.MoveRotation(Quaternion.LookRotation(input.normalized));
+        //}
 
 
         //　現在の位置に1フレームの速度分を足して移動させる
@@ -141,6 +138,4 @@ public class PlayerControlAra : MonoBehaviour
             rigidBody.MovePosition(rigidBody.position + velocity * Time.fixedDeltaTime);
         }
     }
-
-
 }
