@@ -20,10 +20,14 @@ public class PlayerConAra : MonoBehaviour
     [SerializeField]
     private float moveSpeed = 2f;
 
+    [SerializeField]
+    private float jumpPower = 6f;
+
     private Animator animator;
 
     private Transform m_Cam;                  // A reference to the main camera in the scenes transform
     private Vector3 m_CamForward;
+
 
     // Start is called before the first frame update
     void Start()
@@ -53,6 +57,8 @@ public class PlayerConAra : MonoBehaviour
         CheckGround();
         //　移動速度の計算
         Move();
+
+        Jump();
     }
 
 
@@ -63,9 +69,8 @@ public class PlayerConAra : MonoBehaviour
         {
             return;
         }
-        //　GroundまたはEnemyレイヤーと球のコライダがぶつかった場合は地面に接地
-        if (Physics.CheckSphere(rigidBody.position, myCollider.radius - 0.1f, LayerMask.GetMask("Ground"))
-            )
+        //　アニメーションパラメータのRigidbodyのYが0.1以下でGroundまたはEnemyレイヤーと球のコライダがぶつかった場合は地面に接地
+        if (animator.GetFloat("JumpPower") <= 0.1f && Physics.CheckSphere(rigidBody.position, myCollider.radius - 0.1f, LayerMask.GetMask("Ground")) || animator.GetFloat("JumpPower") <= 0.1f && Physics.CheckSphere(rigidBody.position, myCollider.radius - 0.1f, LayerMask.GetMask("Block")))
         {
             isGrounded = true;
             velocity.y = 0f;
@@ -74,6 +79,7 @@ public class PlayerConAra : MonoBehaviour
         {
             isGrounded = false;
         }
+        animator.SetBool("IsGrounded", isGrounded);
     }
 
 
@@ -87,6 +93,7 @@ public class PlayerConAra : MonoBehaviour
             if (velocity.magnitude > 0f)
             {
                 animator.SetFloat("Speed", velocity.magnitude);
+                
             }
             else
             {
@@ -105,6 +112,30 @@ public class PlayerConAra : MonoBehaviour
         //　移動入力値
         input = v * m_CamForward + h * m_Cam.right;        //　速度の計算
         velocity = new Vector3(input.normalized.x * moveSpeed, 0f, input.normalized.z * moveSpeed);
+    }
+
+
+    //　ジャンプ処理
+    private void Jump()
+    {
+        //　接地している場合
+        if (isGrounded)
+        {
+            //　ジャンプ処理
+            if (Input.GetButton("Y"))
+            {
+                isGrounded = false;
+                animator.SetFloat("Speed", 0f);
+                animator.SetBool("IsGrounded", isGrounded);
+                //velocity.y += jumpPower;
+                //rigidBody.velocity = new Vector3(rigidBody.velocity.x, rigidBody.velocity.y + jumpPower, rigidBody.velocity.z);
+                rigidBody.velocity = new Vector3(rigidBody.velocity.x, jumpPower, rigidBody.velocity.z);
+                animator.SetTrigger("Jump");
+                Debug.Log("Jump!");
+            }
+        }
+        //　ジャンプ力をアニメーションパラメータに設定
+        animator.SetFloat("JumpPower", rigidBody.velocity.y);
     }
 
     //　ギズモの表示
