@@ -41,14 +41,7 @@ public class Gion : MonoBehaviour
 
         //Debug.Log(pushflag);
 
-        if (number == 0)
-        {
-            subeflag = true;             // true の状態の時にしか処理が出来ないようにに管理しようとしてる
-        }
-        else
-        {
-            subeflag = false;
-        }
+
 
         if (Input.GetButton("A"))
         {
@@ -56,6 +49,29 @@ public class Gion : MonoBehaviour
         }
     }
 
+
+    //プレイヤーが当たっている他のオブジェクトについての処理
+    void OnCollisionStay(Collision other)
+    {
+        //もし当たったオブジェクトのタグが"Object"なら
+        if (other.gameObject.tag == "Object")
+        {
+            ObjCollider = other.gameObject.GetComponent<BoxCollider>();     // objCollider に触れている他のオブジェクトの BoxCollider を取得する
+            //Debug.Log(ObjCollider);
+
+            //すべすべのフラグが true なら
+            if (subeflag == true)
+            {
+                //他のオブジェクトに当たっている状態でBボタンを押すと
+                if (Input.GetButton("B"))
+                {
+                    //すべすべにする
+                    ObjCollider.material = slip;    // ObjCollider の PhysicMaterial を slip に入っているものを入れる
+                }
+            }
+        }
+
+    }
 
 
     //擬音をXボタンで切り替える処理
@@ -92,8 +108,56 @@ public class Gion : MonoBehaviour
             pushflag = true;         // pushflag を true にする
 
         }
-    }
 
+
+        /*
+         * 切り替えた時に他の擬音の処理をしないように管理
+         */
+        if (number == 0)                　 // number が0なら
+        {
+            subeflag = true;             // true の状態の時にしか処理が出来ないようにに管理しようとしてる
+        }
+        else                              // number が0以外なら
+        {
+            subeflag = false;
+        }
+
+        if (number == 1)                　 // number が1なら
+        {
+            huwaflag = true;             // true の状態の時にしか処理が出来ないようにに管理しようとしてる
+        }
+        else                              // number が1以外なら
+        {
+            huwaflag = false;
+        }
+
+        if (number == 2)                　 // number が2なら
+        {
+            baraflag = true;             // true の状態の時にしか処理が出来ないようにに管理しようとしてる
+        }
+        else                              // number が2以外なら
+        {
+            baraflag = false;
+        }
+
+        if (number == 3)                　 // number が3なら
+        {
+            sukeflag = true;             // true の状態の時にしか処理が出来ないようにに管理しようとしてる
+        }
+        else                              // number が3以外なら
+        {
+            sukeflag = false;
+        }
+
+        if (number == 4)                　 // number が4なら
+        {
+            byunflag = true;             // true の状態の時にしか処理が出来ないようにに管理しようとしてる
+        }
+        else                              // number が4以外なら
+        {
+            byunflag = false;
+        }
+    }
 
 
     //切り替えた擬音に対応する処理
@@ -143,33 +207,6 @@ public class Gion : MonoBehaviour
                 break;
         }
     }
-
-
-
-    //プレイヤーが当たっている他のオブジェクトについての処理
-    void OnCollisionStay(Collision other)
-    {
-        //もし当たったオブジェクトのタグが"Object"なら
-        if (other.gameObject.tag == "Object")
-        {
-            ObjCollider = other.gameObject.GetComponent<BoxCollider>();     // objCollider に触れている他のオブジェクトの BoxCollider を取得する
-            //Debug.Log(ObjCollider);
-
-            //すべすべのフラグが true なら
-            if (subeflag == true)
-            {
-                //他のオブジェクトに当たっている状態でBボタンを押すと
-                if (Input.GetButton("B"))
-                {
-                    //すべすべにする
-                    ObjCollider.material = slip;    // ObjCollider の PhysicMaterial を slip に入っているものを入れる
-                }
-            }
-        }
-
-    }
-
-
 
     //すべすべの処理
     private void Subesube()
