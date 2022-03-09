@@ -1265,6 +1265,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ground X Mix Flat 8x8 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1000013549307534, guid: 08f59b05c23f4324f89f00e8014f5640, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 4000012723162018, guid: 08f59b05c23f4324f89f00e8014f5640, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1820,6 +1824,10 @@ PrefabInstance:
     - target: {fileID: 1000013549307534, guid: 08f59b05c23f4324f89f00e8014f5640, type: 3}
       propertyPath: m_Name
       value: Ground X Mix Flat 8x8 (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000013549307534, guid: 08f59b05c23f4324f89f00e8014f5640, type: 3}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 4000012723162018, guid: 08f59b05c23f4324f89f00e8014f5640, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3432,6 +3440,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Block 4x4x4
       objectReference: {fileID: 0}
+    - target: {fileID: 1000011077552378, guid: 1b9856198f097c4438bd741e3c93b220, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 4000011079908178, guid: 1b9856198f097c4438bd741e3c93b220, type: 3}
       propertyPath: m_LocalPosition.x
       value: 20
@@ -4168,9 +4180,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 755114631}
-  m_LocalRotation: {x: 0.17973754, y: -0.000000018578623, z: -0.0000000016103655,
-    w: 0.98371464}
-  m_LocalPosition: {x: 6, y: 13.501679, z: 47.536427}
+  m_LocalRotation: {x: 0.17973754, y: 0.000000018578623, z: 0.0000000016103655, w: 0.98371464}
+  m_LocalPosition: {x: 6, y: 13.57168, z: 47.536427}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -4574,29 +4585,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 781046067}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ce7a80d520cacc042b5fe14f373d8173, type: 3}
+  m_Script: {fileID: 11500000, guid: 70d1ee18a59bfec42bcd78914cd7ac04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_MovingTurnSpeed: 360
-  m_StationaryTurnSpeed: 180
-  m_JumpPower: 7
-  m_GravityMultiplier: 2
-  m_RunCycleLegOffset: 0.3
-  m_MoveSpeedMultiplier: 1.5
-  m_AnimSpeedMultiplier: 1
-  m_GroundCheckDistance: 0.3
---- !u!114 &781046072
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 781046067}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 521b611700410be45810047f0a74e899, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  isGrounded: 1
+  moveSpeed: 2
+  jumpPower: 6
 --- !u!136 &781046073
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -4607,8 +4601,8 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.3
-  m_Height: 1.2
+  m_Radius: 0.25
+  m_Height: 1.25
   m_Direction: 1
   m_Center: {x: 0, y: 0.6, z: 0}
 --- !u!54 &781046074
@@ -4619,13 +4613,13 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 781046067}
   serializedVersion: 2
-  m_Mass: 1
+  m_Mass: 10
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
+  m_Interpolate: 2
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!4 &781046082 stripped
 Transform:
@@ -4908,7 +4902,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 811407860}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: dodai
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5782,6 +5776,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ground X Mix Flat 8x8
       objectReference: {fileID: 0}
+    - target: {fileID: 1000013549307534, guid: 08f59b05c23f4324f89f00e8014f5640, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 4000012723162018, guid: 08f59b05c23f4324f89f00e8014f5640, type: 3}
       propertyPath: m_LocalPosition.x
       value: 16
@@ -6231,7 +6229,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: e2cf68ff4b1ffda45a77f7307dd789b9, type: 2}
+      objectReference: {fileID: 9100000, guid: 2fc32dae70c68e34a8522dc8c213a72a, type: 2}
     - target: {fileID: 4204254016675965354, guid: 9512ed6804d76934eb592ea99bd354b6,
         type: 3}
       propertyPath: m_UpdateMode
@@ -6245,7 +6243,7 @@ PrefabInstance:
     - target: {fileID: 8216669308748850337, guid: 9512ed6804d76934eb592ea99bd354b6,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 11.11
+      value: 11.18
       objectReference: {fileID: 0}
     - target: {fileID: 8216669308748850337, guid: 9512ed6804d76934eb592ea99bd354b6,
         type: 3}
@@ -6343,6 +6341,10 @@ PrefabInstance:
     - target: {fileID: 1000011077552378, guid: 1b9856198f097c4438bd741e3c93b220, type: 3}
       propertyPath: m_Name
       value: Block 4x4x4 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000011077552378, guid: 1b9856198f097c4438bd741e3c93b220, type: 3}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 4000011079908178, guid: 1b9856198f097c4438bd741e3c93b220, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6509,6 +6511,10 @@ PrefabInstance:
     - target: {fileID: 1000011077552378, guid: 1b9856198f097c4438bd741e3c93b220, type: 3}
       propertyPath: m_Name
       value: Block 4x4x4 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000011077552378, guid: 1b9856198f097c4438bd741e3c93b220, type: 3}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 4000011079908178, guid: 1b9856198f097c4438bd741e3c93b220, type: 3}
       propertyPath: m_LocalPosition.x
@@ -7666,7 +7672,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1524957030}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: yuka
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8170,7 +8176,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1588360972}
-  m_LocalRotation: {x: 0.17257516, y: -0.000000008474112, z: 0.0000000014846971, w: 0.9849964}
+  m_LocalRotation: {x: 0.17257516, y: 0.000000008474112, z: -0.0000000014846971, w: 0.9849964}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -8224,6 +8230,10 @@ PrefabInstance:
     - target: {fileID: 1000011077552378, guid: 1b9856198f097c4438bd741e3c93b220, type: 3}
       propertyPath: m_Name
       value: Block 4x4x4 (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000011077552378, guid: 1b9856198f097c4438bd741e3c93b220, type: 3}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 4000011079908178, guid: 1b9856198f097c4438bd741e3c93b220, type: 3}
       propertyPath: m_LocalPosition.x
@@ -9272,6 +9282,10 @@ PrefabInstance:
     - target: {fileID: 1000013549307534, guid: 08f59b05c23f4324f89f00e8014f5640, type: 3}
       propertyPath: m_Name
       value: Ground X Mix Flat 8x8 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000013549307534, guid: 08f59b05c23f4324f89f00e8014f5640, type: 3}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 4000012723162018, guid: 08f59b05c23f4324f89f00e8014f5640, type: 3}
       propertyPath: m_LocalPosition.x
@@ -11035,7 +11049,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2141391032}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6, y: 13.501679, z: 47.536427}
+  m_LocalPosition: {x: 6, y: 13.57168, z: 47.536427}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1725376316}
