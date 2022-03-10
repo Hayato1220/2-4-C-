@@ -17,7 +17,7 @@ public class Speed : MonoBehaviour
 
     void Update()
     {
-        Debug.Log(rb.velocity.magnitude);
+        //Debug.Log(rb.velocity.magnitude);
 
         if (rb.velocity.magnitude >= 3.0f)
         {
