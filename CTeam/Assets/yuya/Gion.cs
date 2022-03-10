@@ -57,7 +57,7 @@ public class Gion : MonoBehaviour
         if (other.gameObject.tag == "Object")
         {
             ObjCollider = other.gameObject.GetComponent<BoxCollider>();     // objCollider に触れている他のオブジェクトの BoxCollider を取得する
-            //Debug.Log(ObjCollider);
+            Debug.Log(ObjCollider);
 
             //すべすべのフラグが true なら
             if (subeflag == true)
