@@ -27,7 +27,7 @@ public class Destroy : MonoBehaviour
 
     void OnCollisionEnter(Collision other)
     {
-        if (other.gameObject.tag == "Ball")
+        if (other.gameObject.tag == "Object")
         {
 
             if (speedflag == true)
