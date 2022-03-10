@@ -21,18 +21,13 @@ public class Gion : MonoBehaviour
     bool pushflag = false;              //切り替えるボタンが押されたかどうか管理する bool 型変数
 
 
-
     void Start()
     {
         
     }
 
 
-    /* 
-     * ここから 
-     */
-
-    void Update()
+    void FixedUpdate()
     {
 
         GionChange();   //使える擬音をXボタンで切り替える
@@ -108,6 +103,7 @@ public class Gion : MonoBehaviour
             pushflag = true;         // pushflag を true にする
 
         }
+
 
 
         /*

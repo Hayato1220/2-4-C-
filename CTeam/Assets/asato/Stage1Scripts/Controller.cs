@@ -41,18 +41,18 @@ public class Controller : MonoBehaviour
 
         if (Input.GetAxis("L_Stick_H") == -1)
         {
-            Debug.Log("Lスティック(左）が入力されました。");
+            Debug.Log("左");
         }else if(Input.GetAxis("L_Stick_H") == 1)
         {
-            Debug.Log("Lスティック（右）が入力されました。");
+            Debug.Log("右");
         }
 
         if(Input.GetAxis("L_Stick_V") == -1)
         {
-            Debug.Log("Lスティックが上方向に入力されました。");
+            Debug.Log("下");
         }else if (Input.GetAxis("L_Stick_V") == 1)
         {
-            Debug.Log("Lスティックが下方向に入力されました。");
+            Debug.Log("上");
         }
     }
 }
