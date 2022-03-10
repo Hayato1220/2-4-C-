@@ -23,9 +23,7 @@ public class Slip : MonoBehaviour
                 CubeCollider.material = slip;
             }
         }
-    }
-    void OnTrrigerStay(Collider other)
-    {
+
         if (other.gameObject.tag == "Blue" || other.gameObject.tag == "Green" || other.gameObject.tag == "Red" || other.gameObject.tag == "Orange")
         {
             CubeCollider.material = nonslip;

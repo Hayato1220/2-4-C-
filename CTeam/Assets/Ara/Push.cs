@@ -34,16 +34,16 @@ public class Push : MonoBehaviour
 	private float touchSpeed = 1.5f;
 
 	[SerializeField]
-	private float removeSpeed = 3f;
+	private float removeSpeed = 1f;
 	//　押す力
 	[SerializeField]
 	private float pushPower = 2000f;
 	//　レイの距離
 	[SerializeField]
-	private float rayDistance = 0.7f;
+	private float rayDistance = 0.445f;
 	//　壁と手の間のオフセット値
 	[SerializeField]
-	private float wallHandOffset = 0.1f;
+	private float wallHandOffset = 0.6f;
 
 	private Vector3 dir;
 
@@ -67,6 +67,7 @@ public class Push : MonoBehaviour
 
 			rightHandRotation = Quaternion.FromToRotation(transform.up, hit.normal) * transform.rotation;
 			isTouchRight = true;
+
 		}
 		else
 		{
