@@ -10,7 +10,7 @@ public class Gion : MonoBehaviour
 
     public PhysicMaterial slip;         //他の PhysicMaterial を　slip に入れる
 
-    private static int number = 0;             //擬音の動作を切り替える時に使う変数
+    private static int number;             //擬音の動作を切り替える時に使う変数
 
     private bool subeflag = false;      //すべすべを管理する bool 型変数
     private bool huwaflag = false;      //ふわふわを管理する bool 型変数
@@ -20,21 +20,9 @@ public class Gion : MonoBehaviour
 
     bool pushflag = false;              //切り替えるボタンが押されたかどうか管理する bool 型変数
 
-    bool getpushscene;
-
     void Start()
     {
-        
-    }
-
-    void Update()
-    {
-        getpushscene = PauseSelect.GetPushScene();
-
-        if(getpushscene == true)
-        {
-            number = 0;
-        }
+        number = 0;     //リトライした時に number を初期化
     }
 
     void FixedUpdate()
@@ -278,6 +266,7 @@ public class Gion : MonoBehaviour
     }
 
 
+    // GionChangeText スクリプトで使うように値を返す
     public static int ChangeNumber()
     {
         return number;
