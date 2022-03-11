@@ -10,7 +10,7 @@ public class Gion : MonoBehaviour
 
     public PhysicMaterial slip;         //他の PhysicMaterial を　slip に入れる
 
-    private static int number = 0;             //擬音の動作を切り替える時に使う変数
+    private static int number;             //擬音の動作を切り替える時に使う変数
 
     private bool subeflag = false;      //すべすべを管理する bool 型変数
     private bool huwaflag = false;      //ふわふわを管理する bool 型変数
@@ -20,19 +20,12 @@ public class Gion : MonoBehaviour
 
     bool pushflag = false;              //切り替えるボタンが押されたかどうか管理する bool 型変数
 
-
-
     void Start()
     {
-        
+        number = 0;     //リトライした時に number を初期化
     }
 
-
-    /* 
-     * ここから 
-     */
-
-    void Update()
+    void FixedUpdate()
     {
 
         GionChange();   //使える擬音をXボタンで切り替える
@@ -57,7 +50,7 @@ public class Gion : MonoBehaviour
         if (other.gameObject.tag == "Object")
         {
             ObjCollider = other.gameObject.GetComponent<BoxCollider>();     // objCollider に触れている他のオブジェクトの BoxCollider を取得する
-            //Debug.Log(ObjCollider);
+            Debug.Log(ObjCollider);
 
             //すべすべのフラグが true なら
             if (subeflag == true)
@@ -108,6 +101,7 @@ public class Gion : MonoBehaviour
             pushflag = true;         // pushflag を true にする
 
         }
+
 
 
         /*
@@ -272,6 +266,7 @@ public class Gion : MonoBehaviour
     }
 
 
+    // GionChangeText スクリプトで使うように値を返す
     public static int ChangeNumber()
     {
         return number;

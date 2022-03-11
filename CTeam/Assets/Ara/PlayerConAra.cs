@@ -28,6 +28,8 @@ public class PlayerConAra : MonoBehaviour
     private Transform m_Cam;                  // A reference to the main camera in the scenes transform
     private Vector3 m_CamForward;
 
+    Rigidbody m_Rigidbody;
+
 
     // Start is called before the first frame update
     void Start()
@@ -35,6 +37,7 @@ public class PlayerConAra : MonoBehaviour
         rigidBody = GetComponent<Rigidbody>();
         myCollider = GetComponent<CapsuleCollider>();
         animator = GetComponent<Animator>();
+
 
 
         // get the transform of the main camera
@@ -169,4 +172,13 @@ public class PlayerConAra : MonoBehaviour
             rigidBody.MovePosition(rigidBody.position + velocity * Time.fixedDeltaTime);
         }
     }
+
+    private void OnCollisionStay(Collision collision)
+    {
+        if(collision.gameObject.layer == LayerMask.NameToLayer("Block"))
+        {
+            collision.gameObject.GetComponent<Rigidbody>().AddForce(this.transform.forward, ForceMode.Acceleration);
+        }
+    }
+
 }
