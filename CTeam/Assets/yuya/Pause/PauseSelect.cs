@@ -121,4 +121,8 @@ public class PauseSelect : MonoBehaviour
         return pushScene;
     }
 
+    public static bool GetPushScene()
+    {
+        return pushScene;
+    }
 }

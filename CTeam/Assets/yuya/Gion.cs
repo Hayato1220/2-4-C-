@@ -20,12 +20,22 @@ public class Gion : MonoBehaviour
 
     bool pushflag = false;              //切り替えるボタンが押されたかどうか管理する bool 型変数
 
+    bool getpushscene;
 
     void Start()
     {
         
     }
 
+    void Update()
+    {
+        getpushscene = PauseSelect.GetPushScene();
+
+        if(getpushscene == true)
+        {
+            number = 0;
+        }
+    }
 
     void FixedUpdate()
     {
