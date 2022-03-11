@@ -114,15 +114,15 @@ public class Push : MonoBehaviour
 		}
 	}
 
-	//　CharacterControllerが他のコライダと接触している
-	void OnControllerColliderHit(ControllerColliderHit col)
-	{
-		//　ぶつかっている相手がBlockだったらキャラクターの方向に力を加える
-		if (col.gameObject.layer == LayerMask.NameToLayer("Block"))
-		{
-			col.gameObject.GetComponent<Rigidbody>().AddForce(transform.forward * pushPower);
-		}
-	}
+	////　CharacterControllerが他のコライダと接触している
+	//void OnControllerColliderHit(ControllerColliderHit col)
+	//{
+	//	//　ぶつかっている相手がBlockだったらキャラクターの方向に力を加える
+	//	if (col.gameObject.layer == LayerMask.NameToLayer("Block"))
+	//	{
+	//		col.gameObject.GetComponent<Rigidbody>().AddForce(transform.forward * pushPower);
+	//	}
+	//}
 
 	void OnAnimatorIK()
 	{
