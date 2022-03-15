@@ -5,20 +5,14 @@ using UnityEngine.UI;
 
 public class GionChangeText : MonoBehaviour
 {
-    public Text changetext;
+    public Text changetext;     //切り替えによって擬音が変わるテキストを入れる用変数
 
-    int getnumber;
-
-
-    void Start()
-    {
-
-    }
+    int getnumber;              // Gion スクリプトから number を受け取る用変数
 
 
     void Update()
     {
-        getnumber = Gion.ChangeNumber();
+        getnumber = Gion.ChangeNumber();        // Gion スクリプトから number を受け取る
 
         switch (getnumber)
         {
