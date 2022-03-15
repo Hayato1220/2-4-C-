@@ -8,16 +8,18 @@ public class Speed : MonoBehaviour
 
     private Rigidbody rb;
 
-    bool speedflag = false;
+    bool speedflag;
 
     void Start()
     {
+        speedflag = false;
+
         rb = transform.GetComponent<Rigidbody>();
     }
 
     void Update()
     {
-        //Debug.Log(rb.velocity.magnitude);
+        Debug.Log(rb.velocity.magnitude);
 
         if (rb.velocity.magnitude >= 3.0f)
         {
