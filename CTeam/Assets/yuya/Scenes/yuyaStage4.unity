@@ -174,7 +174,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7777778, y: 1}
+    m_SensorSize: {x: 2.3239796, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -871,7 +871,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7777778, y: 1}
+    m_SensorSize: {x: 2.3239796, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -887,7 +887,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 835775979}
-  m_LocalRotation: {x: 7.348014e-10, y: 0.99910176, z: 0.042375397, w: -0.000000017324705}
+  m_LocalRotation: {x: -7.348014e-10, y: 0.99910176, z: 0.042375397, w: 0.000000017324705}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1427,8 +1427,9 @@ GameObject:
   - component: {fileID: 1205720256}
   - component: {fileID: 1205720255}
   - component: {fileID: 1205720259}
+  - component: {fileID: 1205720260}
   m_Layer: 8
-  m_Name: object
+  m_Name: Elevetor
   m_TagString: Object
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1443,7 +1444,7 @@ BoxCollider:
   m_GameObject: {fileID: 1205720254}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 1.05, y: 1.05, z: 1.05}
   m_Center: {x: 0, y: 0, z: 0}
@@ -1524,6 +1525,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 32
   m_CollisionDetection: 1
+--- !u!114 &1205720260
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1205720254}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08de9db6dffe8fc4887dae4b98cdb1a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  is2ndFloor: 0
 --- !u!1 &1229704631
 GameObject:
   m_ObjectHideFlags: 0
@@ -1892,7 +1906,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7777778, y: 1}
+    m_SensorSize: {x: 2.3239796, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -1963,7 +1977,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7777778, y: 1}
+    m_SensorSize: {x: 2.3239796, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -2262,6 +2276,7 @@ MonoBehaviour:
   rightRayTransform: {fileID: 682027873}
   leftRayTransform: {fileID: 976843742}
   touchSpeed: 1.5
+  removeSpeed: 3
   pushPower: 2000
   rayDistance: 0.7
   wallHandOffset: 0.1
@@ -2333,6 +2348,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1090661979}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1681859827
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1681859813}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fe2d6bcade7b6c48a0363728a7c8662, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1688360126
 GameObject:
   m_ObjectHideFlags: 0
