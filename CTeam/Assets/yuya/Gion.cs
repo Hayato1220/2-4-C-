@@ -21,6 +21,8 @@ public class Gion : MonoBehaviour
     private bool sukeflag = false;      //スケスケを管理する bool 型変数
 
 
+    private MeshRenderer mr;
+
 
 
     void Start()
@@ -28,6 +30,7 @@ public class Gion : MonoBehaviour
         barapush = false;   // barapush を false で初期化
         
         number = 0;         //リトライした時に number を初期化
+
     }
 
 
@@ -164,6 +167,7 @@ public class Gion : MonoBehaviour
 
             //Debug.Log(ObjCollider);
 
+            mr = other.gameObject.GetComponent<MeshRenderer>();
 
             /* * * * * * * * * *
              * 0:すべすべ      *
@@ -251,7 +255,12 @@ public class Gion : MonoBehaviour
                     {
                         if (Input.GetButton("B"))
                         {
+                            mr.material.color = mr.material.color - new Color32(0, 0, 0, 5);
+                        }
 
+                        if (mr.material.color.a <= 0)
+                        {
+                            Destroy(other.gameObject);
                         }
                     }
                     break;
@@ -280,4 +289,5 @@ public class Gion : MonoBehaviour
     {
         return number;
     }
+
 }
