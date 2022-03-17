@@ -5,6 +5,8 @@ using UnityEngine;
 public class PlayerConAra : MonoBehaviour
 {
 
+    private CharacterController characterController;
+
     // Rigidbodyコンポーネント
     private Rigidbody rigidBody;
     //　キャラクターのコライダ
@@ -23,10 +25,19 @@ public class PlayerConAra : MonoBehaviour
     [SerializeField]
     private float jumpPower = 6f;
 
+    [SerializeField]
+    private float distanceToLanding = 2.5f;
+
+    [SerializeField]
+    public float distanceToTheGround = 2.5f;
+
     private Animator animator;
 
     private Transform m_Cam;                  // A reference to the main camera in the scenes transform
     private Vector3 m_CamForward;
+
+    Rigidbody m_Rigidbody;
+    private Transform spine;
 
 
     // Start is called before the first frame update
@@ -35,6 +46,8 @@ public class PlayerConAra : MonoBehaviour
         rigidBody = GetComponent<Rigidbody>();
         myCollider = GetComponent<CapsuleCollider>();
         animator = GetComponent<Animator>();
+        characterController = GetComponent<CharacterController>();
+
 
 
         // get the transform of the main camera
@@ -75,9 +88,27 @@ public class PlayerConAra : MonoBehaviour
             isGrounded = true;
             velocity.y = 0f;
         }
+        //      //　アニメーションパラメータFallがfalseの時で地面との距離が遠かったらFallをtrueにする
+        //      else if (!animator.GetBool("Fall")) 
+        //      {
+        //          if (!Physics.SphereCast(new Ray(spine.position, Vector3.down), characterController.radius, distanceToTheGround, LayerMask.GetMask("Ground")))
+        //          {
+        //              animator.SetBool("Fall", true);
+        //          }
+        //}
+
+        //      //　落下アニメーションの時はレイを飛ばし着地アニメーションにする
+        //      else if (animator.GetBool ("Fall")) 
+        //      {
+        //          if (Physics.Linecast(spine.position, spine.position + Vector3.down * distanceToLanding, LayerMask.GetMask("Field")))
+        //          {
+        //              animator.SetBool("Landing", true);
+        //          }
+        //}
         else
         {
             isGrounded = false;
+
         }
         animator.SetBool("IsGrounded", isGrounded);
     }
@@ -102,6 +133,10 @@ public class PlayerConAra : MonoBehaviour
             //　移動速度を初期化
             velocity = Vector3.zero;
         }
+        //else if (!isGrounded)
+        //{
+        //    animator.SetTrigger("Jump");
+        //}
 
         float h = Input.GetAxis("L_Stick_H");
 
@@ -169,4 +204,13 @@ public class PlayerConAra : MonoBehaviour
             rigidBody.MovePosition(rigidBody.position + velocity * Time.fixedDeltaTime);
         }
     }
+
+    private void OnCollisionStay(Collision collision)
+    {
+        if(collision.gameObject.layer == LayerMask.NameToLayer("Block"))
+        {
+            collision.gameObject.GetComponent<Rigidbody>().AddForce(this.transform.forward, ForceMode.Acceleration);
+        }
+    }
+
 }

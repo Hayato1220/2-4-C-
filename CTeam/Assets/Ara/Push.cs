@@ -61,7 +61,8 @@ public class Push : MonoBehaviour
 		RaycastHit hit;
 
 		//　右肩からレイを飛ばし、Blockにヒットしているかどうか
-		if (Physics.Raycast(rightRayTransform.position, rightRayTransform.forward, out hit, rayDistance, LayerMask.GetMask("Block")))
+		if (Physics.Raycast(rightRayTransform.position, rightRayTransform.forward, out hit, rayDistance, LayerMask.GetMask("Block"))
+			|| Physics.Raycast(rightRayTransform.position, rightRayTransform.forward, out hit, rayDistance, LayerMask.GetMask("Toumei")))
 		{
 			rightHandPosition = hit.point + hit.normal * wallHandOffset;
 
@@ -76,7 +77,8 @@ public class Push : MonoBehaviour
 
 		//　左肩からレイを飛ばし、Blockにヒットしているかどうか
 
-		if (Physics.Raycast(leftRayTransform.position, leftRayTransform.forward, out hit, rayDistance, LayerMask.GetMask("Block")))
+		if (Physics.Raycast(leftRayTransform.position, leftRayTransform.forward, out hit, rayDistance, LayerMask.GetMask("Block"))
+			|| Physics.Raycast(leftRayTransform.position, leftRayTransform.forward, out hit, rayDistance, LayerMask.GetMask("Toumei")))
 		{
 			leftHandPosition = hit.point + hit.normal * wallHandOffset;
 			leftHandRotation = Quaternion.FromToRotation(transform.up, hit.normal) * transform.rotation;
@@ -114,15 +116,15 @@ public class Push : MonoBehaviour
 		}
 	}
 
-	//　CharacterControllerが他のコライダと接触している
-	void OnControllerColliderHit(ControllerColliderHit col)
-	{
-		//　ぶつかっている相手がBlockだったらキャラクターの方向に力を加える
-		if (col.gameObject.layer == LayerMask.NameToLayer("Block"))
-		{
-			col.gameObject.GetComponent<Rigidbody>().AddForce(transform.forward * pushPower);
-		}
-	}
+	////　CharacterControllerが他のコライダと接触している
+	//void OnControllerColliderHit(ControllerColliderHit col)
+	//{
+	//	//　ぶつかっている相手がBlockだったらキャラクターの方向に力を加える
+	//	if (col.gameObject.layer == LayerMask.NameToLayer("Block"))
+	//	{
+	//		col.gameObject.GetComponent<Rigidbody>().AddForce(transform.forward * pushPower);
+	//	}
+	//}
 
 	void OnAnimatorIK()
 	{
