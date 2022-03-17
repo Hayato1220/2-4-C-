@@ -35,6 +35,11 @@ public class GionChangeText : MonoBehaviour
             case 4:
                 changetext.text = "擬音:ビュンビュン";
                 break;
+
+            case 5:
+                changetext.text = "擬音:ネバネバ";
+                break;
+
         }
     }
 }

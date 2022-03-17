@@ -19,9 +19,16 @@ public class Gion : MonoBehaviour
     private bool baraflag = false;      //バラバラを管理する bool 型変数
     private bool byunflag = false;      //ビューンを管理する bool 型変数
     private bool sukeflag = false;      //スケスケを管理する bool 型変数
+    private bool nebaflag = false;      //ネバネバを管理する bool 型変数
+
 
 
     private MeshRenderer mr;
+
+    private Rigidbody rb;
+
+    public PhysicMaterial nebaneba;
+
 
 
 
@@ -62,14 +69,14 @@ public class Gion : MonoBehaviour
             {
                 pushflag = false;      //何回も処理しないように pushflag を false にする
 
-                //もし number が4以下なら
-                if (number < 4)
+                //もし number が5以下なら
+                if (number < 5)
                 {
 
                     number++;         // number を1ずつ増やす
 
                 }
-                //もし number が4以下以外なら
+                //もし number が5以下以外なら
                 else
                 {
 
@@ -146,6 +153,16 @@ public class Gion : MonoBehaviour
         {
             byunflag = false;
         }
+
+        /* ネバネバ */
+        if (number == 5)                　 // number が5なら
+        {
+            nebaflag = true;             // true の状態の時にしか処理が出来ないようにに管理しようとしてる
+        }
+        else                              // number が5以外なら
+        {
+            nebaflag = false;
+        }
     }
 
 
@@ -168,6 +185,7 @@ public class Gion : MonoBehaviour
             //Debug.Log(ObjCollider);
 
             mr = other.gameObject.GetComponent<MeshRenderer>();
+            rb = other.gameObject.GetComponent<Rigidbody>();
 
             /* * * * * * * * * *
              * 0:すべすべ      *
@@ -175,6 +193,7 @@ public class Gion : MonoBehaviour
              * 2:バラバラ      *
              * 3:スケスケ      *
              * 4:ビュンビュン  *
+             * 5:ネバネバ
              * * * * * * * * * */
             switch (number)
             {
@@ -248,24 +267,6 @@ public class Gion : MonoBehaviour
                     }
                     break;
 
-
-                /* スケスケ */
-                case 3:
-                    if (sukeflag == true)
-                    {
-                        if (Input.GetButton("B"))
-                        {
-                            mr.material.color = mr.material.color - new Color32(0, 0, 0, 5);
-                        }
-
-                        if (mr.material.color.a <= 0)
-                        {
-                            Destroy(other.gameObject);
-                        }
-                    }
-                    break;
-
-
                 /* ビュンビュン */
                 case 4:
                     if (byunflag == true)
@@ -276,7 +277,42 @@ public class Gion : MonoBehaviour
                         }
                     }
                     break;
+
             }
+        }
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        switch (number)
+        {
+
+            /* スケスケ */
+            case 3:
+                if (sukeflag == true)
+                {
+                    if (Input.GetButton("B"))
+                    {
+                        mr.material.color = mr.material.color - new Color32(0, 0, 0, 5);
+                    }
+
+                    if (mr.material.color.a <= 0)
+                    {
+                        Destroy(other.gameObject);
+                    }
+                }
+
+                break;
+            /* ネバネバ */
+            case 5:
+                if (nebaflag == true)
+                {
+                    if (Input.GetButton("B"))
+                    {
+                        ObjCollider.material = nebaneba;
+                    }
+                }
+                break;
         }
     }
 
