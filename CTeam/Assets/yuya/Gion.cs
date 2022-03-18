@@ -246,7 +246,11 @@ public class Gion : MonoBehaviour
                                         baraObj = Instantiate(other.gameObject, Objpos + (transform.up * 1.5f), Quaternion.identity);   // Instantiate(クローンのもとになるオブジェクト, 位置, 回転)してオブジェクトを生成
 
                                         Vector3 ObjScale = other.gameObject.transform.localScale;   // ObjScale に、触れているオブジェクトの大きさを入れる
+
                                         ObjScale.x = ObjScale.x / 2.0f;                             // ObjScale の X(横幅)の大きさを半分にする
+                                        ObjScale.y = ObjScale.y / 2.0f;
+                                        ObjScale.z = ObjScale.z / 2.0f;
+
                                         baraObj.transform.localScale = ObjScale;                    //生成するオブジェクトに ObjScale の値を入れる
 
                                         //// Instantiate(クローンのもとになるオブジェクト, 位置, 回転)
