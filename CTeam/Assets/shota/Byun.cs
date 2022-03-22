@@ -2,12 +2,10 @@
 
 public class Byun : MonoBehaviour
 {
-
-	// Use this for initialization
 	void Start()
 	{
 		// 力を加える向きをVector3型で定義
-		// 今回はX軸から45度の向きに射出するため、XとYを1:1にする
+		// 左からYXZ
 		Vector3 forceDirection = new Vector3(0f, 1.0f, 1.0f);
 
 		// 上の向きに加わる力の大きさを定義
@@ -23,10 +21,7 @@ public class Byun : MonoBehaviour
 		// ForceMode.Impulseは撃力
 		rb.AddForce(force, ForceMode.Impulse);
 	}
-
-	// Update is called once per frame
 	void Update()
 	{
-
 	}
 }
