@@ -8,7 +8,7 @@ public class Byun : MonoBehaviour
 		// 左からYXZ
 		Vector3 forceDirection = new Vector3(0f, 1.0f, 1.0f);
 
-		// 上の向きに加わる力の大きさを定義
+		// 上の向きに加わる力の大きさを定義 
 		float forceMagnitude = 100.0f;
 
 		// 向きと大きさからSphereに加わる力を計算する
@@ -20,8 +20,5 @@ public class Byun : MonoBehaviour
 		// 力を加えるメソッド
 		// ForceMode.Impulseは撃力
 		rb.AddForce(force, ForceMode.Impulse);
-	}
-	void Update()
-	{
 	}
 }
