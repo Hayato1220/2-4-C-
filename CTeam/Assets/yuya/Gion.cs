@@ -221,8 +221,7 @@ public class Gion : MonoBehaviour
                             //now += new Vector3(0.0f, 0.0f, 0.05f);
                             //rb.position = now;
 
-                            Vector3 force = new Vector3(0.0f, 0.0f, 100.0f);
-                            rb.AddForce(force);
+                            rb.velocity = transform.up * 2;
                             Debug.Log("ふわふわ");
                         }
                     }
