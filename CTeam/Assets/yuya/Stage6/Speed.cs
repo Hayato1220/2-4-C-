@@ -23,7 +23,7 @@ public class Speed : MonoBehaviour
 
     void Update()
     {
-        Debug.Log(rb.velocity.magnitude);
+        //Debug.Log(rb.velocity.magnitude);
 
         //もしオブジェクトの移動速度が 3.0f 以上だったら
         if (rb.velocity.magnitude >= 3.0f)

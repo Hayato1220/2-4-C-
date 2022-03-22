@@ -193,7 +193,7 @@ public class Gion : MonoBehaviour
              * 2:バラバラ      *
              * 3:スケスケ      *
              * 4:ビュンビュン  *
-             * 5:ネバネバ
+             * 5:ネバネバ      *
              * * * * * * * * * */
             switch (number)
             {
@@ -217,7 +217,13 @@ public class Gion : MonoBehaviour
                     {
                         if (Input.GetButton("B"))
                         {
+                            //Vector3 now = rb.position;
+                            //now += new Vector3(0.0f, 0.0f, 0.05f);
+                            //rb.position = now;
 
+                            Vector3 force = new Vector3(0.0f, 0.0f, 100.0f);
+                            rb.AddForce(force);
+                            Debug.Log("ふわふわ");
                         }
                     }
                     break;
