@@ -8,7 +8,7 @@ public class PauseSelect : MonoBehaviour
 {
     RectTransform rect;                     //スクリプトが入っているオブジェクトの位置
 
-    static int MenuNumber = 0;              //ポーズ中のメニューカーソルの位置
+    static int MenuNumber;              //ポーズ中のメニューカーソルの位置
 
     private static bool pushScene = false;  //ポーズ中のメニューから選択したシーンが押されたか管理
     bool pushflag = false;                  //Lスティックがが倒されたかどうか
@@ -17,6 +17,8 @@ public class PauseSelect : MonoBehaviour
     void Start()
     {
         rect = GetComponent<RectTransform>();   //オブジェクトの位置を取得
+
+        MenuNumber = 0;
     }
 
 
@@ -26,7 +28,7 @@ public class PauseSelect : MonoBehaviour
         if(pushScene == false)
         {
             // L_Stick_V が -1（下方向に入力された）の時
-            if(!Input.GetButton("B") && Input.GetAxis("L_Stick_V") == -1)
+            if((!Input.GetButton("B") && Input.GetAxis("L_Stick_V") == -1) || (!Input.GetButton("B") && Input.GetAxis("PadKey_V") == -1))
             {
                 if (pushflag == false)      // pushflag が false の時
                 {
@@ -40,7 +42,7 @@ public class PauseSelect : MonoBehaviour
 
             }
             // L_Stick_V が 1（上方向方向に入力された）の時
-            else if (!Input.GetButton("B") && Input.GetAxis("L_Stick_V") == 1)
+            else if (!Input.GetButton("B") && Input.GetAxis("L_Stick_V") == 1 || (!Input.GetButton("B") && Input.GetAxis("PadKey_V") == 1))
             {
                 if (pushflag == false)
                 {

@@ -13,6 +13,7 @@ TagManager:
   - Green
   - Orange
   - Enemy
+  - ToumeiWall
   layers:
   - Default
   - TransparentFX
@@ -27,7 +28,7 @@ TagManager:
   - Player
   - ActionPlayer
   - Ground
-  - 
+  - Toumei
   - 
   - 
   - 

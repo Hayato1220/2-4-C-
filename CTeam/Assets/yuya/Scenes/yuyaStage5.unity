@@ -993,7 +993,11 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 835775979}
+<<<<<<< HEAD:CTeam/Assets/yuya/Scenes/yuyaStage5.unity
   m_LocalRotation: {x: 7.3480133e-10, y: 0.99910176, z: 0.042375393, w: -0.000000017324705}
+=======
+  m_LocalRotation: {x: 7.348014e-10, y: 0.99910176, z: 0.042375397, w: -0.000000017324705}
+>>>>>>> parent of ed5e188 (エレベーター):CTeam/Assets/Scenes/yuyaStage4.unity
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1608,8 +1612,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1205720254}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+<<<<<<< HEAD:CTeam/Assets/yuya/Scenes/yuyaStage5.unity
   m_LocalPosition: {x: 0.0088992, y: 1.44, z: 7.16}
   m_LocalScale: {x: 2, y: 2, z: 2}
+=======
+  m_LocalPosition: {x: 0.0088992, y: 0.8, z: 7.16}
+  m_LocalScale: {x: 2, y: 0.5, z: 2}
+>>>>>>> parent of ed5e188 (エレベーター):CTeam/Assets/Scenes/yuyaStage4.unity
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 7
@@ -1630,6 +1639,21 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 32
   m_CollisionDetection: 1
+<<<<<<< HEAD:CTeam/Assets/yuya/Scenes/yuyaStage5.unity
+=======
+--- !u!114 &1205720260
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1205720254}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b80b67835633fce46805565feebe7b71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+>>>>>>> parent of ed5e188 (エレベーター):CTeam/Assets/Scenes/yuyaStage4.unity
 --- !u!1 &1229704631
 GameObject:
   m_ObjectHideFlags: 0
@@ -2014,7 +2038,11 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1454891072}
+<<<<<<< HEAD:CTeam/Assets/yuya/Scenes/yuyaStage5.unity
   m_LocalRotation: {x: 0.0000000010498072, y: 0.9981657, z: 0.060541525, w: -0.000000017308476}
+=======
+  m_LocalRotation: {x: -0.000000001049807, y: 0.9981657, z: 0.06054153, w: 0.000000017308473}
+>>>>>>> parent of ed5e188 (エレベーター):CTeam/Assets/Scenes/yuyaStage4.unity
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -2368,7 +2396,6 @@ MonoBehaviour:
   rightRayTransform: {fileID: 682027873}
   leftRayTransform: {fileID: 976843742}
   touchSpeed: 1.5
-  removeSpeed: 3
   pushPower: 2000
   rayDistance: 0.7
   wallHandOffset: 0.1
@@ -2440,6 +2467,7 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1090661979}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< HEAD:CTeam/Assets/yuya/Scenes/yuyaStage5.unity
 --- !u!114 &1681859827
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2460,6 +2488,8 @@ MonoBehaviour:
   Red: {fileID: 2100000, guid: 9857b895c3c098849939f3b2e5d51b7e, type: 2}
   blue: {fileID: 2100000, guid: bf3eb7d18d065c643a3889ab179d970c, type: 2}
   height: 1
+=======
+>>>>>>> parent of ed5e188 (エレベーター):CTeam/Assets/Scenes/yuyaStage4.unity
 --- !u!1 &1688360126
 GameObject:
   m_ObjectHideFlags: 0
