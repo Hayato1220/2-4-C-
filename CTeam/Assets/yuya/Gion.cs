@@ -30,7 +30,7 @@ public class Gion : MonoBehaviour
     public PhysicMaterial nebaneba;
 
 
-    string ObjName;
+    string ObjName;                     //触れたオブジェクトの名前を受け取る変数
 
 
     void Start()
@@ -179,7 +179,7 @@ public class Gion : MonoBehaviour
         {
             ObjCollider = other.gameObject.GetComponent<BoxCollider>();     // objCollider に触れているオブジェクトの BoxCollider を取得する
 
-            ObjName = other.gameObject.name;
+            ObjName = other.gameObject.name;                                // ObjName に触れているオブジェクトの名前を入れる
 
             Vector3 Objpos = other.gameObject.transform.position;           // Objpos に触れているオブジェクトの位置を入れる
 
@@ -205,7 +205,7 @@ public class Gion : MonoBehaviour
                     //すべすべのフラグが true なら
                     if (subeflag == true)
                     {
-                        //他のオブジェクトに当たっている状態でBボタンを押すと
+                        //もし他のオブジェクトに当たっている状態でBボタンを押すと
                         if (Input.GetButton("B"))
                         {
                             ObjCollider.material = slip;    // ObjCollider の PhysicMaterial を slip に入っているものを入れる
@@ -216,26 +216,26 @@ public class Gion : MonoBehaviour
 
                 /* ふわふわ */
                 case 1:
+                    //ふわふわのフラグが true なら
                     if (huwaflag == true)
                     {
+                        //もし他のオブジェクトに当たっている状態でBボタンを押すと
                         if (Input.GetButton("B"))
                         {
                             Debug.Log(ObjName);
+                            // ObjName に入っている名前が"FloorMove"なら
                             if (ObjName == "FloorMove")
                             {
+                                // もし触れているオブジェクトの高さが8以下なら
                                 if (Objpos.y < 8)
                                 {
-                                    rb.velocity = transform.up * 2;
+                                    rb.velocity = transform.up * 2;     //オブジェクトを上に上げる
                                 }
                             }
-                            else
+                            else // ObjName に入っている名前が"FloorMove"以外なら
                             {
-                                rb.velocity = transform.up * 2;
+                                rb.velocity = transform.up * 2;         //オブジェクトを上に上げる
                             }
-                            //Objpos.y = Objpos.y * 1.1f;
-                            //other.gameObject.transform.position = Objpos;
-                            //rb.velocity = transform.up * 2;
-
                         }
                     }
                     break;
