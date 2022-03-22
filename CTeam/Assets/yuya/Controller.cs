@@ -54,5 +54,22 @@ public class Controller : MonoBehaviour
         {
             Debug.Log("上");
         }
+
+        if(Input.GetAxis("PadKey_H") == -1)
+        {
+            Debug.Log("左");
+        }else if(Input.GetAxis("PadKey_H") == 1)
+        {
+            Debug.Log("右");
+        }
+
+        if (Input.GetAxis("PadKey_V") == -1)
+        {
+            Debug.Log("下");
+        }
+        else if (Input.GetAxis("PadKey_V") == 1)
+        {
+            Debug.Log("上");
+        }
     }
 }

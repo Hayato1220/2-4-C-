@@ -30,6 +30,7 @@ public class Gion : MonoBehaviour
     public PhysicMaterial nebaneba;
 
 
+    string ObjName;
 
 
     void Start()
@@ -178,6 +179,8 @@ public class Gion : MonoBehaviour
         {
             ObjCollider = other.gameObject.GetComponent<BoxCollider>();     // objCollider に触れているオブジェクトの BoxCollider を取得する
 
+            ObjName = other.gameObject.name;
+
             Vector3 Objpos = other.gameObject.transform.position;           // Objpos に触れているオブジェクトの位置を入れる
 
             Vector3 ObjScale2 = other.gameObject.transform.localScale;      // ObjScale2 に、触れているオブジェクトの大きさを入れる
@@ -213,18 +216,26 @@ public class Gion : MonoBehaviour
 
                 /* ふわふわ */
                 case 1:
-                    if(huwaflag == true)
+                    if (huwaflag == true)
                     {
                         if (Input.GetButton("B"))
                         {
-                            while(Objpos.y < 8)
+                            Debug.Log(ObjName);
+                            if (ObjName == "FloorMove")
+                            {
+                                if (Objpos.y < 8)
+                                {
+                                    rb.velocity = transform.up * 2;
+                                }
+                            }
+                            else
                             {
                                 rb.velocity = transform.up * 2;
                             }
                             //Objpos.y = Objpos.y * 1.1f;
                             //other.gameObject.transform.position = Objpos;
                             //rb.velocity = transform.up * 2;
-                        
+
                         }
                     }
                     break;
