@@ -304,6 +304,8 @@ public class Gion : MonoBehaviour
         }
     }
 
+
+
     private void OnTriggerStay(Collider other)
     {
         switch (number)
