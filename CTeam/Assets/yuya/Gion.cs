@@ -217,12 +217,14 @@ public class Gion : MonoBehaviour
                     {
                         if (Input.GetButton("B"))
                         {
-                            //Vector3 now = rb.position;
-                            //now += new Vector3(0.0f, 0.0f, 0.05f);
-                            //rb.position = now;
-
-                            rb.velocity = transform.up * 2;
-                            Debug.Log("ふわふわ");
+                            while(Objpos.y < 8)
+                            {
+                                rb.velocity = transform.up * 2;
+                            }
+                            //Objpos.y = Objpos.y * 1.1f;
+                            //other.gameObject.transform.position = Objpos;
+                            //rb.velocity = transform.up * 2;
+                        
                         }
                     }
                     break;
