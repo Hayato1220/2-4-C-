@@ -1,8 +1,14 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
+void Strat()
+{
+
+}
 public class Byun : MonoBehaviour
 {
-	void Start()
+	void OnColllisionStay(Collision collision)
 	{
 		// 力を加える向きをVector3型で定義
 		// 左からYXZ
