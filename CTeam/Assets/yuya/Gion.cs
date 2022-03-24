@@ -40,13 +40,17 @@ public class Gion : MonoBehaviour
 
     string ObjName;                     //触れたオブジェクトの名前を受け取る変数
 
+    private float impulseMagnitude;
+    private bool byunpush;
+
 
     void Start()
     {
         barapush = false;   // barapush を false で初期化
-        
+        byunpush = false;
         number = 0;         //リトライした時に number を初期化
 
+        impulseMagnitude = 50.0f;
     }
 
 
@@ -357,7 +361,16 @@ public class Gion : MonoBehaviour
                     {
                         if (Input.GetButton("B"))
                         {
+                            if(byunpush == true)
+                            {
+                                byunpush = false;
 
+                                rb.AddForce((transform.forward * 10.0f) + (transform.up * 7.0f), ForceMode.VelocityChange);
+                            }
+                        }
+                        else
+                        {
+                            byunpush = true;
                         }
                     }
                     break;
