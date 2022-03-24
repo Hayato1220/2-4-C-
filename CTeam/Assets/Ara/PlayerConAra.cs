@@ -72,10 +72,10 @@ public class PlayerConAra : MonoBehaviour
     {
         //　接地確認
         CheckGround();
-        //　移動速度の計算
-        Move();
+        ////　移動速度の計算
+        //Move();
 
-        Jump();
+        //Jump();
     }
 
 
@@ -169,8 +169,8 @@ public class PlayerConAra : MonoBehaviour
                 //myCollider.material = kabeslip;
                 animator.SetFloat("Speed", 0f);
                 animator.SetBool("IsGrounded", isGrounded);
-                velocity.y += jumpPower;
-                rigidBody.velocity = new Vector3(rigidBody.velocity.x, rigidBody.velocity.y + jumpPower, rigidBody.velocity.z);
+                //velocity.y += jumpPower;
+                //rigidBody.velocity = new Vector3(rigidBody.velocity.x, rigidBody.velocity.y + jumpPower, rigidBody.velocity.z);
                 rigidBody.velocity = new Vector3(rigidBody.velocity.x, jumpPower, rigidBody.velocity.z);
                 animator.SetTrigger("Jump");
                 Debug.Log("Jump!");
@@ -192,6 +192,12 @@ public class PlayerConAra : MonoBehaviour
     //　固定フレームレートで実行される
     private void FixedUpdate()
     {
+
+        //　移動速度の計算
+        Move();
+
+        Jump();
+
         //　入力がある時だけ実行
         if (!Mathf.Approximately(input.x, 0f) || !Mathf.Approximately(input.z, 0f))
         {
