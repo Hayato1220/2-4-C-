@@ -261,7 +261,7 @@ public class Gion : MonoBehaviour
                         //もし Bボタンを押したら
                         if (Input.GetButton("B"))
                         {
-                            if(ObjName == "FourCube")
+                            if (ObjName == "FourCube")
                             {
                                 if (barapush == true)
                                 {
@@ -269,47 +269,63 @@ public class Gion : MonoBehaviour
 
                                     for (int i = 0; i < 4; i++)
                                     {
-                                        if(i == 0)
+                                        if (i == 0)
                                         {
-                                            greenCube = transform.GetChild(0).gameObject;
+                                            greenCube = other.gameObject.transform.GetChild(0).gameObject;
+
+                                            greenCube.AddComponent<Rigidbody>();
+                                            greenCube.AddComponent<BoxCollider>();
 
                                             Vector3 G_pos = greenCube.transform.localPosition;
-                                            G_pos.x = G_pos.x - 10.0f;
-                                            G_pos.y = G_pos.y + 20.0f;
+
+                                            //G_pos = transform.up * 1.5f;
+                                            G_pos.x = G_pos.x - 1.0f;
+                                            G_pos.y = G_pos.y + 1.0f;
 
                                             greenCube.transform.localPosition = G_pos;
 
                                             Debug.Log(G_pos);
-
-                                            //redCube = Instantiate(other.gameObject, Objpos + (transform.up * 1.5f) + (transform.right * -2.0f), Quaternion.identity);   // Instantiate(クローンのもとになるオブジェクト, 位置, 回転)してオブジェクトを生成
-
-                                            //redCube.AddComponent<Renderer>();
-                                            //redCube.gameObject.name = "RedCube";
-
-                                            //redCube.GetComponent<Renderer>().material.color = new Color(255, 0, 0, 0);
-
-                                            //Vector3 ObjScale = other.gameObject.transform.localScale;   // ObjScale に、触れているオブジェクトの大きさを入れる
-
-                                            //ObjScale.x = ObjScale.x / 2.0f;                             // ObjScale の X(横幅)の大きさを半分にする
-                                            //ObjScale.y = ObjScale.y / 2.0f;
-
-                                            //redCube.transform.localScale = ObjScale;                    //生成するオブジェクトに ObjScale の値を入れる
                                         }
 
-                                        if(i == 1)
+                                        if (i == 1)
                                         {
-                                            whiteCube = transform.GetChild(1).gameObject;
+                                            whiteCube = other.gameObject.transform.GetChild(1).gameObject;
+                                            whiteCube.AddComponent<Rigidbody>();
+                                            whiteCube.AddComponent<BoxCollider>();
 
                                             Vector3 W_pos = whiteCube.transform.localPosition;
-                                            W_pos.x = W_pos.x + 10.0f;
-                                            W_pos.y = W_pos.y + 20.0f;
+                                            W_pos.x = W_pos.x + 1.0f;
+                                            W_pos.y = W_pos.y + 1.0f;
 
                                             whiteCube.transform.localPosition = W_pos;
                                         }
 
-                                    }
+                                        if (i == 2)
+                                        {
+                                            redCube = other.gameObject.transform.GetChild(2).gameObject;
+                                            redCube.AddComponent<Rigidbody>();
+                                            redCube.AddComponent<BoxCollider>();
 
-                                    //Destroy(other.gameObject);
+                                            Vector3 R_pos = redCube.transform.localPosition;
+                                            R_pos.x = R_pos.x - 1.0f;
+
+                                            redCube.transform.localPosition = R_pos;
+                                        }
+
+                                        if (i == 3)
+                                        {
+                                            blueCube = other.gameObject.transform.GetChild(3).gameObject;
+                                            blueCube.AddComponent<Rigidbody>();
+                                            blueCube.AddComponent<BoxCollider>();
+
+                                            Vector3 B_pos = blueCube.transform.localPosition;
+                                            B_pos.x = B_pos.x + 1.0f;
+
+                                            blueCube.transform.localPosition = B_pos;
+                                        }
+
+                                        Destroy(other.gameObject.GetComponent<BoxCollider>());
+                                    }
                                 }
                             }
                             else
@@ -361,7 +377,7 @@ public class Gion : MonoBehaviour
                     {
                         if (Input.GetButton("B"))
                         {
-                            if(byunpush == true)
+                            if (byunpush == true)
                             {
                                 byunpush = false;
 
@@ -374,7 +390,6 @@ public class Gion : MonoBehaviour
                         }
                     }
                     break;
-
             }
         }
     }
