@@ -7,6 +7,14 @@ public class Gion : MonoBehaviour
     bool barapush;                      //バラバラを使ったかどうかのフラグ管理
     private GameObject baraObj;         //バラバラにしたオブジェクトを入れる変数
 
+    /* 4つの色を持つオブジェクトをバラバラにした後に入れる変数 */
+    private GameObject redCube;
+    private GameObject greenCube;
+    private GameObject blueCube;
+    private GameObject whiteCube;
+
+    private MeshRenderer green;
+
     private GameObject obj;             //このスクリプトがアタッチされているオブジェクトを参照する
     private BoxCollider ObjCollider;    //衝突したオブジェクトの BoxCollider を参照する
     public PhysicMaterial slip;         //他の PhysicMaterial を　slip に入れる
@@ -249,36 +257,90 @@ public class Gion : MonoBehaviour
                         //もし Bボタンを押したら
                         if (Input.GetButton("B"))
                         {
-                            //もし触れているオブジェクトの X(横幅)の大きさが0.125(四等分)を超えていなかったら
-                            if (ObjScale2.x > 0.125)
+                            if(ObjName == "FourCube")
                             {
-                                //もし barapush が true なら
                                 if (barapush == true)
                                 {
                                     barapush = false;   //ボタンを長押しが機能しないように false にする
 
-                                    //触れているオブジェクトを半分にする
-                                    for (int i = 0; i < 2; i++)
+                                    for (int i = 0; i < 4; i++)
                                     {
+                                        if(i == 0)
+                                        {
+                                            greenCube = transform.GetChild(0).gameObject;
 
-                                        baraObj = Instantiate(other.gameObject, Objpos + (transform.up * 1.5f), Quaternion.identity);   // Instantiate(クローンのもとになるオブジェクト, 位置, 回転)してオブジェクトを生成
+                                            Vector3 G_pos = greenCube.transform.localPosition;
+                                            G_pos.x = G_pos.x - 10.0f;
+                                            G_pos.y = G_pos.y + 20.0f;
 
-                                        Vector3 ObjScale = other.gameObject.transform.localScale;   // ObjScale に、触れているオブジェクトの大きさを入れる
+                                            greenCube.transform.localPosition = G_pos;
 
-                                        ObjScale.x = ObjScale.x / 2.0f;                             // ObjScale の X(横幅)の大きさを半分にする
-                                        ObjScale.y = ObjScale.y / 2.0f;
-                                        ObjScale.z = ObjScale.z / 2.0f;
+                                            Debug.Log(G_pos);
 
-                                        baraObj.transform.localScale = ObjScale;                    //生成するオブジェクトに ObjScale の値を入れる
+                                            //redCube = Instantiate(other.gameObject, Objpos + (transform.up * 1.5f) + (transform.right * -2.0f), Quaternion.identity);   // Instantiate(クローンのもとになるオブジェクト, 位置, 回転)してオブジェクトを生成
 
-                                        //// Instantiate(クローンのもとになるオブジェクト, 位置, 回転)
-                                        //baraObj2 = Instantiate(other.gameObject, Objpos + (transform.up * 1.5f), Quaternion.identity);
+                                            //redCube.AddComponent<Renderer>();
+                                            //redCube.gameObject.name = "RedCube";
 
-                                        //ObjScale2.x = ObjScale2.x / 2.0f;
-                                        //baraObj2.transform.localScale = ObjScale2;
+                                            //redCube.GetComponent<Renderer>().material.color = new Color(255, 0, 0, 0);
+
+                                            //Vector3 ObjScale = other.gameObject.transform.localScale;   // ObjScale に、触れているオブジェクトの大きさを入れる
+
+                                            //ObjScale.x = ObjScale.x / 2.0f;                             // ObjScale の X(横幅)の大きさを半分にする
+                                            //ObjScale.y = ObjScale.y / 2.0f;
+
+                                            //redCube.transform.localScale = ObjScale;                    //生成するオブジェクトに ObjScale の値を入れる
+                                        }
+
+                                        if(i == 1)
+                                        {
+                                            whiteCube = transform.GetChild(1).gameObject;
+
+                                            Vector3 W_pos = whiteCube.transform.localPosition;
+                                            W_pos.x = W_pos.x + 10.0f;
+                                            W_pos.y = W_pos.y + 20.0f;
+
+                                            whiteCube.transform.localPosition = W_pos;
+                                        }
+
                                     }
-                                    //hanbun = hanbun * 2;
-                                    Destroy(other.gameObject);  //触れていたオブジェクトを消す
+
+                                    //Destroy(other.gameObject);
+                                }
+                            }
+                            else
+                            {
+                                //もし触れているオブジェクトの X(横幅)の大きさが0.125(四等分)を超えていなかったら
+                                if (ObjScale2.x > 0.125)
+                                {
+                                    //もし barapush が true なら
+                                    if (barapush == true)
+                                    {
+                                        barapush = false;   //ボタンを長押しが機能しないように false にする
+
+                                        //触れているオブジェクトを半分にする
+                                        for (int i = 0; i < 2; i++)
+                                        {
+
+                                            baraObj = Instantiate(other.gameObject, Objpos + (transform.up * 1.5f), Quaternion.identity);   // Instantiate(クローンのもとになるオブジェクト, 位置, 回転)してオブジェクトを生成
+
+                                            Vector3 ObjScale = other.gameObject.transform.localScale;   // ObjScale に、触れているオブジェクトの大きさを入れる
+
+                                            ObjScale.x = ObjScale.x / 2.0f;                             // ObjScale の X(横幅)の大きさを半分にする
+                                            ObjScale.y = ObjScale.y / 2.0f;
+                                            ObjScale.z = ObjScale.z / 2.0f;
+
+                                            baraObj.transform.localScale = ObjScale;                    //生成するオブジェクトに ObjScale の値を入れる
+
+                                            //// Instantiate(クローンのもとになるオブジェクト, 位置, 回転)
+                                            //baraObj2 = Instantiate(other.gameObject, Objpos + (transform.up * 1.5f), Quaternion.identity);
+
+                                            //ObjScale2.x = ObjScale2.x / 2.0f;
+                                            //baraObj2.transform.localScale = ObjScale2;
+                                        }
+                                        //hanbun = hanbun * 2;
+                                        Destroy(other.gameObject);  //触れていたオブジェクトを消す
+                                    }
                                 }
                             }
                         }

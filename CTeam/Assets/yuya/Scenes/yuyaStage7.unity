@@ -3967,10 +3967,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 480640305}
+  - component: {fileID: 480640308}
   - component: {fileID: 480640306}
   - component: {fileID: 480640307}
-  m_Layer: 0
-  m_Name: fourcube
+  m_Layer: 8
+  m_Name: FourCube
   m_TagString: Object
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3987,10 +3988,10 @@ Transform:
   m_LocalPosition: {x: 6.25, y: 0.72, z: 3.39}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1944387935}
   - {fileID: 956463005}
-  - {fileID: 1802862333}
   - {fileID: 757164308}
+  - {fileID: 1944387935}
+  - {fileID: 1802862333}
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4023,6 +4024,45 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2, y: 2, z: 1}
   m_Center: {x: -0.5, y: 0.5, z: 0}
+--- !u!23 &480640308
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 480640304}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
 --- !u!1 &480817603
 GameObject:
   m_ObjectHideFlags: 0
@@ -5985,7 +6025,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 755114631}
-  m_LocalRotation: {x: 0.16037008, y: -0.000000035515964, z: -1.15718546e-10, w: 0.98705703}
+  m_LocalRotation: {x: 0.16037008, y: 0.000000035515964, z: 1.1572032e-10, w: 0.98705703}
   m_LocalPosition: {x: 8, y: 2.39168, z: -4.4435716}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -6100,8 +6140,8 @@ GameObject:
   - component: {fileID: 757164308}
   - component: {fileID: 757164311}
   - component: {fileID: 757164310}
-  m_Layer: 0
-  m_Name: Cube (3)
+  m_Layer: 8
+  m_Name: WhiteCube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6115,11 +6155,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 757164307}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -0.00000023842}
+  m_LocalPosition: {x: 0, y: 1, z: -0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 480640305}
-  m_RootOrder: 3
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &757164310
 MeshRenderer:
@@ -6477,7 +6517,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isGrounded: 1
   moveSpeed: 4
-  jumpPower: 15
+  jumpPower: 7
   distanceToLanding: 2.5
   distanceToTheGround: 2.5
 --- !u!114 &781046072
@@ -8053,7 +8093,7 @@ GameObject:
   - component: {fileID: 956463005}
   - component: {fileID: 956463008}
   - component: {fileID: 956463007}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: GreenCube
   m_TagString: Green
   m_Icon: {fileID: 0}
@@ -8068,11 +8108,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 956463004}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1, y: 1, z: -0.00000023842}
+  m_LocalPosition: {x: -1, y: 1, z: -0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 480640305}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &956463007
 MeshRenderer:
@@ -12042,7 +12082,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1588360972}
-  m_LocalRotation: {x: 0.15318386, y: -0.00000002404631, z: 0.000000003727499, w: 0.98819774}
+  m_LocalRotation: {x: 0.15318386, y: 0.000000024046303, z: -0.000000003727498, w: 0.98819774}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -13062,7 +13102,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1725376314}
-  m_LocalRotation: {x: 0.17113332, y: -0.000000008476276, z: 0.0000000014722927, w: 0.9852479}
+  m_LocalRotation: {x: 0.17113332, y: 0.000000008476276, z: -0.0000000014722927, w: 0.9852479}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -13814,7 +13854,7 @@ GameObject:
   - component: {fileID: 1802862333}
   - component: {fileID: 1802862336}
   - component: {fileID: 1802862335}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BlueCube
   m_TagString: Blue
   m_Icon: {fileID: 0}
@@ -13833,7 +13873,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 480640305}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &1802862335
 MeshRenderer:
@@ -14879,7 +14919,7 @@ GameObject:
   - component: {fileID: 1944387935}
   - component: {fileID: 1944387938}
   - component: {fileID: 1944387937}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: RedCube
   m_TagString: Red
   m_Icon: {fileID: 0}
@@ -14898,7 +14938,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 480640305}
-  m_RootOrder: 0
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &1944387937
 MeshRenderer:
