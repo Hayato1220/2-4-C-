@@ -38,6 +38,7 @@ public class PlayerConAra : MonoBehaviour
 
     Rigidbody m_Rigidbody;
     private Transform spine;
+    public PhysicMaterial kabeslip;
 
 
     // Start is called before the first frame update
@@ -47,6 +48,9 @@ public class PlayerConAra : MonoBehaviour
         myCollider = GetComponent<CapsuleCollider>();
         animator = GetComponent<Animator>();
         characterController = GetComponent<CharacterController>();
+
+        myCollider.material = null;
+
 
 
 
@@ -87,6 +91,8 @@ public class PlayerConAra : MonoBehaviour
         {
             isGrounded = true;
             velocity.y = 0f;
+
+            myCollider.material = null;
         }
         //      //　アニメーションパラメータFallがfalseの時で地面との距離が遠かったらFallをtrueにする
         //      else if (!animator.GetBool("Fall")) 
@@ -160,10 +166,11 @@ public class PlayerConAra : MonoBehaviour
             if (Input.GetButton("Y"))
             {
                 isGrounded = false;
+                //myCollider.material = kabeslip;
                 animator.SetFloat("Speed", 0f);
                 animator.SetBool("IsGrounded", isGrounded);
-                //velocity.y += jumpPower;
-                //rigidBody.velocity = new Vector3(rigidBody.velocity.x, rigidBody.velocity.y + jumpPower, rigidBody.velocity.z);
+                velocity.y += jumpPower;
+                rigidBody.velocity = new Vector3(rigidBody.velocity.x, rigidBody.velocity.y + jumpPower, rigidBody.velocity.z);
                 rigidBody.velocity = new Vector3(rigidBody.velocity.x, jumpPower, rigidBody.velocity.z);
                 animator.SetTrigger("Jump");
                 Debug.Log("Jump!");
