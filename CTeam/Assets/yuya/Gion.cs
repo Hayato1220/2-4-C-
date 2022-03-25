@@ -4,16 +4,19 @@ using UnityEngine;
 
 public class Gion : MonoBehaviour
 {
-    bool barapush;                      //バラバラを使ったかどうかのフラグ管理
+    private bool barapush;              //バラバラを使ったかどうかの管理用フラグ
     private GameObject baraObj;         //バラバラにしたオブジェクトを入れる変数
 
-    /* 4つの色を持つオブジェクトをバラバラにした後に入れる変数 */
-    private GameObject redCube;
-    private GameObject greenCube;
-    private GameObject blueCube;
-    private GameObject whiteCube;
 
-    private MeshRenderer green;
+    /* 4つの色を持つオブジェクトをバラバラにした後に入れる変数 */
+    private GameObject redCube;         //赤色のオブジェクトを入れる変数
+    private GameObject greenCube;       //緑色のオブジェクトを入れる変数
+    private GameObject blueCube;        //青色のオブジェクトを入れる変数
+    private GameObject whiteCube;       //白色のオブジェクトを入れる変数
+
+
+    private bool byunpush;              //ビュンビュンを使ったかどうかの管理用フラグ
+
 
     private GameObject obj;             //このスクリプトがアタッチされているオブジェクトを参照する
     private BoxCollider ObjCollider;    //衝突したオブジェクトの BoxCollider を参照する
@@ -40,17 +43,14 @@ public class Gion : MonoBehaviour
 
     string ObjName;                     //触れたオブジェクトの名前を受け取る変数
 
-    private float impulseMagnitude;
-    private bool byunpush;
+
 
 
     void Start()
     {
         barapush = false;   // barapush を false で初期化
-        byunpush = false;
+        byunpush = false;   //　byunpush を false で初期化
         number = 0;         //リトライした時に number を初期化
-
-        impulseMagnitude = 50.0f;
     }
 
 
@@ -199,8 +199,8 @@ public class Gion : MonoBehaviour
 
             //Debug.Log(ObjCollider);
 
-            mr = other.gameObject.GetComponent<MeshRenderer>();
-            rb = other.gameObject.GetComponent<Rigidbody>();
+            mr = other.gameObject.GetComponent<MeshRenderer>();             //触れたオブジェクトの MeshRenderer を取得
+            rb = other.gameObject.GetComponent<Rigidbody>();                //触れたオブジェクトの Rigidbody を取得
 
             /* * * * * * * * * *
              * 0:すべすべ      *
@@ -261,74 +261,82 @@ public class Gion : MonoBehaviour
                         //もし Bボタンを押したら
                         if (Input.GetButton("B"))
                         {
+                            //もし ObjName が"FourCube"なら
                             if (ObjName == "FourCube")
                             {
+                                // barapush が true なら
                                 if (barapush == true)
                                 {
                                     barapush = false;   //ボタンを長押しが機能しないように false にする
 
+                                    // i が4以下の時繰り返す処理
                                     for (int i = 0; i < 4; i++)
                                     {
-                                        if (i == 0)
+                                        if (i == 0)     // i が0の時
                                         {
-                                            greenCube = other.gameObject.transform.GetChild(0).gameObject;
+                                            greenCube = other.gameObject.transform.GetChild(0).gameObject;      // greenCube に触れている親オブジェクトの子オブジェクト GreenCube を入れる
 
-                                            greenCube.AddComponent<Rigidbody>();
-                                            greenCube.AddComponent<BoxCollider>();
+                                            greenCube.AddComponent<Rigidbody>();                    // greenCube に Rigidbody を追加
+                                            greenCube.AddComponent<BoxCollider>();                  // greenCube に BoxCollider を追加
 
-                                            Vector3 G_pos = greenCube.transform.localPosition;
+                                            Vector3 G_pos = greenCube.transform.localPosition;      // G_pos に greenCube の localPosition を入れる
 
-                                            //G_pos = transform.up * 1.5f;
-                                            G_pos.x = G_pos.x - 1.0f;
-                                            G_pos.y = G_pos.y + 1.0f;
+                                            G_pos.x = G_pos.x - 1.0f;                               // G_pos.x に1.0f引いた値を代入
+                                            G_pos.y = G_pos.y + 1.0f;                               // G_pos.y に1.0f足した値を代入
 
-                                            greenCube.transform.localPosition = G_pos;
+                                            greenCube.transform.localPosition = G_pos;              // greenCube の localPosition に G_pos のポジションを代入
 
-                                            Debug.Log(G_pos);
+                                            //Debug.Log(G_pos);
                                         }
 
-                                        if (i == 1)
+                                        if (i == 1)     // i が1の時
                                         {
-                                            whiteCube = other.gameObject.transform.GetChild(1).gameObject;
-                                            whiteCube.AddComponent<Rigidbody>();
-                                            whiteCube.AddComponent<BoxCollider>();
+                                            whiteCube = other.gameObject.transform.GetChild(1).gameObject;      // whiteCube に触れている親オブジェクトの子オブジェクト WhiteCube を入れる
+                                            
+                                            whiteCube.AddComponent<Rigidbody>();                    // whiteCube に Rigidbody を追加
+                                            whiteCube.AddComponent<BoxCollider>();                  // whiteCube に BoxCollider を追加
 
-                                            Vector3 W_pos = whiteCube.transform.localPosition;
-                                            W_pos.x = W_pos.x + 1.0f;
-                                            W_pos.y = W_pos.y + 1.0f;
+                                            Vector3 W_pos = whiteCube.transform.localPosition;      // W_pos に whiteCube の localPosition を入れる
 
-                                            whiteCube.transform.localPosition = W_pos;
+                                            W_pos.x = W_pos.x + 1.0f;                               // W_pos.x に1.0f足した値を代入
+                                            W_pos.y = W_pos.y + 1.0f;                               // W_pos.y に1.0f足した値を代入
+
+                                            whiteCube.transform.localPosition = W_pos;              // whiteCube の localPosition に W_pos のポジションを代入
                                         }
 
-                                        if (i == 2)
+                                        if (i == 2)     // i が2の時
                                         {
-                                            redCube = other.gameObject.transform.GetChild(2).gameObject;
-                                            redCube.AddComponent<Rigidbody>();
-                                            redCube.AddComponent<BoxCollider>();
+                                            redCube = other.gameObject.transform.GetChild(2).gameObject;        // redCube に触れている親オブジェクトの子オブジェクト　RedCube を入れる
 
-                                            Vector3 R_pos = redCube.transform.localPosition;
-                                            R_pos.x = R_pos.x - 1.0f;
+                                            redCube.AddComponent<Rigidbody>();                      // redCube に Rigidbody を追加
+                                            redCube.AddComponent<BoxCollider>();                    // redCube に BoxCollider を追加
 
-                                            redCube.transform.localPosition = R_pos;
+                                            Vector3 R_pos = redCube.transform.localPosition;        // R_pos に redCube の localPosition を入れる
+
+                                            R_pos.x = R_pos.x - 1.0f;                               // R_pos.x に1.0f引いた値を代入
+
+                                            redCube.transform.localPosition = R_pos;                // redCube の localPosition に R_pos のポジションを代入
                                         }
 
-                                        if (i == 3)
+                                        if (i == 3)     // i が3の時
                                         {
-                                            blueCube = other.gameObject.transform.GetChild(3).gameObject;
-                                            blueCube.AddComponent<Rigidbody>();
-                                            blueCube.AddComponent<BoxCollider>();
+                                            blueCube = other.gameObject.transform.GetChild(3).gameObject;       // blueCube に触れている親オブジェクトの子オブジェクト BlueCube を入れる
+                                            
+                                            blueCube.AddComponent<Rigidbody>();                     // blueCube に Rigidbody を追加
+                                            blueCube.AddComponent<BoxCollider>();                   // blueCube に BoxCollider を追加
 
-                                            Vector3 B_pos = blueCube.transform.localPosition;
-                                            B_pos.x = B_pos.x + 1.0f;
+                                            Vector3 B_pos = blueCube.transform.localPosition;       // B_pos に blueCube の localPosition を入れる
 
-                                            blueCube.transform.localPosition = B_pos;
+                                            B_pos.x = B_pos.x + 1.0f;                               // B_pos.x に1.0f引いた値を代入
+
+                                            blueCube.transform.localPosition = B_pos;               // blueCube の localPosition に B_pos のポジションを代入
                                         }
 
-                                        Destroy(other.gameObject.GetComponent<BoxCollider>());
+                                        Destroy(other.gameObject.GetComponent<BoxCollider>());      //触れている親オブジェクトの BoxCollider を削除
                                     }
                                 }
                             }
-                            else
+                            else    // ObjName == "FourCube" 以外なら
                             {
                                 //もし触れているオブジェクトの X(横幅)の大きさが0.125(四等分)を超えていなかったら
                                 if (ObjScale2.x > 0.125)
@@ -373,20 +381,23 @@ public class Gion : MonoBehaviour
 
                 /* ビュンビュン */
                 case 4:
+                    //ビュンビュンのフラグが true なら
                     if (byunflag == true)
                     {
+                        //もしBボタンを押したら
                         if (Input.GetButton("B"))
                         {
+                            // byunpush が true なら
                             if (byunpush == true)
                             {
-                                byunpush = false;
-
-                                rb.AddForce((transform.forward * 10.0f) + (transform.up * 7.0f), ForceMode.VelocityChange);
+                                byunpush = false;       //長押しできないように byunpush を false にする
+                                   
+                                rb.AddForce((transform.forward * 10.0f) + (transform.up * 7.0f), ForceMode.VelocityChange);     //触れているオブジェクトを質量に関係なく飛ばす
                             }
                         }
-                        else
+                        else    //Bボタンが押されていない間は
                         {
-                            byunpush = true;
+                            byunpush = true;            // byunpush を true にする
                         }
                     }
                     break;
@@ -395,16 +406,22 @@ public class Gion : MonoBehaviour
     }
 
 
-
+    /*
+     * 他のオブジェクトに触れている間の処理
+     * 切り替えた擬音に対応する動作
+     */
     private void OnTriggerStay(Collider other)
     {
+        // number 3(スケスケ)と4(ネバネバ)の処理
         switch (number)
         {
 
             /* スケスケ */
             case 3:
+                //スケスケのフラグが true なら
                 if (sukeflag == true)
                 {
+                    //もしBボタンを押したら
                     if (Input.GetButton("B"))
                     {
                         mr.material.color = mr.material.color - new Color32(0, 0, 0, 5);
@@ -419,11 +436,13 @@ public class Gion : MonoBehaviour
                 break;
             /* ネバネバ */
             case 5:
+                //ネバネバのフラグが true なら
                 if (nebaflag == true)
                 {
+                    //もしBボタンを押したら
                     if (Input.GetButton("B"))
                     {
-                        ObjCollider.material = nebaneba;
+                        ObjCollider.material = nebaneba;    //触れているオブジェクトの material に nebaneba を入れる
                     }
                 }
                 break;
