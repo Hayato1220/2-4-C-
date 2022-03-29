@@ -187,7 +187,7 @@ public class Gion : MonoBehaviour
     void OnCollisionStay(Collision other)
     {
         //もし当たったオブジェクトのタグが"Object"なら
-        if (other.gameObject.tag == "Object")
+        if (other.gameObject.tag == "Object" || other.gameObject.tag == "Red" || other.gameObject.tag == "Green" || other.gameObject.tag == "Blue" || other.gameObject.tag == "White")
         {
             ObjCollider = other.gameObject.GetComponent<BoxCollider>();     // objCollider に触れているオブジェクトの BoxCollider を取得する
 
@@ -279,10 +279,17 @@ public class Gion : MonoBehaviour
                                             greenCube.AddComponent<Rigidbody>();                    // greenCube に Rigidbody を追加
                                             greenCube.AddComponent<BoxCollider>();                  // greenCube に BoxCollider を追加
 
+
+                                            var greenRb = greenCube.GetComponent<Rigidbody>();              // var で型にあった形に変えて、 greenCube の Rigidbody を取る
+
+                                            greenRb.mass = 50;                                              //greenCube の mass(質量) を50にする
+                                            greenRb.constraints = RigidbodyConstraints.FreezeRotation;      //greenCube の FreezeRotation すべてをオンにする
+
+
                                             Vector3 G_pos = greenCube.transform.localPosition;      // G_pos に greenCube の localPosition を入れる
 
-                                            G_pos.x = G_pos.x - 1.0f;                               // G_pos.x に1.0f引いた値を代入
-                                            G_pos.y = G_pos.y + 1.0f;                               // G_pos.y に1.0f足した値を代入
+                                            G_pos.x = G_pos.x - 1.5f;                               // G_pos.x に1.0f引いた値を代入
+                                            G_pos.y = G_pos.y + 0.2f;                               // G_pos.y に1.0f足した値を代入
 
                                             greenCube.transform.localPosition = G_pos;              // greenCube の localPosition に G_pos のポジションを代入
 
@@ -296,10 +303,17 @@ public class Gion : MonoBehaviour
                                             whiteCube.AddComponent<Rigidbody>();                    // whiteCube に Rigidbody を追加
                                             whiteCube.AddComponent<BoxCollider>();                  // whiteCube に BoxCollider を追加
 
+
+                                            var whiteRb = whiteCube.GetComponent<Rigidbody>();               // var で型にあった形に変えて、 whiteCube の Rigidbody を取る
+
+                                            whiteRb.mass = 50;                                              //whiteCube の mass(質量) を50にする
+                                            whiteRb.constraints = RigidbodyConstraints.FreezeRotation;      //whiteCube の FreezeRotation すべてをオンにする
+
+
                                             Vector3 W_pos = whiteCube.transform.localPosition;      // W_pos に whiteCube の localPosition を入れる
 
-                                            W_pos.x = W_pos.x + 1.0f;                               // W_pos.x に1.0f足した値を代入
-                                            W_pos.y = W_pos.y + 1.0f;                               // W_pos.y に1.0f足した値を代入
+                                            W_pos.x = W_pos.x + 1.5f;                               // W_pos.x に1.0f足した値を代入
+                                            W_pos.y = W_pos.y + 0.2f;                               // W_pos.y に1.0f足した値を代入
 
                                             whiteCube.transform.localPosition = W_pos;              // whiteCube の localPosition に W_pos のポジションを代入
                                         }
@@ -311,9 +325,17 @@ public class Gion : MonoBehaviour
                                             redCube.AddComponent<Rigidbody>();                      // redCube に Rigidbody を追加
                                             redCube.AddComponent<BoxCollider>();                    // redCube に BoxCollider を追加
 
+
+                                            var redRb = redCube.GetComponent<Rigidbody>();                  // var で型にあった形に変えて、 redCube の Rigidbody を取る
+
+                                            redRb.mass = 50;                                                //redCube の mass(質量) を50にする
+                                            redRb.constraints = RigidbodyConstraints.FreezeRotation;        //redCube の FreezeRotation すべてをオンにする
+
+
                                             Vector3 R_pos = redCube.transform.localPosition;        // R_pos に redCube の localPosition を入れる
 
-                                            R_pos.x = R_pos.x - 1.0f;                               // R_pos.x に1.0f引いた値を代入
+                                            R_pos.x = R_pos.x - 0.1f;                               // R_pos.x に1.0f引いた値を代入
+                                            R_pos.y = R_pos.y + 1.0f;
 
                                             redCube.transform.localPosition = R_pos;                // redCube の localPosition に R_pos のポジションを代入
                                         }
@@ -325,9 +347,17 @@ public class Gion : MonoBehaviour
                                             blueCube.AddComponent<Rigidbody>();                     // blueCube に Rigidbody を追加
                                             blueCube.AddComponent<BoxCollider>();                   // blueCube に BoxCollider を追加
 
+
+                                            var blueRb = blueCube.GetComponent<Rigidbody>();                // var で型にあった形に変えて、 blueCube の Rigidbody を取る
+
+                                            blueRb.mass = 50;                                               //blueCube の mass(質量) を50にする
+                                            blueRb.constraints = RigidbodyConstraints.FreezeRotation;       //blueCube の FreezeRotation すべてをオンにする
+
+
                                             Vector3 B_pos = blueCube.transform.localPosition;       // B_pos に blueCube の localPosition を入れる
 
-                                            B_pos.x = B_pos.x + 1.0f;                               // B_pos.x に1.0f引いた値を代入
+                                            B_pos.x = B_pos.x + 0.1f;                               // B_pos.x に1.0f引いた値を代入
+                                            B_pos.y = B_pos.y + 1.0f;
 
                                             blueCube.transform.localPosition = B_pos;               // blueCube の localPosition に B_pos のポジションを代入
                                         }
