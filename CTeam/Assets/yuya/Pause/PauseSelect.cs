@@ -17,12 +17,12 @@ public class PauseSelect : MonoBehaviour
     public float speed = 1.0f;
     //private float T = 2.0f;
     //private float F = 1.0f / T;
-    private float time;
+    private float rooptime;
 
     public Text retry;
     public Text title;
     public Text gameOut;
-
+    bool getpauseflag;
 
     void Start()
     {
@@ -38,6 +38,8 @@ public class PauseSelect : MonoBehaviour
 
     void Update()
     {
+        getpauseflag = Pause.GetPauseFlag();
+
         //もし pushScene が false なら
         if(pushScene == false)
         {
@@ -81,16 +83,29 @@ public class PauseSelect : MonoBehaviour
             {
                 case 0:
                     rect.localPosition = new Vector3(-187, 110, 0);
-                    retry.color = RetryGetAlphaColor(retry.color);
+
+                    if (Time.timeScale == 0)
+                    {
+                        retry.color = GetAlphaColor(retry.color);
+                    }
+                    title.color = ReturnAlphaColor(title.color);
+                    gameOut.color = ReturnAlphaColor(gameOut.color);
 
                     if (Input.GetButton("B")){
                         pushScene = true;
                         StartCoroutine(RetryCoroutine());
                     }
                     break;
+
                 case 1:
                     rect.localPosition = new Vector3(-288, -100, 0);
-                    title.color = TitleGetAlphaColor(title.color);
+
+                    if(Time.timeScale == 0)
+                    {
+                        title.color = GetAlphaColor(title.color);
+                    }
+                    retry.color = ReturnAlphaColor(retry.color);
+                    gameOut.color = ReturnAlphaColor(gameOut.color);
 
                     if (Input.GetButton("B"))
                     {
@@ -98,9 +113,21 @@ public class PauseSelect : MonoBehaviour
                         StartCoroutine(TitleCoroutine());
                     }
                     break;
+
                 case 2:
                     rect.localPosition = new Vector3(-219, -300, 0);
-                    gameOut.color = GameoutGetAlphaColor(gameOut.color);
+
+                    if (Time.timeScale == 0)
+                    {
+                        gameOut.color = GetAlphaColor(gameOut.color);
+                    }
+                    retry.color = ReturnAlphaColor(retry.color);
+                    title.color = ReturnAlphaColor(title.color);
+
+                    if (Time.timeScale == 1)
+                    {
+                        gameOut.color = ReturnAlphaColor(gameOut.color);
+                    }
 
                     if (Input.GetButton("B")){
                         pushScene = true;
@@ -112,45 +139,23 @@ public class PauseSelect : MonoBehaviour
     }
 
 
-
     //Alpha値を更新してColorを返す
-    Color RetryGetAlphaColor(Color color)
+    Color GetAlphaColor(Color color)
     {
-        if(MenuNumber == 0)
+        if(Time.timeScale == 1)
         {
-            time += (Time.time / Time.time) * 5.0f * speed;
-            color.a = Mathf.Sin(time);
+            rooptime = 0;
         }
-        //time += Time.time * 5.0f * speed;
-        //color.a = Mathf.Sin(time) * 0.5f + 0.5f;
+        rooptime += speed;
+        color.a = Mathf.Sin(rooptime);
 
         return color;
     }
 
-    //Alpha値を更新してColorを返す
-    Color TitleGetAlphaColor(Color color)
+    //Alpha値を更新してColorを返す(Alpha値を元に戻す）
+    Color ReturnAlphaColor(Color color)
     {
-        if (MenuNumber == 1)
-        {
-            time += (Time.time / Time.time) * 5.0f * speed;
-            color.a = Mathf.Sin(time);
-        }
-        //time += Time.time * 5.0f * speed;
-        //color.a = Mathf.Sin(time) * 0.5f + 0.5f;
-
-        return color;
-    }
-
-    //Alpha値を更新してColorを返す
-    Color GameoutGetAlphaColor(Color color)
-    {
-        if (MenuNumber == 2)
-        {
-            time += (Time.time / Time.time) * 5.0f * speed;
-            color.a = Mathf.Sin(time);
-        }
-        //time += Time.time * 5.0f * speed;
-        //color.a = Mathf.Sin(time) * 0.5f + 0.5f;
+        color.a = 255;
 
         return color;
     }
