@@ -8,15 +8,29 @@ public class PauseSelect : MonoBehaviour
 {
     RectTransform rect;                     //スクリプトが入っているオブジェクトの位置
 
-    static int MenuNumber;              //ポーズ中のメニューカーソルの位置
+    static int MenuNumber;                  //ポーズ中のメニューカーソルの位置
 
     private static bool pushScene = false;  //ポーズ中のメニューから選択したシーンが押されたか管理
     bool pushflag = false;                  //Lスティックがが倒されたかどうか
 
 
+    public float speed = 1.0f;
+    //private float T = 2.0f;
+    //private float F = 1.0f / T;
+    private float rooptime;
+
+    public Text retry;
+    public Text title;
+    public Text gameOut;
+    bool getpauseflag;
+
     void Start()
     {
         rect = GetComponent<RectTransform>();   //オブジェクトの位置を取得
+
+        retry = retry.GetComponent<Text>();
+        title = title.GetComponent<Text>();
+        gameOut = gameOut.GetComponent<Text>();
 
         MenuNumber = 0;
     }
@@ -24,6 +38,8 @@ public class PauseSelect : MonoBehaviour
 
     void Update()
     {
+        getpauseflag = Pause.GetPauseFlag();
+
         //もし pushScene が false なら
         if(pushScene == false)
         {
@@ -67,22 +83,53 @@ public class PauseSelect : MonoBehaviour
             {
                 case 0:
                     rect.localPosition = new Vector3(-187, 110, 0);
-                    if(Input.GetButton("B")){
+
+                    if (Time.timeScale == 0)
+                    {
+                        retry.color = GetAlphaColor(retry.color);
+                    }
+                    title.color = ReturnAlphaColor(title.color);
+                    gameOut.color = ReturnAlphaColor(gameOut.color);
+
+                    if (Input.GetButton("B")){
                         pushScene = true;
                         StartCoroutine(RetryCoroutine());
                     }
                     break;
+
                 case 1:
                     rect.localPosition = new Vector3(-288, -100, 0);
+
+                    if(Time.timeScale == 0)
+                    {
+                        title.color = GetAlphaColor(title.color);
+                    }
+                    retry.color = ReturnAlphaColor(retry.color);
+                    gameOut.color = ReturnAlphaColor(gameOut.color);
+
                     if (Input.GetButton("B"))
                     {
                         pushScene = true;
                         StartCoroutine(TitleCoroutine());
                     }
                     break;
+
                 case 2:
                     rect.localPosition = new Vector3(-219, -300, 0);
-                    if(Input.GetButton("B")){
+
+                    if (Time.timeScale == 0)
+                    {
+                        gameOut.color = GetAlphaColor(gameOut.color);
+                    }
+                    retry.color = ReturnAlphaColor(retry.color);
+                    title.color = ReturnAlphaColor(title.color);
+
+                    if (Time.timeScale == 1)
+                    {
+                        gameOut.color = ReturnAlphaColor(gameOut.color);
+                    }
+
+                    if (Input.GetButton("B")){
                         pushScene = true;
                         StartCoroutine(EndCoroutine());
                     }
@@ -91,6 +138,27 @@ public class PauseSelect : MonoBehaviour
         }
     }
 
+
+    //Alpha値を更新してColorを返す
+    Color GetAlphaColor(Color color)
+    {
+        if(Time.timeScale == 1)
+        {
+            rooptime = 0;
+        }
+        rooptime += speed;
+        color.a = Mathf.Sin(rooptime);
+
+        return color;
+    }
+
+    //Alpha値を更新してColorを返す(Alpha値を元に戻す）
+    Color ReturnAlphaColor(Color color)
+    {
+        color.a = 255;
+
+        return color;
+    }
 
 
     private IEnumerator RetryCoroutine()    //StageNumberによってロードシーンを管理

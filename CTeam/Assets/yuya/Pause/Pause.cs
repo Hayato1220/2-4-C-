@@ -10,13 +10,15 @@ public class Pause : MonoBehaviour
     //スタートボタンを押したかの判定
     bool pushflag = false;
 
-    private static bool SEFlag;
+    private static bool pauseflag;
+    //private static bool SEFlag;
     bool getRuleflag;
 
     private void Start()
     {
         pausePanel.SetActive(false);    //ポーズ画面を消す
-        SEFlag = true;
+        //SEFlag = true;
+        pauseflag = true;
     }
 
     void Update()
@@ -53,5 +55,10 @@ public class Pause : MonoBehaviour
 
             //Debug.Log("Startボタンが押されていないとき");
         }
+    }
+
+    public static bool GetPauseFlag()
+    {
+        return pauseflag;
     }
 }

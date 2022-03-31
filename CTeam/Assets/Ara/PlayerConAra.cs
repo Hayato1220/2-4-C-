@@ -38,6 +38,7 @@ public class PlayerConAra : MonoBehaviour
 
     Rigidbody m_Rigidbody;
     private Transform spine;
+    public PhysicMaterial kabeslip;
 
 
     // Start is called before the first frame update
@@ -47,6 +48,9 @@ public class PlayerConAra : MonoBehaviour
         myCollider = GetComponent<CapsuleCollider>();
         animator = GetComponent<Animator>();
         characterController = GetComponent<CharacterController>();
+
+        myCollider.material = null;
+
 
 
 
@@ -68,10 +72,10 @@ public class PlayerConAra : MonoBehaviour
     {
         //　接地確認
         CheckGround();
-        //　移動速度の計算
-        Move();
+        ////　移動速度の計算
+        //Move();
 
-        Jump();
+        //Jump();
     }
 
 
@@ -87,6 +91,8 @@ public class PlayerConAra : MonoBehaviour
         {
             isGrounded = true;
             velocity.y = 0f;
+
+            //myCollider.material = null;
         }
         //      //　アニメーションパラメータFallがfalseの時で地面との距離が遠かったらFallをtrueにする
         //      else if (!animator.GetBool("Fall")) 
@@ -185,6 +191,12 @@ public class PlayerConAra : MonoBehaviour
     //　固定フレームレートで実行される
     private void FixedUpdate()
     {
+
+        //　移動速度の計算
+        Move();
+
+        Jump();
+
         //　入力がある時だけ実行
         if (!Mathf.Approximately(input.x, 0f) || !Mathf.Approximately(input.z, 0f))
         {
@@ -210,6 +222,19 @@ public class PlayerConAra : MonoBehaviour
         if(collision.gameObject.layer == LayerMask.NameToLayer("Block"))
         {
             collision.gameObject.GetComponent<Rigidbody>().AddForce(this.transform.forward, ForceMode.Acceleration);
+        }
+
+        if(collision.gameObject.tag == "Wall")
+        {
+            myCollider.material = kabeslip;
+        }
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.gameObject.tag == "Wall")
+        {
+            myCollider.material = null;
         }
     }
 
