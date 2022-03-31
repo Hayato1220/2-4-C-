@@ -165,6 +165,7 @@ public class PlayerConAra : MonoBehaviour
             //　ジャンプ処理
             if (Input.GetButton("Y"))
             {
+                GetComponent<AudioSource>().Play();  // 効果音を鳴らす
                 isGrounded = false;
                 animator.SetFloat("Speed", 0f);
                 animator.SetBool("IsGrounded", isGrounded);
