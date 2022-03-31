@@ -92,7 +92,7 @@ public class PlayerConAra : MonoBehaviour
             isGrounded = true;
             velocity.y = 0f;
 
-            myCollider.material = null;
+            //myCollider.material = null;
         }
         //      //　アニメーションパラメータFallがfalseの時で地面との距離が遠かったらFallをtrueにする
         //      else if (!animator.GetBool("Fall")) 
@@ -166,7 +166,6 @@ public class PlayerConAra : MonoBehaviour
             if (Input.GetButton("Y"))
             {
                 isGrounded = false;
-                //myCollider.material = kabeslip;
                 animator.SetFloat("Speed", 0f);
                 animator.SetBool("IsGrounded", isGrounded);
                 //velocity.y += jumpPower;
@@ -223,6 +222,19 @@ public class PlayerConAra : MonoBehaviour
         if(collision.gameObject.layer == LayerMask.NameToLayer("Block"))
         {
             collision.gameObject.GetComponent<Rigidbody>().AddForce(this.transform.forward, ForceMode.Acceleration);
+        }
+
+        if(collision.gameObject.tag == "Wall")
+        {
+            myCollider.material = kabeslip;
+        }
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.gameObject.tag == "Wall")
+        {
+            myCollider.material = null;
         }
     }
 
