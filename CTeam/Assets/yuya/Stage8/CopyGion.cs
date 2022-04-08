@@ -423,6 +423,7 @@ public class CopyGion : MonoBehaviour
                                 byunpush = false;       //長押しできないように byunpush を false にする
 
                                 rb.AddForce((transform.forward * 10.0f) + (transform.up * 7.0f), ForceMode.VelocityChange);     //触れているオブジェクトを質量に関係なく飛ばす
+
                             }
                         }
                         else    //Bボタンが押されていない間は
