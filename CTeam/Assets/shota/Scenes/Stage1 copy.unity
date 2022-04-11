@@ -6128,7 +6128,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 755114631}
-  m_LocalRotation: {x: 0.16037008, y: 0.000000035515964, z: 1.1572032e-10, w: 0.98705703}
+  m_LocalRotation: {x: 0.16037008, y: -0.000000010736988, z: 0.0000000015583843, w: 0.98705703}
   m_LocalPosition: {x: 8, y: 2.39168, z: -4.4435716}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -6578,6 +6578,7 @@ MonoBehaviour:
   jumpPower: 15
   distanceToLanding: 2.5
   distanceToTheGround: 2.5
+  kabeslip: {fileID: 0}
 --- !u!114 &781046072
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6592,6 +6593,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slip: {fileID: 13400000, guid: 3d766f7153558864cb1c2a9a005eb840, type: 2}
   nebaneba: {fileID: 13400000, guid: 0d22bbfe7d2b5944eb39f8cd2ca1d012, type: 2}
+  particle: {fileID: 0}
 --- !u!136 &781046073
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -12145,7 +12147,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1588360972}
-  m_LocalRotation: {x: 0.15318386, y: 0.000000024046303, z: -0.000000003727498, w: 0.98819774}
+  m_LocalRotation: {x: 0.15318386, y: -0.00000002404631, z: 0.000000003727499, w: 0.98819774}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -12862,6 +12864,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1f45d8c3fae6a943a474d4e14692f87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 1
+  retry: {fileID: 0}
+  title: {fileID: 0}
+  gameOut: {fileID: 0}
 --- !u!114 &1693914311
 MonoBehaviour:
   m_ObjectHideFlags: 0
