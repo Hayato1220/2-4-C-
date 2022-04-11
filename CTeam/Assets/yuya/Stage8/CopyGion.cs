@@ -14,8 +14,8 @@ public class CopyGion : MonoBehaviour
     private GameObject blueCube;        //青色のオブジェクトを入れる変数
     private GameObject whiteCube;       //白色のオブジェクトを入れる変数
 
-
-    private bool byunpush;              //ビュンビュンを使ったかどうかの管理用フラグ
+    private TrailRenderer _trail;
+    public static bool byunpush;              //ビュンビュンを使ったかどうかの管理用フラグ
 
 
     private GameObject obj;             //このスクリプトがアタッチされているオブジェクトを参照する
@@ -424,7 +424,11 @@ public class CopyGion : MonoBehaviour
 
                                 rb.AddForce((transform.forward * 10.0f) + (transform.up * 7.0f), ForceMode.VelocityChange);     //触れているオブジェクトを質量に関係なく飛ばす
 
+                                //_trail = other.gameObject.GetComponent<TrailRenderer>();
+
+                                //_trail.enabled = true;
                             }
+
                         }
                         else    //Bボタンが押されていない間は
                         {
@@ -489,5 +493,4 @@ public class CopyGion : MonoBehaviour
     {
         return number;
     }
-
 }

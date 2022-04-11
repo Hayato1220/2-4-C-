@@ -6128,7 +6128,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 755114631}
-  m_LocalRotation: {x: 0.16037008, y: 0.000000010736983, z: -0.0000000015583834, w: 0.98705703}
+  m_LocalRotation: {x: 0.16037008, y: -0.000000035515964, z: -1.15718546e-10, w: 0.98705703}
   m_LocalPosition: {x: 8, y: 2.39168, z: -3.4135716}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -7587,8 +7587,8 @@ GameObject:
   - component: {fileID: 891607445}
   - component: {fileID: 891607444}
   - component: {fileID: 891607443}
-  - component: {fileID: 891607448}
   - component: {fileID: 891607449}
+  - component: {fileID: 891607448}
   m_Layer: 8
   m_Name: Cube
   m_TagString: Object
@@ -7708,11 +7708,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 891607441}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4273d10fa25238743a433b1856ce855d, type: 3}
+  m_Script: {fileID: 11500000, guid: 52eb2a74852d52540890bb39f0885089, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  particleObject: {fileID: 3722366605664134699, guid: 227264e54c4a3884d8d1df9af083dd30,
-    type: 3}
 --- !u!96 &891607449
 TrailRenderer:
   serializedVersion: 2
@@ -7753,7 +7751,7 @@ TrailRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Time: 0.3
+  m_Time: 0.35
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 1
@@ -7762,7 +7760,7 @@ TrailRenderer:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.52173996
+        value: 0.28260803
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -7784,7 +7782,7 @@ TrailRenderer:
     colorGradient:
       serializedVersion: 2
       key0: {r: 1, g: 1, b: 1, a: 1}
-      key1: {r: 1, g: 1, b: 1, a: 1}
+      key1: {r: 1, g: 1, b: 1, a: 0}
       key2: {r: 1, g: 1, b: 1, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
@@ -7799,7 +7797,7 @@ TrailRenderer:
       ctime5: 0
       ctime6: 0
       ctime7: 0
-      atime0: 0
+      atime0: 42212
       atime1: 65535
       atime2: 0
       atime3: 0
@@ -12364,7 +12362,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1588360972}
-  m_LocalRotation: {x: 0.15318386, y: 0.000000024046303, z: -0.000000003727498, w: 0.98819774}
+  m_LocalRotation: {x: 0.15318386, y: -0.00000002404631, z: 0.000000003727499, w: 0.98819774}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
