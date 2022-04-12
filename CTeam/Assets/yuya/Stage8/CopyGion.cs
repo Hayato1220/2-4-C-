@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class CopyGion : MonoBehaviour
 {
+    public GameObject particle;
+
     private bool barapush;              //バラバラを使ったかどうかの管理用フラグ
     private GameObject baraObj;         //バラバラにしたオブジェクトを入れる変数
 
@@ -50,6 +52,7 @@ public class CopyGion : MonoBehaviour
     {
         barapush = false;   // barapush を false で初期化
         byunpush = false;   //　byunpush を false で初期化
+        particle.SetActive(false);
         number = 0;         //リトライした時に number を初期化
     }
 
@@ -221,6 +224,7 @@ public class CopyGion : MonoBehaviour
                         if (Input.GetButton("B"))
                         {
                             ObjCollider.material = slip;    // ObjCollider の PhysicMaterial を slip に入っているものを入れる
+                            particle.SetActive(true);
                         }
                     }
                     break;
