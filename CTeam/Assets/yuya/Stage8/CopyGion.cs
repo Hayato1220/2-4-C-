@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CopyGion : MonoBehaviour
 {
+    private bool subepush;
     public GameObject particle;
 
     private bool barapush;              //バラバラを使ったかどうかの管理用フラグ
@@ -50,9 +51,10 @@ public class CopyGion : MonoBehaviour
 
     void Start()
     {
+        subepush = false;
         barapush = false;   // barapush を false で初期化
         byunpush = false;   //　byunpush を false で初期化
-        particle.SetActive(false);
+        //particle.SetActive(false);
         number = 0;         //リトライした時に number を初期化
     }
 
@@ -223,9 +225,21 @@ public class CopyGion : MonoBehaviour
                         //もし他のオブジェクトに当たっている状態でBボタンを押すと
                         if (Input.GetButton("B"))
                         {
-                            ObjCollider.material = slip;    // ObjCollider の PhysicMaterial を slip に入っているものを入れる
-                            particle.SetActive(true);
+                            if (subepush == true)
+                            {
+                                subepush = false;
+
+                                ObjCollider.material = slip;    // ObjCollider の PhysicMaterial を slip に入っているものを入れる
+                                var childObj = (GameObject)Instantiate(particle, this.transform.position, Quaternion.identity);
+
+                                chaildObj.transform.parent = other.gameObject.transform;
+                                var s_metallic = other.gameObject.GetComponent<Renderer>();
+
+                                s_metallic.material.SetFloat("_Metallic", 0.929f);
+                                s_metallic.material.SetFloat("_Glossiness", 0.86f);
+                            }
                         }
+                        subepush = true;
                     }
                     break;
 
