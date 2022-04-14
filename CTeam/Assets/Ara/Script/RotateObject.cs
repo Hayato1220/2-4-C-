@@ -5,6 +5,6 @@ public class RotateObject : MonoBehaviour
     Vector3 speed;
     void Update()
     {
-        transform.Rotate(0f,0f,5f);
+        transform.Rotate(speed);
     }
 }
