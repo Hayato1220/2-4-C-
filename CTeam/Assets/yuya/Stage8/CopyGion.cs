@@ -232,7 +232,7 @@ public class CopyGion : MonoBehaviour
                                 ObjCollider.material = slip;    // ObjCollider の PhysicMaterial を slip に入っているものを入れる
                                 var childObj = (GameObject)Instantiate(particle, this.transform.position, Quaternion.identity);
 
-                                chaildObj.transform.parent = other.gameObject.transform;
+                                childObj.transform.parent = other.gameObject.transform;
                                 var s_metallic = other.gameObject.GetComponent<Renderer>();
 
                                 s_metallic.material.SetFloat("_Metallic", 0.929f);
