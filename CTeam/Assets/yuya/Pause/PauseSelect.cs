@@ -19,6 +19,9 @@ public class PauseSelect : MonoBehaviour
     //private float F = 1.0f / T;
     private float rooptime;
 
+    public AudioSource CursorMove;      //カーソルの選択の音
+    public AudioSource CursorCheck;     //カーソルの決定の音
+
     public Text retry;
     public Text title;
     public Text gameOut;
@@ -49,8 +52,8 @@ public class PauseSelect : MonoBehaviour
                 if (pushflag == false)      // pushflag が false の時
                 {
                     pushflag = true;
-
-                    if(++MenuNumber > 2)    // MenuNumber　を先に1プラスした時に、 ３以上なら
+                    CursorMove.Play();      //音を鳴らす
+                    if (++MenuNumber > 2)    // MenuNumber　を先に1プラスした時に、 ３以上なら
                     {
                         MenuNumber = 0;     //メニューカーソルがリトライの位置に戻る
                     }
@@ -63,8 +66,8 @@ public class PauseSelect : MonoBehaviour
                 if (pushflag == false)
                 {
                     pushflag = true;
-
-                    if(--MenuNumber < 0)
+                    CursorMove.Play();      //音を鳴らす
+                    if (--MenuNumber < 0)
                     {
                         MenuNumber = 2;
                     }
@@ -92,6 +95,7 @@ public class PauseSelect : MonoBehaviour
                     gameOut.color = ReturnAlphaColor(gameOut.color);
 
                     if (Input.GetButton("B")){
+                        CursorCheck.Play();     //音を鳴らす
                         pushScene = true;
                         StartCoroutine(RetryCoroutine());
                     }
@@ -109,6 +113,7 @@ public class PauseSelect : MonoBehaviour
 
                     if (Input.GetButton("B"))
                     {
+                        CursorCheck.Play();     //音を鳴らす
                         pushScene = true;
                         StartCoroutine(TitleCoroutine());
                     }
@@ -130,6 +135,7 @@ public class PauseSelect : MonoBehaviour
                     }
 
                     if (Input.GetButton("B")){
+                        CursorCheck.Play();     //音を鳴らす
                         pushScene = true;
                         StartCoroutine(EndCoroutine());
                     }
