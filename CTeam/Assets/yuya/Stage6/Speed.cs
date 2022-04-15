@@ -8,7 +8,7 @@ public class Speed : MonoBehaviour
 
     private Rigidbody rb;           // Rigidbody を受け取る変数 rb
 
-    bool speedflag;                 //一定以上のスピードがでたら true にする
+    private static bool speedflag;                 //一定以上のスピードがでたら true にする
 
 
 
