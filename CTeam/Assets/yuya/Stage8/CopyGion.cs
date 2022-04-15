@@ -5,11 +5,12 @@ using UnityEngine;
 public class CopyGion : MonoBehaviour
 {
     private bool subepush;
-    public GameObject particle;
+    public GameObject sube_P;
 
     private bool barapush;              //バラバラを使ったかどうかの管理用フラグ
     private GameObject baraObj;         //バラバラにしたオブジェクトを入れる変数
 
+    public GameObject byun_P;
 
     /* 4つの色を持つオブジェクトをバラバラにした後に入れる変数 */
     private GameObject redCube;         //赤色のオブジェクトを入れる変数
@@ -86,6 +87,8 @@ public class CopyGion : MonoBehaviour
             if (pushflag == true)
             {
                 pushflag = false;      //何回も処理しないように pushflag を false にする
+
+                Debug.Log(number);
 
                 //もし number が5以下なら
                 if (number < 5)
@@ -223,18 +226,18 @@ public class CopyGion : MonoBehaviour
                     if (subeflag == true)
                     {
                         //もし他のオブジェクトに当たっている状態でBボタンを押すと
-                        if (Input.GetButton("B"))
+                        if (Input.GetButtonDown("B"))
                         {
                             if (subepush == true)
                             {
                                 subepush = false;
 
                                 ObjCollider.material = slip;    // ObjCollider の PhysicMaterial を slip に入っているものを入れる
-                                var childObj = (GameObject)Instantiate(particle, this.transform.position, Quaternion.identity);
 
+                                var childObj = (GameObject)Instantiate(sube_P, other.transform.position + other.transform.up * -0.5f, Quaternion.identity);
                                 childObj.transform.parent = other.gameObject.transform;
-                                var s_metallic = other.gameObject.GetComponent<Renderer>();
 
+                                var s_metallic = other.gameObject.GetComponent<Renderer>();
                                 s_metallic.material.SetFloat("_Metallic", 0.929f);
                                 s_metallic.material.SetFloat("_Glossiness", 0.86f);
                             }
@@ -433,7 +436,7 @@ public class CopyGion : MonoBehaviour
                     if (byunflag == true)
                     {
                         //もしBボタンを押したら
-                        if (Input.GetButton("B"))
+                        if (Input.GetButtonDown("B"))
                         {
                             // byunpush が true なら
                             if (byunpush == true)
@@ -442,9 +445,12 @@ public class CopyGion : MonoBehaviour
 
                                 rb.AddForce((transform.forward * 10.0f) + (transform.up * 7.0f), ForceMode.VelocityChange);     //触れているオブジェクトを質量に関係なく飛ばす
 
-                                //_trail = other.gameObject.GetComponent<TrailRenderer>();
-
-                                //_trail.enabled = true;
+                                var childObj = (GameObject)Instantiate(byun_P, other.transform.position + other.transform.forward * -0.5f, Quaternion.identity);
+                                childObj.transform.parent = other.gameObject.transform;
+                                if(other.gameObject.tag == "Ground")
+                                {
+                                    Destroy(childObj);
+                                }
                             }
 
                         }

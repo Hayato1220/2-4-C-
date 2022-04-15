@@ -6,22 +6,22 @@ public class Controller : MonoBehaviour
 {
     void Update()
     {
-        if (Input.GetButton("A"))
+        if (Input.GetButtonDown("A"))
         {
             Debug.Log("Aボタンが押されました。");
         }
 
-        if (Input.GetButton("B"))
+        if (Input.GetButtonDown("B"))
         {
             Debug.Log("Bボタンが押されました。");
         }
 
-        if (Input.GetButton("X"))
+        if (Input.GetButtonDown("X"))
         {
             Debug.Log("Xボタンが押されました。");
         }
 
-        if (Input.GetButton("Y"))
+        if (Input.GetButtonDown("Y"))
         {
             Debug.Log("Yボタンが押されました。");
         }
@@ -39,37 +39,37 @@ public class Controller : MonoBehaviour
         //    Debug.Log("Lスティックを縦方向に入力しました。");
         //}
 
-        if (Input.GetAxis("L_Stick_H") == -1)
-        {
-            Debug.Log("左");
-        }else if(Input.GetAxis("L_Stick_H") == 1)
-        {
-            Debug.Log("右");
-        }
+        //if (Input.GetAxis("L_Stick_H") == -1)
+        //{
+        //    Debug.Log("左");
+        //}else if(Input.GetAxis("L_Stick_H") == 1)
+        //{
+        //    Debug.Log("右");
+        //}
 
-        if(Input.GetAxis("L_Stick_V") == -1)
-        {
-            Debug.Log("下");
-        }else if (Input.GetAxis("L_Stick_V") == 1)
-        {
-            Debug.Log("上");
-        }
+        //if(Input.GetAxis("L_Stick_V") == -1)
+        //{
+        //    Debug.Log("下");
+        //}else if (Input.GetAxis("L_Stick_V") == 1)
+        //{
+        //    Debug.Log("上");
+        //}
 
-        if(Input.GetAxis("PadKey_H") == -1)
-        {
-            Debug.Log("左");
-        }else if(Input.GetAxis("PadKey_H") == 1)
-        {
-            Debug.Log("右");
-        }
+        //if(Input.GetAxis("PadKey_H") == -1)
+        //{
+        //    Debug.Log("左");
+        //}else if(Input.GetAxis("PadKey_H") == 1)
+        //{
+        //    Debug.Log("右");
+        //}
 
-        if (Input.GetAxis("PadKey_V") == -1)
-        {
-            Debug.Log("下");
-        }
-        else if (Input.GetAxis("PadKey_V") == 1)
-        {
-            Debug.Log("上");
-        }
+        //if (Input.GetAxis("PadKey_V") == -1)
+        //{
+        //    Debug.Log("下");
+        //}
+        //else if (Input.GetAxis("PadKey_V") == 1)
+        //{
+        //    Debug.Log("上");
+        //}
     }
 }
