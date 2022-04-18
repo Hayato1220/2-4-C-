@@ -787,7 +787,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.3333334, y: 1}
+    m_SensorSize: {x: 1.7777778, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -10935,20 +10935,6 @@ MonoBehaviour:
   distanceToLanding: 2.5
   distanceToTheGround: 2.5
   kabeslip: {fileID: 13400000, guid: c3826fb33992151419b1a390466036e5, type: 2}
---- !u!114 &781046072
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 781046067}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c70cc86b81239e84f9ff570fbe895fc3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  slip: {fileID: 13400000, guid: 3d766f7153558864cb1c2a9a005eb840, type: 2}
-  nebaneba: {fileID: 13400000, guid: 0d22bbfe7d2b5944eb39f8cd2ca1d012, type: 2}
 --- !u!136 &781046073
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -12552,6 +12538,7 @@ GameObject:
   - component: {fileID: 891607444}
   - component: {fileID: 891607443}
   - component: {fileID: 891607448}
+  - component: {fileID: 891607449}
   m_Layer: 8
   m_Name: Cube
   m_TagString: Object
@@ -12675,6 +12662,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &891607449
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 891607441}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c288d2737727604aab0e52d702e58fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &915198029
 GameObject:
   m_ObjectHideFlags: 0

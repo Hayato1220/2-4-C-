@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 743195570226834198}
   - component: {fileID: 2608403311912042571}
   m_Layer: 0
-  m_Name: Particle System
+  m_Name: SubeBubbles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -918,7 +918,7 @@ ParticleSystem:
     rateOverDistance:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 3
+      scalar: 3.5
       minScalar: 0
       maxCurve:
         serializedVersion: 2

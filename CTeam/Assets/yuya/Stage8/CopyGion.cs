@@ -45,10 +45,11 @@ public class CopyGion : MonoBehaviour
 
     public PhysicMaterial nebaneba;
 
-
     string ObjName;                     //触れたオブジェクトの名前を受け取る変数
 
-
+    /* エフェクト（パーティクル）用変数 */
+    int ObjCount;
+    bool Getlayerflag;
 
 
     void Start()
@@ -61,21 +62,20 @@ public class CopyGion : MonoBehaviour
     }
 
 
+
     void Update()
     {
+        Getlayerflag = SubeEffect.getflagLayer();
 
-    }
+        /*
+         * Time.timeScale == 0 の時に擬音の切り替えができないように
+         */
+        if (Time.timeScale == 1)
+        {
+            GionChange();       //使える擬音をXボタンで切り替える
 
-    /*
-     * Time.timeScale = 0 の時に止まれるように FixedUpdate で管理
-     * できれば普通の Update関数で制御したい
-     */
-    void FixedUpdate()
-    {
-
-        GionChange();       //使える擬音をXボタンで切り替える
-
-        GionChangeMove();   //使う擬音のフラグ管理
+            GionChangeMove();   //使う擬音のフラグ管理
+        }
     }
 
 
@@ -96,25 +96,19 @@ public class CopyGion : MonoBehaviour
                 //もし number が5以下なら
                 if (number < 5)
                 {
-
                     number++;         // number を1ずつ増やす
-
                 }
                 //もし number が5以下以外なら
                 else
                 {
-
                     number = 0;      // number を0にして最初に戻す
-
                 }
             }
         }
         //Xボタンを押していない間は
         else
         {
-
             pushflag = true;         // pushflag を true にする
-
         }
     }
 
@@ -208,10 +202,12 @@ public class CopyGion : MonoBehaviour
 
             Vector3 ObjScale2 = other.gameObject.transform.localScale;      // ObjScale2 に、触れているオブジェクトの大きさを入れる
 
-            //Debug.Log(ObjCollider);
 
             mr = other.gameObject.GetComponent<MeshRenderer>();             //触れたオブジェクトの MeshRenderer を取得
             rb = other.gameObject.GetComponent<Rigidbody>();                //触れたオブジェクトの Rigidbody を取得
+
+
+            ObjCount = other.gameObject.transform.childCount;
 
             /* * * * * * * * * *
              * 0:すべすべ      *
@@ -237,9 +233,23 @@ public class CopyGion : MonoBehaviour
 
                                 ObjCollider.material = slip;    // ObjCollider の PhysicMaterial を slip に入っているものを入れる
 
-                                var childObjsube = (GameObject)Instantiate(sube_P, other.transform.position + other.transform.up * -0.5f, Quaternion.identity);
-                                childObjsube.transform.parent = other.gameObject.transform;
 
+                                if (ObjCount == 0)
+                                {
+                                    var childObjsube = (GameObject)Instantiate(sube_P, other.transform.position + other.transform.up * -0.5f, Quaternion.identity);
+                                    childObjsube.transform.parent = other.gameObject.transform;
+                                }
+                                else
+                                {
+                                    if (Getlayerflag == true)
+                                    {
+                                        other.transform.GetChild(0).gameObject.SetActive(false);
+                                    }
+                                    else
+                                    {
+                                        other.transform.GetChild(0).gameObject.SetActive(true);
+                                    }
+                                }
                                 var s_metallic = other.gameObject.GetComponent<Renderer>();
                                 s_metallic.material.SetFloat("_Metallic", 0.929f);
                                 s_metallic.material.SetFloat("_Glossiness", 0.86f);
@@ -448,8 +458,15 @@ public class CopyGion : MonoBehaviour
 
                                 rb.AddForce((transform.forward * 10.0f) + (transform.up * 7.0f), ForceMode.VelocityChange);     //触れているオブジェクトを質量に関係なく飛ばす
 
-                                childObjbyun = (GameObject)Instantiate(byun_P, other.transform.position + other.transform.forward * -0.5f, Quaternion.identity);
-                                childObjbyun.transform.parent = other.gameObject.transform;
+                                if (ObjCount == 0)
+                                {
+                                    childObjbyun = (GameObject)Instantiate(byun_P, other.transform.position + other.transform.forward * -0.5f, Quaternion.identity);
+                                    childObjbyun.transform.parent = other.gameObject.transform;
+                                }
+                                //else
+                                //{
+                                //    Destroy(transform.GetChild(0).gameObject);
+                                //}
 
                                 /*
                                  * 飛んで行ったオブジェクトに入っている
@@ -468,7 +485,7 @@ public class CopyGion : MonoBehaviour
             }
         }
     }
-    
+
     
     /*
      * 他のオブジェクトに触れている間の処理
