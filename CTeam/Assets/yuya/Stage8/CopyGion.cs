@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CopyGion : MonoBehaviour
 {
+
     private bool subepush;              //すべすべを使ったかどうかの管理用フラグ
     public GameObject sube_P;           //すべすべにしたオブジェクトに入れるエフェクト用の変数
 
@@ -49,7 +50,6 @@ public class CopyGion : MonoBehaviour
 
     /* エフェクト（パーティクル）用変数 */
     int ObjCount;
-    bool Getlayerflag;
 
 
     void Start()
@@ -64,7 +64,6 @@ public class CopyGion : MonoBehaviour
 
     void Update()
     {
-        Getlayerflag = SubeEffect.getflagLayer();
 
         /*
          * Time.timeScale == 0 の時に擬音の切り替えができないように
@@ -74,6 +73,7 @@ public class CopyGion : MonoBehaviour
             GionChange();       //使える擬音をXボタンで切り替える
 
             GionChangeMove();   //使う擬音のフラグ管理
+
         }
     }
 
@@ -232,28 +232,40 @@ public class CopyGion : MonoBehaviour
 
                                 ObjCollider.material = slip;    // ObjCollider の PhysicMaterial を slip に入っているものを入れる
 
+                                other.gameObject.AddComponent<SubeEffect>();
 
-                                if (ObjCount == 0)
+                                if(ObjCount == 0)
                                 {
-                                    var childObjsube = (GameObject)Instantiate(sube_P, other.transform.position + other.transform.up * -0.5f, Quaternion.identity);
-                                    childObjsube.transform.parent = other.gameObject.transform;
+                                    other.gameObject.AddComponent<SubeEffect>();
                                 }
-                                else
-                                {
-                                    Destroy(other.transform.GetChild(0).gameObject);
 
-                                    var childObjsube = (GameObject)Instantiate(sube_P, other.transform.position + other.transform.up * -0.5f, Quaternion.identity);
-                                    childObjsube.transform.parent = other.gameObject.transform;
+                                //if(other.transform.GetChild(0).gameObject.name != "SubeBubbles(Clone)")
+                                //{
+                                //    var childObjsube = (GameObject)Instantiate(sube_P, other.transform.position + other.transform.up * -0.5f, Quaternion.identity);
+                                //    childObjsube.transform.parent = other.gameObject.transform;
+                                //}
 
-                                    //if (Getlayerflag == true)
-                                    //{
-                                    //    other.transform.GetChild(0).gameObject.SetActive(false);
-                                    //}
-                                    //else
-                                    //{
-                                    //    other.transform.GetChild(0).gameObject.SetActive(true);
-                                    //}
-                                }
+                                //if (ObjCount == 0)
+                                //{
+                                //    var childObjsube = (GameObject)Instantiate(sube_P, other.transform.position + other.transform.up * -0.5f, Quaternion.identity);
+                                //    childObjsube.transform.parent = other.gameObject.transform;
+                                //}
+                                //else
+                                //{
+                                //    Destroy(other.transform.GetChild(0).gameObject);
+
+                                //    var childObjsube = (GameObject)Instantiate(sube_P, other.transform.position + other.transform.up * -0.5f, Quaternion.identity);
+                                //    childObjsube.transform.parent = other.gameObject.transform;
+
+                                //    //if (Getlayerflag == true)
+                                //    //{
+                                //    //    other.transform.GetChild(0).gameObject.SetActive(false);
+                                //    //}
+                                //    //else
+                                //    //{
+                                //    //    other.transform.GetChild(0).gameObject.SetActive(true);
+                                //    //}
+                                //}
                                 var s_metallic = other.gameObject.GetComponent<Renderer>();
                                 s_metallic.material.SetFloat("_Metallic", 0.929f);
                                 s_metallic.material.SetFloat("_Glossiness", 0.86f);
