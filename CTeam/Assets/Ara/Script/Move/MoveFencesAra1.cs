@@ -6,20 +6,29 @@ public class MoveFencesAra1 : MonoBehaviour
 {
     Vector3 targetpos;
 
+    public bool getCross;
+
     [SerializeField]
     public float Speed = 0.01f;
     // Start is called before the first frame update
     void Start()
     {
         targetpos = transform.position;
+
+        getCross = false;
     }
 
     void Update()
     {
-        if (targetpos.x >= 2.8f)
+        getCross = GetCrossAra.CrossGet();
+
+        if (getCross == true)
         {
-            targetpos.x -= Speed;
-            transform.position = new Vector3(targetpos.x, targetpos.y, targetpos.z);
+            if (targetpos.x >= 2.8f)
+            {
+                targetpos.x -= Speed;
+                transform.position = new Vector3(targetpos.x, targetpos.y, targetpos.z);
+            }
         }
     }
 }

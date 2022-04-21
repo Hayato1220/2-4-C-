@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class moyouOrange : MonoBehaviour
+public class moyouWhite : MonoBehaviour
 {
     private static bool dousyoku;
 
@@ -20,13 +20,13 @@ public class moyouOrange : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.gameObject.tag == "Orange")
+        if (other.gameObject.tag == "White")
         {
             dousyoku = true;
         }
     }
 
-    public static bool Orange()
+    public static bool White()
     {
         return dousyoku;
     }

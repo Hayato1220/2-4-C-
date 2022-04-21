@@ -10,6 +10,13 @@ public class Speed : MonoBehaviour
 
     bool speedflag;                 //一定以上のスピードがでたら true にする
 
+    public PhysicMaterial kabeslip;
+
+    private BoxCollider myCollider;
+
+
+
+
 
 
     void Start()
@@ -17,6 +24,9 @@ public class Speed : MonoBehaviour
         speedflag = false;                          // speedflag を false で初期化
 
         rb = transform.GetComponent<Rigidbody>();   // rb に Rigidbody の transform を取得
+
+        myCollider = GetComponent<BoxCollider>();
+
     }
 
 
@@ -41,7 +51,7 @@ public class Speed : MonoBehaviour
     void OnCollisionEnter(Collision other)
     {
         //他のオブジェクトに当たった時に、タグが "Wall" だったら
-        if (other.gameObject.tag == "Wall")
+        if (other.gameObject.tag == "ToumeiWall")
         {
             //もし speedflag が true なら
             if (speedflag == true)
