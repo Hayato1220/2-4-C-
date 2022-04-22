@@ -1,36 +1,29 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿//using System.Collections;
+//using System.Collections.Generic;
+//using UnityEngine;
 
-public class ByunEffect : MonoBehaviour
-{
-    private TrailRenderer _trail;
-    int getChangenumber;
+//[DisallowMultipleComponent]
+//public class ByunEffect : MonoBehaviour
+//{
+//    private GameObject byun_P;
 
-    void Start()
-    {
-        _trail = GetComponent<TrailRenderer>();
-        _trail.enabled = false;
-    }
+//    void Start()
+//    {
+//        byun_P = Resources.Load("ByunTrail") as GameObject;
+//    }
 
-    void Update()
-    {
-        getChangenumber = CopyGion.ChangeNumber();
-    }
+//    void Update()
+//    {
 
-    void OnCollisionStay(Collision collision)
-    {
-        if (getChangenumber == 4)
-        {
-            if (collision.gameObject.layer == LayerMask.NameToLayer("Ground"))
-            {
-                _trail.enabled = false;
-            }
-            else
-            {
-                _trail.enabled = true;
-            }
-        }
-    }
-}
+//    }
+
+//    void OnCollisionStay(Collision other)
+//    {
+//        if (this.transform.GetChild(0).gameObject.name != "ByunTrail(Clone)")
+//        {
+//            childObjbyun = (GameObject)Instantiate(byun_P, this.transform.position, Quaternion.identity);
+//            childObjbyun.transform.parent = this.gameObject.transform;
+//        }
+//    }
+//}
 
