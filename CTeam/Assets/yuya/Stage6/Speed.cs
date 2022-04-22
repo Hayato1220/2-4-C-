@@ -35,15 +35,15 @@ public class Speed : MonoBehaviour
     {
         //Debug.Log(rb.velocity.magnitude);
 
-        //もしオブジェクトの移動速度が 3.0f 以上だったら
-        if (rb.velocity.magnitude >= 3.0f)
-        {
-            speedflag = true;       // speedflag を true にする
-        }
-        else    //オブジェクトの移動速度が 3.0f 以下なら
-        {
-            speedflag = false;      // speedflag を true にする
-        }
+        ////もしオブジェクトの移動速度が 3.0f 以上だったら
+        //if (rb.velocity.magnitude >= 3.0f)
+        //{
+        //    speedflag = true;       // speedflag を true にする
+        //}
+        //else    //オブジェクトの移動速度が 3.0f 以下なら
+        //{
+        //    speedflag = false;      // speedflag を true にする
+        //}
     }
 
 
@@ -53,14 +53,14 @@ public class Speed : MonoBehaviour
         //他のオブジェクトに当たった時に、タグが "Wall" だったら
         if (other.gameObject.tag == "ToumeiWall")
         {
-            //もし speedflag が true なら
-            if (speedflag == true)
-            {
+            ////もし speedflag が true なら
+            //if (speedflag == true)
+            //{
 
                 Destroy(DestroyWall);       // DestroyWall に入れたオブジェクトを破壊する
 
                 Destroy(this.gameObject);   //スクリプトがアタッチされているオブジェクトを破壊する
-            }
+            //}
         }
     }
 }
