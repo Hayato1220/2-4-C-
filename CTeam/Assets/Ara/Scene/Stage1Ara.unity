@@ -20212,6 +20212,11 @@ PrefabInstance:
       propertyPath: m_UpdateMode
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7683462772472563488, guid: 9512ed6804d76934eb592ea99bd354b6,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8216669308748850337, guid: 9512ed6804d76934eb592ea99bd354b6,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -20286,6 +20291,11 @@ PrefabInstance:
         type: 3}
       propertyPath: DrawGizmo
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8710695201493206420, guid: 9512ed6804d76934eb592ea99bd354b6,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9512ed6804d76934eb592ea99bd354b6, type: 3}
@@ -24298,8 +24308,8 @@ Transform:
   m_Father: {fileID: 836819602}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
---- !u!64 &1372399262
-MeshCollider:
+--- !u!65 &1372399262
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -24308,10 +24318,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: 3d350f9b59e2c4e4888cf026e6efc684, type: 3}
+  serializedVersion: 2
+  m_Size: {x: 3.9999995, y: 0.1, z: 8}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1372399263
 MeshRenderer:
   m_ObjectHideFlags: 0
