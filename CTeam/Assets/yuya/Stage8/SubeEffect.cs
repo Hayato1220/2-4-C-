@@ -11,8 +11,14 @@ public class SubeEffect : MonoBehaviour
 
     private GameObject childObjsube;
 
+    Ray ray;
+    RaycastHit hit;
+
     void Start()
     {
+        
+        
+
         sube_P = Resources.Load("SubeBubbles") as GameObject;
 
         Debug.Log("すべすべエフェクトを追加");
@@ -20,8 +26,35 @@ public class SubeEffect : MonoBehaviour
         childObjsube.transform.parent = this.gameObject.transform;
     }
 
+
+
     void Update()
     {
-        objCount = this.gameObject.transform.childCount;
+        ray = new Ray(transform.position, -transform.up);
+
+        
+
+        if (Physics.Raycast(ray, out hit, 1.0f))
+        {
+            childObjsube.SetActive(true);
+            //Debug.Log(hit.collider.gameObject.transform.position);
+            //Debug.DrawRay(ray.origin, ray.direction, Color.red, 3.0f);
+        }
+        else
+        {
+            childObjsube.SetActive(false);
+        }
     }
+
+    //void OnCollisionStay(Collision other)
+    //{
+    //    if(other.gameObject.layer == LayerMask.NameToLayer("Ground"))
+    //    {
+    //        childObjsube.SetActive(true);
+    //    }
+    //    else
+    //    {
+    //        childObjsube.SetActive(false);
+    //    }
+    //}
 }

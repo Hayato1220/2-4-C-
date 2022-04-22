@@ -9,11 +9,27 @@ public class ByunEffect : MonoBehaviour
 
     private GameObject childObjbyun;
 
+    int getChangenumber;
+
     void Start()
     {
         byun_P = Resources.Load("ByunTrail") as GameObject;
         childObjbyun = (GameObject)Instantiate(byun_P, this.transform.position, Quaternion.identity);
         childObjbyun.transform.parent = this.gameObject.transform;
+    }
+
+    void Update()
+    {
+        getChangenumber = CopyGion.ChangeNumber();
+
+        if(getChangenumber == 4)
+        {
+            childObjbyun.SetActive(true);
+        }
+        else
+        {
+            childObjbyun.SetActive(true);
+        }
     }
 }
 
