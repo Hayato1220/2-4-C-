@@ -15,7 +15,13 @@ public class Seisei : MonoBehaviour
 
     public static int cubecount = 0;
 
-    public static bool Bynok;
+    public bool Bynok;
+
+    public bool BynokTarget1;
+
+    public bool BynokTarget2;
+
+    public bool BynokTarget3;
 
     // Start is called before the first frame update
     void Start()
@@ -25,6 +31,10 @@ public class Seisei : MonoBehaviour
         ok = false;
 
         Bynok = false;
+
+        BynokTarget1 = false;
+        BynokTarget2 = false;
+        BynokTarget3 = false;
     }
 
     // Update is called once per frame
@@ -33,14 +43,20 @@ public class Seisei : MonoBehaviour
 
         Bynok = KesuAra.Bynkie();
 
-        if(Bynok == true)
+        BynokTarget1 = CreateTarget1.Getok1();
+        BynokTarget2 = CreateTarget2.Getok2();
+        BynokTarget3 = CreateTarget3.Getok3();
+
+
+        if (Bynok == true || BynokTarget1 == true || BynokTarget2 == true || BynokTarget3 == true)
         {
             cubecount = 0;
         }
 
         if (ok == true)
         {
-            while(cubecount < 2)
+
+            while (cubecount < 2)
             {
                 SeiBrock();
                 cubecount++;

@@ -16,6 +16,8 @@ public class kaijyoRight : MonoBehaviour
     private bool getGreen;
     private bool getBlue;
     private bool getWhite;
+    public bool getAll;
+
 
     // Start is called before the first frame update
     void Start()
@@ -23,6 +25,8 @@ public class kaijyoRight : MonoBehaviour
         targetpos = transform.position;
 
         ok = false;
+
+        getAll = false;
     }
 
     // Update is called once per frame
@@ -36,7 +40,12 @@ public class kaijyoRight : MonoBehaviour
 
         getWhite = moyouWhite.White();
 
-        if (getRed == true/* && getGreen == true && getBlue == true && getWhite == true*/)
+        if (getRed == true && getGreen == true && getBlue == true && getWhite == true)
+        {
+            getAll = true;
+        }
+
+        if (getAll == true)
         {
             if (targetpos.x <= 12f)
             {
