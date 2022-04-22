@@ -40,6 +40,8 @@ public class PlayerConAra : MonoBehaviour
     private Transform spine;
     public PhysicMaterial kabeslip;
 
+    public bool IsDamaged;
+
 
     // Start is called before the first frame update
     void Start()
@@ -50,6 +52,8 @@ public class PlayerConAra : MonoBehaviour
         characterController = GetComponent<CharacterController>();
 
         myCollider.material = null;
+
+        IsDamaged = false;
 
 
 
@@ -216,6 +220,12 @@ public class PlayerConAra : MonoBehaviour
         {
             rigidBody.MovePosition(rigidBody.position + velocity * Time.fixedDeltaTime);
         }
+
+        if (IsDamaged)
+        {
+            float level = Mathf.Abs(Mathf.Sin(Time.time * 10));
+            gameObject.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, level);
+        }
     }
 
     private void OnCollisionStay(Collision collision)
@@ -236,6 +246,14 @@ public class PlayerConAra : MonoBehaviour
         if (collision.gameObject.tag == "Wall")
         {
             myCollider.material = null;
+        }
+    }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.tag == "Enemy")
+        {
+            IsDamaged = true;
         }
     }
 

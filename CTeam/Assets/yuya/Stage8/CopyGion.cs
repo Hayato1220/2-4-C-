@@ -4,11 +4,18 @@ using UnityEngine;
 
 public class CopyGion : MonoBehaviour
 {
-    private bool subepush;
-    public GameObject particle;
+
+    private bool subepush;              //すべすべを使ったかどうかの管理用フラグ
+    public GameObject sube_P;           //すべすべにしたオブジェクトに入れるエフェクト用の変数
+
 
     private bool barapush;              //バラバラを使ったかどうかの管理用フラグ
     private GameObject baraObj;         //バラバラにしたオブジェクトを入れる変数
+
+
+    public static bool byunpush;        //ビュンビュンを使ったかどうかの管理用フラグ
+    public GameObject byun_P;           //ビュンビュンを使ったオブジェクトに入れるエフェクト用の変数
+    private GameObject childObjbyun;    //触っているオブジェクトに入っている子オブジェクトを入れる変数
 
 
     /* 4つの色を持つオブジェクトをバラバラにした後に入れる変数 */
@@ -16,9 +23,6 @@ public class CopyGion : MonoBehaviour
     private GameObject greenCube;       //緑色のオブジェクトを入れる変数
     private GameObject blueCube;        //青色のオブジェクトを入れる変数
     private GameObject whiteCube;       //白色のオブジェクトを入れる変数
-
-    private TrailRenderer _trail;
-    public static bool byunpush;              //ビュンビュンを使ったかどうかの管理用フラグ
 
 
     private GameObject obj;             //このスクリプトがアタッチされているオブジェクトを参照する
@@ -36,17 +40,16 @@ public class CopyGion : MonoBehaviour
     private bool nebaflag = false;      //ネバネバを管理する bool 型変数
 
 
-
     private MeshRenderer mr;
 
     private Rigidbody rb;
 
     public PhysicMaterial nebaneba;
 
-
     string ObjName;                     //触れたオブジェクトの名前を受け取る変数
 
-
+    /* エフェクト（パーティクル）用変数 */
+    int ObjCount;
 
 
     void Start()
@@ -54,22 +57,24 @@ public class CopyGion : MonoBehaviour
         subepush = false;
         barapush = false;   // barapush を false で初期化
         byunpush = false;   //　byunpush を false で初期化
-        //particle.SetActive(false);
         number = 0;         //リトライした時に number を初期化
     }
 
 
 
-    /*
-     * Time.timeScale = 0 の時に止まれるように FixedUpdate で管理
-     */
-    void FixedUpdate()
+    void Update()
     {
 
-        GionChange();       //使える擬音をXボタンで切り替える
+        /*
+         * Time.timeScale == 0 の時に擬音の切り替えができないように
+         */
+        if (Time.timeScale == 1)
+        {
+            GionChange();       //使える擬音をXボタンで切り替える
 
-        GionChangeMove();   //使う擬音のフラグ管理
+            GionChangeMove();   //使う擬音のフラグ管理
 
+        }
     }
 
 
@@ -90,25 +95,19 @@ public class CopyGion : MonoBehaviour
                 //もし number が5以下なら
                 if (number < 5)
                 {
-
                     number++;         // number を1ずつ増やす
-
                 }
                 //もし number が5以下以外なら
                 else
                 {
-
                     number = 0;      // number を0にして最初に戻す
-
                 }
             }
         }
         //Xボタンを押していない間は
         else
         {
-
             pushflag = true;         // pushflag を true にする
-
         }
     }
 
@@ -202,10 +201,12 @@ public class CopyGion : MonoBehaviour
 
             Vector3 ObjScale2 = other.gameObject.transform.localScale;      // ObjScale2 に、触れているオブジェクトの大きさを入れる
 
-            //Debug.Log(ObjCollider);
 
             mr = other.gameObject.GetComponent<MeshRenderer>();             //触れたオブジェクトの MeshRenderer を取得
             rb = other.gameObject.GetComponent<Rigidbody>();                //触れたオブジェクトの Rigidbody を取得
+
+
+            ObjCount = other.gameObject.transform.childCount;
 
             /* * * * * * * * * *
              * 0:すべすべ      *
@@ -230,11 +231,42 @@ public class CopyGion : MonoBehaviour
                                 subepush = false;
 
                                 ObjCollider.material = slip;    // ObjCollider の PhysicMaterial を slip に入っているものを入れる
-                                var childObj = (GameObject)Instantiate(particle, this.transform.position, Quaternion.identity);
 
-                                childObj.transform.parent = other.gameObject.transform;
+                                other.gameObject.AddComponent<SubeEffect>();
+
+                                if(ObjCount == 0)
+                                {
+                                    other.gameObject.AddComponent<SubeEffect>();
+                                }
+
+                                //if(other.transform.GetChild(0).gameObject.name != "SubeBubbles(Clone)")
+                                //{
+                                //    var childObjsube = (GameObject)Instantiate(sube_P, other.transform.position + other.transform.up * -0.5f, Quaternion.identity);
+                                //    childObjsube.transform.parent = other.gameObject.transform;
+                                //}
+
+                                //if (ObjCount == 0)
+                                //{
+                                //    var childObjsube = (GameObject)Instantiate(sube_P, other.transform.position + other.transform.up * -0.5f, Quaternion.identity);
+                                //    childObjsube.transform.parent = other.gameObject.transform;
+                                //}
+                                //else
+                                //{
+                                //    Destroy(other.transform.GetChild(0).gameObject);
+
+                                //    var childObjsube = (GameObject)Instantiate(sube_P, other.transform.position + other.transform.up * -0.5f, Quaternion.identity);
+                                //    childObjsube.transform.parent = other.gameObject.transform;
+
+                                //    //if (Getlayerflag == true)
+                                //    //{
+                                //    //    other.transform.GetChild(0).gameObject.SetActive(false);
+                                //    //}
+                                //    //else
+                                //    //{
+                                //    //    other.transform.GetChild(0).gameObject.SetActive(true);
+                                //    //}
+                                //}
                                 var s_metallic = other.gameObject.GetComponent<Renderer>();
-
                                 s_metallic.material.SetFloat("_Metallic", 0.929f);
                                 s_metallic.material.SetFloat("_Glossiness", 0.86f);
                             }
@@ -442,9 +474,24 @@ public class CopyGion : MonoBehaviour
 
                                 rb.AddForce((transform.forward * 10.0f) + (transform.up * 7.0f), ForceMode.VelocityChange);     //触れているオブジェクトを質量に関係なく飛ばす
 
-                                //_trail = other.gameObject.GetComponent<TrailRenderer>();
+                                if (ObjCount == 0)
+                                {
+                                    childObjbyun = (GameObject)Instantiate(byun_P, other.transform.position, Quaternion.identity);
+                                    childObjbyun.transform.parent = other.gameObject.transform;
+                                }
+                                else
+                                {
+                                    Destroy(other.transform.GetChild(0).gameObject);
 
-                                //_trail.enabled = true;
+                                    childObjbyun = (GameObject)Instantiate(byun_P, other.transform.position, Quaternion.identity);
+                                    childObjbyun.transform.parent = other.gameObject.transform;
+                                }
+
+                                /*
+                                 * 飛んで行ったオブジェクトに入っている
+                                 * 子オブジェクトを地面に着いたら破壊したい
+                                 */
+                                //Destroy(other.gameObject.transform.GetChild(0).gameObject);
                             }
 
                         }
@@ -458,7 +505,7 @@ public class CopyGion : MonoBehaviour
         }
     }
 
-
+    
     /*
      * 他のオブジェクトに触れている間の処理
      * 切り替えた擬音に対応する動作
