@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerConAra : MonoBehaviour
 {
@@ -254,6 +255,10 @@ public class PlayerConAra : MonoBehaviour
         if(collision.gameObject.tag == "Enemy")
         {
             IsDamaged = true;
+        }
+        if (collision.gameObject.tag == "Clear")
+        {
+            SceneManager.LoadScene("taitoru");
         }
     }
 
