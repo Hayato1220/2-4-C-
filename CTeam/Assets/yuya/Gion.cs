@@ -44,6 +44,9 @@ public class Gion : MonoBehaviour
     string ObjName;                     //触れたオブジェクトの名前を受け取る変数
 
 
+    public ParticleSystem particle;
+
+
 
 
     void Start()
@@ -51,6 +54,7 @@ public class Gion : MonoBehaviour
         barapush = false;   // barapush を false で初期化
         byunpush = false;   //　byunpush を false で初期化
         number = 0;         //リトライした時に number を初期化
+        particle = GetComponent<ParticleSystem>();
     }
 
 
@@ -234,6 +238,7 @@ public class Gion : MonoBehaviour
                         //もし他のオブジェクトに当たっている状態でBボタンを押すと
                         if (Input.GetButton("B"))
                         {
+                            particle.Play();
                             Debug.Log(ObjName);
                             // ObjName に入っている名前が"FloorMove"なら
                             if (ObjName == "FloorMove")

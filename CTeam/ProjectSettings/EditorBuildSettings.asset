@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/shota.unity
+    path: Assets/shota/Scenes/shota.unity
     guid: f0768881fd6ff294098f743adeba5c8a
   - enabled: 0
     path: Assets/yuya/Scenes/yuyaStage.unity
