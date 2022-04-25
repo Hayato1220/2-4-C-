@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class CopyGion : MonoBehaviour
 {
+    private bool getdestroyflag;
+
+
 
     private bool subepush;              //すべすべを使ったかどうかの管理用フラグ
     public GameObject sube_P;           //すべすべにしたオブジェクトに入れるエフェクト用の変数
@@ -64,7 +67,7 @@ public class CopyGion : MonoBehaviour
 
     void Update()
     {
-
+        getdestroyflag = Speed.GetDestroyFlag();
         /*
          * Time.timeScale == 0 の時に擬音の切り替えができないように
          */
@@ -92,16 +95,16 @@ public class CopyGion : MonoBehaviour
             {
                 pushflag = false;      //何回も処理しないように pushflag を false にする
 
-                //もし number が5以下なら
-                if (number < 5)
-                {
-                    number++;         // number を1ずつ増やす
-                }
-                //もし number が5以下以外なら
-                else
-                {
-                    number = 0;      // number を0にして最初に戻す
-                }
+                                       ////もし number が5以下なら
+                                       //if (number < 5)
+                                       //{
+                                       //    number++;         // number を1ずつ増やす
+                                       //}
+                                       ////もし number が5以下以外なら
+                                       //else
+                                       //{
+                                       //    number = 0;      // number を0にして最初に戻す
+                                       //}
             }
         }
         //Xボタンを押していない間は

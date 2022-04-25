@@ -17,11 +17,9 @@ public class Speed : MonoBehaviour
 
 
 
-
-
     void Start()
     {
-        speedflag = false;                          // speedflag を false で初期化
+        //speedflag = false;                          // speedflag を false で初期化
 
         rb = transform.GetComponent<Rigidbody>();   // rb に Rigidbody の transform を取得
 
@@ -57,9 +55,10 @@ public class Speed : MonoBehaviour
             //if (speedflag == true)
             //{
 
-                Destroy(DestroyWall);       // DestroyWall に入れたオブジェクトを破壊する
+            Destroy(DestroyWall);       // DestroyWall に入れたオブジェクトを破壊する
 
-                Destroy(this.gameObject);   //スクリプトがアタッチされているオブジェクトを破壊する
+            Destroy(this.gameObject);   //スクリプトがアタッチされているオブジェクトを破壊する
+
             //}
         }
     }
