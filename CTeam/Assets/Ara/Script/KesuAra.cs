@@ -27,18 +27,13 @@ public class KesuAra : MonoBehaviour
     }
 
 
-    void OnCollisionEnter(Collision collision)
+    void OnTriggerEnter(Collider other)
     {
-        if(collision.gameObject.tag == "Object")
+        if (other.gameObject.tag == "Enemy")
         {
-            Destroy(collision.gameObject);
+            Destroy(gameObject);
 
             ok = true;
-        }
-
-        if(collision.gameObject.tag == "Player")
-        {
-
         }
     }
 
