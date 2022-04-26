@@ -16,7 +16,7 @@ public class Stage4 : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            Debug.Log("atari");
+            Debug.Log("Stage4クリア");
             stage4flag = true;
         }
     }

@@ -98,44 +98,52 @@ public class CopyGion : MonoBehaviour
                 pushflag = false;      //何回も処理しないように pushflag を false にする
 
                 /* ステージをクリアするごとに擬音を解放していく */
-                if (getstage1flag == true)
-                {
-                    number++;
-                    Debug.Log("ふわふわ解放");
-                    if (number > 1)
-                    {
-                        number = 0;
-                    }
-                }
-                else if (getstage1flag == false && getstage2flag == true)
-                {
-                    number++;
-                    Debug.Log("スケスケ解放");
-                    if (number > 2)
-                    {
-                        number = 0;
-                    }
-                } else if (getstage1flag == false && getstage2flag == false && getstage3flag == true)
-                {
-                    number++;
-                    Debug.Log("ビュンビュン解放");
-                    if (number > 3)
-                    {
-                        number = 0;
-                    }
-                }
+                //if (getstage1flag == true)
+                //{
+                //    number++;
+                //    Debug.Log("ふわふわ解放");
+                //    if (number > 1)
+                //    {
+                //        number = 0;
+                //    }
+                //}
+                //else if (getstage1flag == false && getstage2flag == true)
+                //{
+                //    number++;
+                //    Debug.Log("スケスケ解放");
+                //    if (number > 2)
+                //    {
+                //        number = 0;
+                //    }
+                //} else if (getstage1flag == false && getstage2flag == false && getstage3flag == true)
+                //{
+                //    number++;
+                //    Debug.Log("ビュンビュン解放");
+                //    if (number > 3)
+                //    {
+                //        number = 0;
+                //    }
+                //}else if(getstage1flag == false && getstage2flag == false && getstage3flag == false && getstage4flag == true)
+                //{
+                //    number++;
+                //    Debug.Log("バラバラとネバネバ解放");
+                //    if(number > 5)
+                //    {
+                //        number = 0;
+                //    }
+                //}
 
                 /* ここのコメントアウト直したら全部の擬音使えます */
                 //もし number が5以下なら
-                //if (number < 5)
-                //{
-                //    number++;         // number を1ずつ増やす
-                //}
-                ////もし number が5以下以外なら
-                //else
-                //{
-                //    number = 0;      // number を0にして最初に戻す
-                //}
+                if (number < 5)
+                {
+                    number++;         // number を1ずつ増やす
+                }
+                //もし number が5以下以外なら
+                else
+                {
+                    number = 0;      // number を0にして最初に戻す
+                }
             }
         }
         //Xボタンを押していない間は
@@ -198,11 +206,11 @@ public class CopyGion : MonoBehaviour
         /* バラバラ */
         if (number == 4)                　 // number が4なら
         {
-            byunflag = true;             // true の状態の時にしか処理が出来ないようにに管理しようとしてる
+            baraflag = true;             // true の状態の時にしか処理が出来ないようにに管理しようとしてる
         }
         else                              // number が4以外なら
         {
-            byunflag = false;
+            baraflag = false;
         }
 
         /* ネバネバ */
@@ -529,28 +537,30 @@ public class CopyGion : MonoBehaviour
      */
     private void OnTriggerStay(Collider other)
     {
-        // number 3(スケスケ)と4(ネバネバ)の処理
-        switch (number)
+        if (other.gameObject.tag == "Object")
         {
+            // number 2(スケスケ)
+            switch (number)
+            {
 
-            /* スケスケ */
-            case 2:
-                //スケスケのフラグが true なら
-                if (sukeflag == true)
-                {
-                    //もしBボタンを押したら
-                    if (Input.GetButton("B"))
+                /* スケスケ */
+                case 2:
+                    //スケスケのフラグが true なら
+                    if (sukeflag == true)
                     {
-                        mr.material.color = mr.material.color - new Color32(0, 0, 0, 5);
-                    }
+                        //もしBボタンを押したら
+                        if (Input.GetButton("B"))
+                        {
+                            mr.material.color = mr.material.color - new Color32(0, 0, 0, 5);
+                        }
 
-                    if (mr.material.color.a <= 0)
-                    {
-                        Destroy(other.gameObject);
+                        if (mr.material.color.a <= 0)
+                        {
+                            Destroy(other.gameObject);
+                        }
                     }
-                }
-
-                break;
+                    break;
+            }
         }
     }
 

@@ -28,6 +28,7 @@ public class Stage3 : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
+            Debug.Log("Stage3クリア");
             stage3flag = true;
         }
     }

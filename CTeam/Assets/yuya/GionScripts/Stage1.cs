@@ -28,7 +28,7 @@ public class Stage1 : MonoBehaviour
     {
         if(other.gameObject.tag == "Player")
         {
-            Debug.Log("atari");
+            Debug.Log("Stage1クリア");
             stage1flag = true;
         }
     }
