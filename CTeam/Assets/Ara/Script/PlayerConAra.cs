@@ -222,11 +222,11 @@ public class PlayerConAra : MonoBehaviour
             rigidBody.MovePosition(rigidBody.position + velocity * Time.fixedDeltaTime);
         }
 
-        if (IsDamaged)
-        {
-            float level = Mathf.Abs(Mathf.Sin(Time.time * 10));
-            gameObject.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, level);
-        }
+        //if (IsDamaged)
+        //{
+        //    float level = Mathf.Abs(Mathf.Sin(Time.time * 10));
+        //    gameObject.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, level);
+        //}
     }
 
     private void OnCollisionStay(Collision collision)

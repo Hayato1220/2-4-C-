@@ -13,7 +13,7 @@ public class Seisei : MonoBehaviour
     [SerializeField]
     public float Speed = 0.01f;
 
-    public static int cubecount = 0;
+    public static int cubecount;
 
     public bool Bynok;
 
@@ -35,6 +35,9 @@ public class Seisei : MonoBehaviour
         BynokTarget1 = false;
         BynokTarget2 = false;
         BynokTarget3 = false;
+
+        cubecount = 0;
+
     }
 
     // Update is called once per frame
@@ -56,10 +59,9 @@ public class Seisei : MonoBehaviour
         if (ok == true)
         {
 
-            while (cubecount < 2)
+            while (cubecount == 0)
             {
                 SeiBrock();
-                cubecount++;
             }
 
             if (targetpos.x >= -8.3f)
@@ -101,10 +103,17 @@ public class Seisei : MonoBehaviour
     void SeiBrock()
     {
         Instantiate(obj, new Vector3(-6, 5, 96), Quaternion.identity);
+        cubecount++;
+        Invoke("zeroCount", 2);
     }
 
     public static int okcount()
     {
         return cubecount;
+    }
+
+    void zeroCount()
+    {
+        cubecount = 0;
     }
 }
