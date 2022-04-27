@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/asato/Scenes/taitoru.unity
     guid: 9e554247e1689c24993da36e180d7c51
+  - enabled: 1
+    path: Assets/Ara/Scene/GameOverAra.unity
+    guid: 05c541ef83ba1764c80b3e8660b9f183
   m_configObjects: {}

@@ -1,28 +1,22 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class AnimPlayAra : MonoBehaviour
+public class TitlBackAra : MonoBehaviour
 {
-    private Animation anim;
-
-    private bool getYumi;
-
     // Start is called before the first frame update
     void Start()
     {
-        anim = GetComponent<Animation>();
-        anim.Stop();
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        getYumi = ToumeiAraYari.yari();
-
-        if(getYumi == true)
+        if(Input.GetButton("B"))
         {
-            anim.Play();
+            SceneManager.LoadScene("shota");
         }
     }
 }

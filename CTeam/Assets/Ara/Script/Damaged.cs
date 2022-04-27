@@ -42,7 +42,7 @@ public class Damaged : MonoBehaviour
     Color GetAlphaColor(Color color)
     {
         time += Time.deltaTime * 5.0f * speed;
-        color.a = Mathf.Sin(time) * 0.5f + 0.1f;
+        color.a = Mathf.Sin(time) * 0.5f + 0.5f;
 
         return color;
     }
