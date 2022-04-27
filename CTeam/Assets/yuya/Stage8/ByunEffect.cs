@@ -2,35 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[DisallowMultipleComponent]
 public class ByunEffect : MonoBehaviour
 {
-    private TrailRenderer _trail;
-    int getChangenumber;
+    private GameObject byun_P;
+
+    private GameObject childObjbyun;
 
     void Start()
     {
-        _trail = GetComponent<TrailRenderer>();
-        _trail.enabled = false;
-    }
-
-    void Update()
-    {
-        getChangenumber = CopyGion.ChangeNumber();
-    }
-
-    void OnCollisionStay(Collision collision)
-    {
-        if (getChangenumber == 4)
-        {
-            if (collision.gameObject.layer == LayerMask.NameToLayer("Ground"))
-            {
-                _trail.enabled = false;
-            }
-            else
-            {
-                _trail.enabled = true;
-            }
-        }
+        byun_P = Resources.Load("ByunTrail") as GameObject;
+        childObjbyun = (GameObject)Instantiate(byun_P, this.transform.position, Quaternion.identity);
+        childObjbyun.transform.parent = this.gameObject.transform;
     }
 }
 

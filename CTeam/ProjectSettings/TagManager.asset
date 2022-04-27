@@ -16,6 +16,8 @@ TagManager:
   - ToumeiWall
   - White
   - EnemyBullet
+  - Clear
+  - Save
   layers:
   - Default
   - TransparentFX

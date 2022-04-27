@@ -2,29 +2,26 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[DisallowMultipleComponent]
 public class SubeEffect : MonoBehaviour
 {
-    private static bool layerflag;
+    private int objCount;
+
+    private GameObject sube_P;
+
+    private GameObject childObjsube;
 
     void Start()
     {
-        layerflag = false;
+        sube_P = Resources.Load("SubeBubbles") as GameObject;
+
+        Debug.Log("すべすべエフェクトを追加");
+        childObjsube = (GameObject)Instantiate(sube_P, this.transform.position + this.transform.up * -0.5f, Quaternion.identity);
+        childObjsube.transform.parent = this.gameObject.transform;
     }
 
-    void OnCollisionStay(Collision other)
+    void Update()
     {
-        if(other.gameObject.layer == LayerMask.NameToLayer("Ground"))
-        {
-            layerflag = true;
-        }
-        else
-        {
-            layerflag = false;
-        }
-    }
-
-    public static bool getflagLayer()
-    {
-        return layerflag;
+        objCount = this.gameObject.transform.childCount;
     }
 }
