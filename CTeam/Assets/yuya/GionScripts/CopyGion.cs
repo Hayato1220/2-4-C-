@@ -4,17 +4,18 @@ using UnityEngine;
 
 public class CopyGion : MonoBehaviour
 {
+    private bool getstage1flag;
+    private bool getstage2flag;
+    private bool getstage3flag;
+    private bool getstage4flag;
 
     private bool subepush;              //すべすべを使ったかどうかの管理用フラグ
-    public GameObject sube_P;           //すべすべにしたオブジェクトに入れるエフェクト用の変数
-
 
     private bool barapush;              //バラバラを使ったかどうかの管理用フラグ
     private GameObject baraObj;         //バラバラにしたオブジェクトを入れる変数
 
 
     public static bool byunpush;        //ビュンビュンを使ったかどうかの管理用フラグ
-    public GameObject byun_P;           //ビュンビュンを使ったオブジェクトに入れるエフェクト用の変数
     private GameObject childObjbyun;    //触っているオブジェクトに入っている子オブジェクトを入れる変数
 
 
@@ -64,6 +65,10 @@ public class CopyGion : MonoBehaviour
 
     void Update()
     {
+        getstage1flag = Stage1.GetStage1Flag();
+        getstage2flag = Stage2.GetStage2Flag();
+        getstage3flag = Stage3.GetStage3Flag();
+        getstage4flag = Stage4.GetStage4Flag();
 
         /*
          * Time.timeScale == 0 の時に擬音の切り替えができないように
@@ -92,6 +97,43 @@ public class CopyGion : MonoBehaviour
             {
                 pushflag = false;      //何回も処理しないように pushflag を false にする
 
+                /* ステージをクリアするごとに擬音を解放していく */
+                //if (getstage1flag == true)
+                //{
+                //    number++;
+                //    Debug.Log("ふわふわ解放");
+                //    if (number > 1)
+                //    {
+                //        number = 0;
+                //    }
+                //}
+                //else if (getstage1flag == false && getstage2flag == true)
+                //{
+                //    number++;
+                //    Debug.Log("スケスケ解放");
+                //    if (number > 2)
+                //    {
+                //        number = 0;
+                //    }
+                //} else if (getstage1flag == false && getstage2flag == false && getstage3flag == true)
+                //{
+                //    number++;
+                //    Debug.Log("ビュンビュン解放");
+                //    if (number > 3)
+                //    {
+                //        number = 0;
+                //    }
+                //}else if(getstage1flag == false && getstage2flag == false && getstage3flag == false && getstage4flag == true)
+                //{
+                //    number++;
+                //    Debug.Log("バラバラとネバネバ解放");
+                //    if(number > 5)
+                //    {
+                //        number = 0;
+                //    }
+                //}
+
+                /* ここのコメントアウト直したら全部の擬音使えます */
                 //もし number が5以下なら
                 if (number < 5)
                 {
@@ -139,36 +181,36 @@ public class CopyGion : MonoBehaviour
         }
 
 
-        /* バラバラ */
-        if (number == 2)                　 // number が2なら
-        {
-            baraflag = true;             // true の状態の時にしか処理が出来ないようにに管理しようとしてる
-        }
-        else                              // number が2以外なら
-        {
-            baraflag = false;
-        }
-
-
         /* スケスケ */
-        if (number == 3)                　 // number が3なら
+        if (number == 2)                　 // number が2なら
         {
             sukeflag = true;             // true の状態の時にしか処理が出来ないようにに管理しようとしてる
         }
-        else                              // number が3以外なら
+        else                              // number が2以外なら
         {
             sukeflag = false;
         }
 
 
         /* ビュンビュン */
-        if (number == 4)                　 // number が4なら
+        if (number == 3)                　 // number が3なら
         {
             byunflag = true;             // true の状態の時にしか処理が出来ないようにに管理しようとしてる
         }
-        else                              // number が4以外なら
+        else                              // number が3以外なら
         {
             byunflag = false;
+        }
+
+
+        /* バラバラ */
+        if (number == 4)                　 // number が4なら
+        {
+            baraflag = true;             // true の状態の時にしか処理が出来ないようにに管理しようとしてる
+        }
+        else                              // number が4以外なら
+        {
+            baraflag = false;
         }
 
         /* ネバネバ */
@@ -272,7 +314,7 @@ public class CopyGion : MonoBehaviour
 
 
                 /* バラバラ */
-                case 2:
+                case 4:
                     //バラバラのフラグが　true なら
                     if (baraflag == true)
                     {
@@ -428,7 +470,7 @@ public class CopyGion : MonoBehaviour
                     break;
 
                 /* ビュンビュン */
-                case 4:
+                case 3:
                     //ビュンビュンのフラグが true なら
                     if (byunflag == true)
                     {
@@ -495,28 +537,30 @@ public class CopyGion : MonoBehaviour
      */
     private void OnTriggerStay(Collider other)
     {
-        // number 3(スケスケ)と4(ネバネバ)の処理
-        switch (number)
+        if (other.gameObject.tag == "Object")
         {
+            // number 2(スケスケ)
+            switch (number)
+            {
 
-            /* スケスケ */
-            case 3:
-                //スケスケのフラグが true なら
-                if (sukeflag == true)
-                {
-                    //もしBボタンを押したら
-                    if (Input.GetButton("B"))
+                /* スケスケ */
+                case 2:
+                    //スケスケのフラグが true なら
+                    if (sukeflag == true)
                     {
-                        mr.material.color = mr.material.color - new Color32(0, 0, 0, 5);
-                    }
+                        //もしBボタンを押したら
+                        if (Input.GetButton("B"))
+                        {
+                            mr.material.color = mr.material.color - new Color32(0, 0, 0, 5);
+                        }
 
-                    if (mr.material.color.a <= 0)
-                    {
-                        Destroy(other.gameObject);
+                        if (mr.material.color.a <= 0)
+                        {
+                            Destroy(other.gameObject);
+                        }
                     }
-                }
-
-                break;
+                    break;
+            }
         }
     }
 
