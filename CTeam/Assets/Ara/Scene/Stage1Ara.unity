@@ -1101,7 +1101,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 53361091}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8, y: 1.8, z: 86}
+  m_LocalPosition: {x: 8, y: 1.8, z: -6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 805154956}
@@ -9217,6 +9217,7 @@ GameObject:
   m_Component:
   - component: {fileID: 494379911}
   - component: {fileID: 494379912}
+  - component: {fileID: 494379913}
   m_Layer: 0
   m_Name: SavePoint2
   m_TagString: Save
@@ -9251,6 +9252,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 10, y: 7, z: 5}
   m_Center: {x: 0, y: 3, z: 0}
+--- !u!114 &494379913
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 494379910}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86eefe51254665c4fb0c091122c7eeaf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &507992212
 GameObject:
   m_ObjectHideFlags: 0
@@ -13110,7 +13123,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 755114631}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8, y: 1.8, z: 86}
+  m_LocalPosition: {x: 8, y: 1.8, z: -6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -18015,6 +18028,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1042794842}
   - component: {fileID: 1042794843}
+  - component: {fileID: 1042794844}
   m_Layer: 0
   m_Name: SavePoint4
   m_TagString: Save
@@ -18049,6 +18063,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 10, y: 7, z: 5}
   m_Center: {x: 0, y: 3, z: 0}
+--- !u!114 &1042794844
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1042794841}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5e4b858bf19826409b04b8252519c22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1045887874 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4000011282690112, guid: e19241b9a3453e740be235c892acf28d,
@@ -26327,6 +26353,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1523100420}
   - component: {fileID: 1523100421}
+  - component: {fileID: 1523100422}
   m_Layer: 0
   m_Name: SavePoint1
   m_TagString: Save
@@ -26361,6 +26388,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 10, y: 7, z: 5}
   m_Center: {x: 0, y: 3, z: 0}
+--- !u!114 &1523100422
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1523100419}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3ab9a04076c67d4fb3b529e57be99d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1524957029
 GameObject:
   m_ObjectHideFlags: 0
@@ -34509,6 +34548,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1999001957}
   - component: {fileID: 1999001958}
+  - component: {fileID: 1999001959}
   m_Layer: 0
   m_Name: SavePoint3
   m_TagString: Save
@@ -34543,6 +34583,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 10, y: 7, z: 5}
   m_Center: {x: 0, y: 3, z: 0}
+--- !u!114 &1999001959
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1999001956}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 721403f50db220045a2fd7f78fa30976, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2005999908
 GameObject:
   m_ObjectHideFlags: 0
@@ -37339,7 +37391,7 @@ PrefabInstance:
     - target: {fileID: 7554154677962645652, guid: ca4c53c89aa815e419812712a504ef19,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 92
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7554154677962645652, guid: ca4c53c89aa815e419812712a504ef19,
         type: 3}
