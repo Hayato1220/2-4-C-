@@ -301,11 +301,13 @@ public class CopyGion : MonoBehaviour
                                 // もし触れているオブジェクトの高さが8以下なら
                                 if (Objpos.y < 8)
                                 {
+                                    other.gameObject.AddComponent<HuwaEffect>();
                                     rb.velocity = transform.up * 2;     //オブジェクトを上に上げる
                                 }
                             }
                             else // ObjName に入っている名前が"FloorMove"以外なら
                             {
+                                other.gameObject.AddComponent<HuwaEffect>();
                                 rb.velocity = transform.up * 2;         //オブジェクトを上に上げる
                             }
                         }
@@ -328,6 +330,8 @@ public class CopyGion : MonoBehaviour
                                 if (barapush == true)
                                 {
                                     barapush = false;   //ボタンを長押しが機能しないように false にする
+
+                                    other.gameObject.AddComponent<BaraEffect>();
 
                                     // i が4以下の時繰り返す処理
                                     for (int i = 0; i < 4; i++)
@@ -435,6 +439,8 @@ public class CopyGion : MonoBehaviour
                                     if (barapush == true)
                                     {
                                         barapush = false;   //ボタンを長押しが機能しないように false にする
+
+                                        other.gameObject.AddComponent<BaraEffect>();
 
                                         //触れているオブジェクトを半分にする
                                         for (int i = 0; i < 2; i++)
