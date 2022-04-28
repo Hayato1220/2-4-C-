@@ -55,9 +55,9 @@ public class CopyGion : MonoBehaviour
 
     void Start()
     {
-        subepush = false;
-        barapush = false;   // barapush を false で初期化
-        byunpush = false;   //　byunpush を false で初期化
+        subepush = true;   // subepush を true で初期化
+        barapush = true;   // barapush を true で初期化
+        byunpush = true;   //　byunpush を true で初期化
         number = 0;         //リトライした時に number を初期化
     }
 
@@ -90,7 +90,7 @@ public class CopyGion : MonoBehaviour
     void GionChange()
     {
         //もしXボタンを押したら
-        if (Input.GetButton("X"))
+        if (Input.GetButtonDown("X"))
         {
             // pushflag が true なら
             if (pushflag == true)
@@ -491,25 +491,6 @@ public class CopyGion : MonoBehaviour
                                 rb.AddForce((transform.forward * 10.0f) + (transform.up * 7.0f), ForceMode.VelocityChange);     //触れているオブジェクトを質量に関係なく飛ばす
 
                                 other.gameObject.AddComponent<ByunEffect>();
-
-                                //if (ObjCount == 0)
-                                //{
-                                //    childObjbyun = (GameObject)Instantiate(byun_P, other.transform.position, Quaternion.identity);
-                                //    childObjbyun.transform.parent = other.gameObject.transform;
-                                //}
-                                //else
-                                //{
-                                //    Destroy(other.transform.GetChild(0).gameObject);
-
-                                //    childObjbyun = (GameObject)Instantiate(byun_P, other.transform.position, Quaternion.identity);
-                                //    childObjbyun.transform.parent = other.gameObject.transform;
-                                //}
-
-                                /*
-                                 * 飛んで行ったオブジェクトに入っている
-                                 * 子オブジェクトを地面に着いたら破壊したい
-                                 */
-                                //Destroy(other.gameObject.transform.GetChild(0).gameObject);
                             }
 
                         }
