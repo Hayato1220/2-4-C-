@@ -11,8 +11,8 @@ public class SubeEffect : MonoBehaviour
 
     private GameObject childObjsube;
 
-    Ray ray;
-    RaycastHit hit;
+    private Ray ray;
+    private RaycastHit hit;
 
     void Start()
     {
