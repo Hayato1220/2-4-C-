@@ -6,8 +6,10 @@ using UnityEngine;
 public class ByunEffect : MonoBehaviour
 {
     private GameObject byun_P;
+    private GameObject byun_P2;
 
     private GameObject childObjbyun;
+    private GameObject childObjbyun2;
 
     Ray ray;
     RaycastHit hit;
@@ -17,6 +19,10 @@ public class ByunEffect : MonoBehaviour
         byun_P = Resources.Load("ByunTrail") as GameObject;
         childObjbyun = (GameObject)Instantiate(byun_P, this.transform.position, Quaternion.identity);
         childObjbyun.transform.parent = this.gameObject.transform;
+
+        byun_P2 = Resources.Load("byunEffect") as GameObject;
+        childObjbyun2 = (GameObject)Instantiate(byun_P2, this.transform.position + this.transform.forward * -0.5f, Quaternion.identity);
+        childObjbyun2.transform.parent = this.gameObject.transform;
     }
 
     void Update()
