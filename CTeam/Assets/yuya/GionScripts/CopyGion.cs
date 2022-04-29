@@ -49,6 +49,7 @@ public class CopyGion : MonoBehaviour
 
     string ObjName;                     //触れたオブジェクトの名前を受け取る変数
 
+
     /* エフェクト（パーティクル）用変数 */
     int ObjCount;
 
@@ -59,6 +60,7 @@ public class CopyGion : MonoBehaviour
         barapush = true;   // barapush を true で初期化
         byunpush = true;   //　byunpush を true で初期化
         number = 0;         //リトライした時に number を初期化
+
     }
 
 
