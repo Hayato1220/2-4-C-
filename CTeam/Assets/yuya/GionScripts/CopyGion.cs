@@ -53,6 +53,8 @@ public class CopyGion : MonoBehaviour
     /* エフェクト（パーティクル）用変数 */
     int ObjCount;
 
+    private GameObject byun_P2;
+    private GameObject childObjbyun2;
 
     void Start()
     {
@@ -61,9 +63,11 @@ public class CopyGion : MonoBehaviour
         byunpush = true;   //　byunpush を true で初期化
         number = 0;         //リトライした時に number を初期化
 
+        byun_P2 = Resources.Load("byunEffect") as GameObject;
     }
 
-
+    Ray ray2;
+    RaycastHit hit;
 
     void Update()
     {
@@ -81,6 +85,21 @@ public class CopyGion : MonoBehaviour
 
             GionChangeMove();   //使う擬音のフラグ管理
 
+            ray2 = new Ray(transform.position + transform.up * 0.7f, transform.forward);
+
+            if (Physics.Raycast(ray2, out hit, 0.2f))
+            {
+                if (hit.collider.CompareTag("Object"))
+                {
+                    //if (Input.GetButtonDown("B"))
+                    //{
+                        childObjbyun2 = (GameObject)Instantiate(byun_P2, this.transform.position + this.transform.forward * 0.5f, Quaternion.identity);
+                        childObjbyun2.transform.parent = this.gameObject.transform;
+                        Destroy(childObjbyun2, 1.0f);
+                    //}
+                }
+            }
+            Debug.DrawRay(ray2.origin, ray2.direction, Color.blue);
         }
     }
 
