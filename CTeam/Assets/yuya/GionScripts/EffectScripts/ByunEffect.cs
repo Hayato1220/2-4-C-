@@ -34,16 +34,11 @@ public class ByunEffect : MonoBehaviour
         if (Physics.Raycast(ray, out hit, 0.5f))
         {
             childObjbyun.SetActive(false);
-            //Debug.Log(hit.collider.gameObject.transform.position);
             Debug.DrawRay(ray.origin, ray.direction, Color.red, 3.0f);
         }
         else
         {
             childObjbyun.SetActive(true);
-            //if (Input.GetButtonDown("B"))
-            //{
-            //    childObjbyun2.SetActive(true);
-            //}
         }
 
 
@@ -73,53 +68,47 @@ public class ByunEffect : MonoBehaviour
          */
         // プレイヤーがボックスに触れて飛ばすときに一回だけ発動させたい
         // 今のところプレイヤーが触れなくて出る、最初の一回目はエフェクトが出ない
-        if (Physics.BoxCast(transform.position, Vector3.one * 0.5f, transform.forward, out hit, Quaternion.identity, 0.1f))
-        {
-            //Debug.Log(hit.transform.name);
-            if (hit.collider.CompareTag("Player"))
-            {
-                Debug.Log("Playerタグに当たっています。");
-                childObjbyun2 = (GameObject)Instantiate(byun_P2, hit.collider.transform.position + hit.collider.transform.forward * 0.5f, Quaternion.identity);
-                childObjbyun2.transform.parent = hit.collider.gameObject.transform;
-                Destroy(childObjbyun2, 1.0f);
-            }
-        }
-        else
-        {
-            if (Physics.BoxCast(transform.position, Vector3.one * 0.5f, -transform.forward, out hit, Quaternion.identity, 0.1f))
-            {
-                if (hit.collider.CompareTag("Player"))
-                {
-                    childObjbyun2 = (GameObject)Instantiate(byun_P2, hit.collider.transform.position + hit.collider.transform.forward * 0.5f, Quaternion.identity);
-                    childObjbyun2.transform.parent = hit.collider.gameObject.transform;
-                    Destroy(childObjbyun2, 1.0f);
-                }
-            }
-        }
-        else
-        {
-            if (Physics.BoxCast(transform.position, Vector3.one * 0.5f, transform.right, out hit, Quaternion.identity, 0.1f))
-            {
-                if (hit.collider.CompareTag("Player"))
-                {
-                    childObjbyun2 = (GameObject)Instantiate(byun_P2, hit.collider.transform.position + hit.collider.transform.forward * 0.5f, Quaternion.identity);
-                    childObjbyun2.transform.parent = hit.collider.gameObject.transform;
-                    Destroy(childObjbyun2, 1.0f);
-                }
-            }
-        }
-        else
-        {
-            if (Physics.BoxCast(transform.position, Vector3.one * 0.5f, -transform.right, out hit, Quaternion.identity, 0.1f))
-            {
-                if (hit.collider.CompareTag("Player"))
-                {
-                    childObjbyun2 = (GameObject)Instantiate(byun_P2, hit.collider.transform.position + hit.collider.transform.forward * 0.5f, Quaternion.identity);
-                    childObjbyun2.transform.parent = hit.collider.gameObject.transform;
-                    Destroy(childObjbyun2, 1.0f);
-                }
-            }
-        }
+        //if (Physics.BoxCast(transform.position, Vector3.one * 0.5f, transform.forward, out hit, Quaternion.identity, 0.1f))
+        //{
+        //    //Debug.Log(hit.transform.name);
+        //    if (hit.collider.CompareTag("Player"))
+        //    {
+        //        Debug.Log("正面に当たっています。");
+        //        childObjbyun2 = (GameObject)Instantiate(byun_P2, hit.collider.transform.position + hit.collider.transform.forward * 0.5f, Quaternion.identity);
+        //        childObjbyun2.transform.parent = hit.collider.gameObject.transform;
+        //        Destroy(childObjbyun2, 1.0f);
+        //    }
+        //}
+        //else if (Physics.BoxCast(transform.position, Vector3.one * 0.5f, -transform.forward, out hit, Quaternion.identity, 0.1f))
+        //{
+        //    if (hit.collider.CompareTag("Player"))
+        //    {
+        //        Debug.Log("背面に当たっています。");
+        //        childObjbyun2 = (GameObject)Instantiate(byun_P2, hit.collider.transform.position + hit.collider.transform.forward * 0.5f, Quaternion.identity);
+        //        childObjbyun2.transform.parent = hit.collider.gameObject.transform;
+        //        Destroy(childObjbyun2, 1.0f);
+        //    }
+        //}
+        //else if (Physics.BoxCast(transform.position, Vector3.one * 0.5f, transform.right, out hit, Quaternion.identity, 0.1f))
+        //{
+        //    if (hit.collider.CompareTag("Player"))
+        //    {
+        //        Debug.Log("右側面に当たっています。");
+        //        childObjbyun2 = (GameObject)Instantiate(byun_P2, hit.collider.transform.position + hit.collider.transform.forward * 0.5f, Quaternion.identity);
+        //        childObjbyun2.transform.parent = hit.collider.gameObject.transform;
+        //        Destroy(childObjbyun2, 1.0f);
+        //    }
+        //}
+        //else if (Physics.BoxCast(transform.position, Vector3.one * 0.5f, -transform.right, out hit, Quaternion.identity, 0.1f))
+        //{
+        //    if (hit.collider.CompareTag("Player"))
+        //    {
+        //        Debug.Log("左側面に当たっています。");
+        //        childObjbyun2 = (GameObject)Instantiate(byun_P2, hit.collider.transform.position + hit.collider.transform.forward * 0.5f, Quaternion.identity);
+        //        childObjbyun2.transform.parent = hit.collider.gameObject.transform;
+        //        Destroy(childObjbyun2, 1.0f);
+        //    }
+        //}
     }
 
 
