@@ -72,23 +72,56 @@ public class ByunEffect : MonoBehaviour
          *                 その他後ろはリファレンス参照
          */
         // プレイヤーがボックスに触れて飛ばすときに一回だけ発動させたい
-        // 今のところプレイヤーが触れなくて出る、最初の一回目はエフェクトが出ない、
-        //if (Physics.BoxCast(transform.position, Vector3.one, -transform.forward, out hit, Quaternion.identity))
-        //{
-        //    //Debug.Log(hit.transform.name);
-        //    if (hit.collider.CompareTag("Player"))
-        //    {
-        //        if (Input.GetButtonDown("B"))
-        //        {
-        //            Debug.Log(hit.transform.name);
-        //            //var playerfor = hit.collider.gameObject.transform.forward;
-        //            childObjbyun2 = (GameObject)Instantiate(byun_P2, hit.collider.transform.position + hit.collider.transform.forward * 0.5f, Quaternion.identity);
-        //            childObjbyun2.transform.parent = hit.collider.gameObject.transform;
-        //            Destroy(childObjbyun2, 1.0f);
-        //        }
-        //    }
-        //}
+        // 今のところプレイヤーが触れなくて出る、最初の一回目はエフェクトが出ない
+        if (Physics.BoxCast(transform.position, Vector3.one * 0.5f, transform.forward, out hit, Quaternion.identity, 0.1f))
+        {
+            //Debug.Log(hit.transform.name);
+            if (hit.collider.CompareTag("Player"))
+            {
+                Debug.Log("Playerタグに当たっています。");
+                childObjbyun2 = (GameObject)Instantiate(byun_P2, hit.collider.transform.position + hit.collider.transform.forward * 0.5f, Quaternion.identity);
+                childObjbyun2.transform.parent = hit.collider.gameObject.transform;
+                Destroy(childObjbyun2, 1.0f);
+            }
+        }
+        else
+        {
+            if (Physics.BoxCast(transform.position, Vector3.one * 0.5f, -transform.forward, out hit, Quaternion.identity, 0.1f))
+            {
+                if (hit.collider.CompareTag("Player"))
+                {
+                    childObjbyun2 = (GameObject)Instantiate(byun_P2, hit.collider.transform.position + hit.collider.transform.forward * 0.5f, Quaternion.identity);
+                    childObjbyun2.transform.parent = hit.collider.gameObject.transform;
+                    Destroy(childObjbyun2, 1.0f);
+                }
+            }
+        }
+        else
+        {
+            if (Physics.BoxCast(transform.position, Vector3.one * 0.5f, transform.right, out hit, Quaternion.identity, 0.1f))
+            {
+                if (hit.collider.CompareTag("Player"))
+                {
+                    childObjbyun2 = (GameObject)Instantiate(byun_P2, hit.collider.transform.position + hit.collider.transform.forward * 0.5f, Quaternion.identity);
+                    childObjbyun2.transform.parent = hit.collider.gameObject.transform;
+                    Destroy(childObjbyun2, 1.0f);
+                }
+            }
+        }
+        else
+        {
+            if (Physics.BoxCast(transform.position, Vector3.one * 0.5f, -transform.right, out hit, Quaternion.identity, 0.1f))
+            {
+                if (hit.collider.CompareTag("Player"))
+                {
+                    childObjbyun2 = (GameObject)Instantiate(byun_P2, hit.collider.transform.position + hit.collider.transform.forward * 0.5f, Quaternion.identity);
+                    childObjbyun2.transform.parent = hit.collider.gameObject.transform;
+                    Destroy(childObjbyun2, 1.0f);
+                }
+            }
+        }
     }
+
 
     void OnDrawGizmos()
     {
