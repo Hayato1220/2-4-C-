@@ -171,7 +171,7 @@ public class PauseSelect : MonoBehaviour
     {
         yield return new WaitForSecondsRealtime(1.5f);
 
-        SceneManager.LoadScene("Stage1Ara");
+        SceneManager.LoadScene("AraKouStage");
         pushScene = false;
         Time.timeScale = 1;
     }
