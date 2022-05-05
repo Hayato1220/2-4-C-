@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class CopyGion : MonoBehaviour
 {
-    private bool getstage1flag;
-    private bool getstage2flag;
-    private bool getstage3flag;
-    private bool getstage4flag;
+    private bool getstage1flag;         // ステージ 1 をクリアしたことを管理するフラグを受け取る用変数
+    private bool getstage2flag;         // ステージ 2 をクリアしたことを管理するフラグを受け取る用変数
+    private bool getstage3flag;         // ステージ 3 をクリアしたことを管理するフラグを受け取る用変数
+    private bool getstage4flag;         // ステージ 4 をクリアしたことを管理するフラグを受け取る用変数  
 
     private bool subepush;              //すべすべを使ったかどうかの管理用フラグ
 
@@ -47,14 +47,14 @@ public class CopyGion : MonoBehaviour
 
     public PhysicMaterial nebaneba;
 
-    string ObjName;                     //触れたオブジェクトの名前を受け取る変数
+    string ObjName;                     // 触れたオブジェクトの名前を受け取る変数
 
 
     /* エフェクト（パーティクル）用変数 */
-    int ObjCount;
+    //int ObjCount;                     // 子オブジェクトを数える用変数
 
-    private GameObject byun_P2;
-    private GameObject childObjbyun2;
+    private GameObject byun_P2;         // ビュンビュンの 2 個目のエフェクトを入れる用変数
+    private GameObject childObjbyun2;   // Instantiate で発生させたエフェクトを入れる用変数
 
     void Start()
     {
@@ -71,10 +71,10 @@ public class CopyGion : MonoBehaviour
 
     void Update()
     {
-        getstage1flag = Stage1.GetStage1Flag();
-        getstage2flag = Stage2.GetStage2Flag();
-        getstage3flag = Stage3.GetStage3Flag();
-        getstage4flag = Stage4.GetStage4Flag();
+        getstage1flag = Stage1.GetStage1Flag();     // Stage1 スクリプトの stage1flag を受け取る
+        getstage2flag = Stage2.GetStage2Flag();     // Stage2 スクリプトの stage2flag を受け取る
+        getstage3flag = Stage3.GetStage3Flag();     // Stage3 スクリプトの stage3flag を受け取る
+        getstage4flag = Stage4.GetStage4Flag();     // Stage4 スクリプトの stage4flag を受け取る
 
         /*
          * Time.timeScale == 0 の時に擬音の切り替えができないように
@@ -104,52 +104,54 @@ public class CopyGion : MonoBehaviour
                 pushflag = false;      //何回も処理しないように pushflag を false にする
 
                 /* ステージをクリアするごとに擬音を解放していく */
-                //if (getstage1flag == true)
-                //{
-                //    number++;
-                //    Debug.Log("ふわふわ解放");
-                //    if (number > 1)
-                //    {
-                //        number = 0;
-                //    }
-                //}
-                //else if (getstage1flag == false && getstage2flag == true)
-                //{
-                //    number++;
-                //    Debug.Log("スケスケ解放");
-                //    if (number > 2)
-                //    {
-                //        number = 0;
-                //    }
-                //} else if (getstage1flag == false && getstage2flag == false && getstage3flag == true)
-                //{
-                //    number++;
-                //    Debug.Log("ビュンビュン解放");
-                //    if (number > 3)
-                //    {
-                //        number = 0;
-                //    }
-                //}else if(getstage1flag == false && getstage2flag == false && getstage3flag == false && getstage4flag == true)
-                //{
-                //    number++;
-                //    Debug.Log("バラバラとネバネバ解放");
-                //    if(number > 5)
-                //    {
-                //        number = 0;
-                //    }
-                //}
+                if (getstage1flag == true)
+                {
+                    number++;
+                    Debug.Log("ふわふわ解放");
+                    if (number > 1)
+                    {
+                        number = 0;
+                    }
+                }
+                else if (getstage1flag == false && getstage2flag == true)
+                {
+                    number++;
+                    Debug.Log("スケスケ解放");
+                    if (number > 2)
+                    {
+                        number = 0;
+                    }
+                }
+                else if (getstage1flag == false && getstage2flag == false && getstage3flag == true)
+                {
+                    number++;
+                    Debug.Log("ビュンビュン解放");
+                    if (number > 3)
+                    {
+                        number = 0;
+                    }
+                }
+                else if (getstage1flag == false && getstage2flag == false && getstage3flag == false && getstage4flag == true)
+                {
+                    number++;
+                    Debug.Log("バラバラとネバネバ解放");
+                    if (number > 5)
+                    {
+                        number = 0;
+                    }
+                }
 
                 /* ここのコメントアウト直したら全部の擬音使えます */
                 //もし number が5以下なら
-                if (number < 5)
-                {
-                    number++;         // number を1ずつ増やす
-                }
-                //もし number が5以下以外なら
-                else
-                {
-                    number = 0;      // number を0にして最初に戻す
-                }
+                //if (number < 5)
+                //{
+                //    number++;         // number を1ずつ増やす
+                //}
+                ////もし number が5以下以外なら
+                //else
+                //{
+                //    number = 0;      // number を0にして最初に戻す
+                //}
             }
         }
         //Xボタンを押していない間は
@@ -254,7 +256,7 @@ public class CopyGion : MonoBehaviour
             rb = other.gameObject.GetComponent<Rigidbody>();                //触れたオブジェクトの Rigidbody を取得
 
 
-            ObjCount = other.gameObject.transform.childCount;
+            //ObjCount = other.gameObject.transform.childCount;
 
             /* * * * * * * * * *
              * 0:すべすべ      *
@@ -496,8 +498,10 @@ public class CopyGion : MonoBehaviour
 
                                 rb.AddForce((transform.forward * 10.0f) + (transform.up * 7.0f), ForceMode.VelocityChange);     //触れているオブジェクトを質量に関係なく飛ばす
 
-                                other.gameObject.AddComponent<ByunEffect>();
 
+                                other.gameObject.AddComponent<ByunEffect>();    //触れているオブジェクトに対して ByunEffect スクリプトを入れている
+
+                                //プレイヤーの子オブジェクトにエフェクトを入れて発生させる、 1 秒後に破壊
                                 childObjbyun2 = (GameObject)Instantiate(byun_P2, this.transform.position + this.transform.forward * 0.5f + this.transform.up * 0.7f, Quaternion.identity);
                                 childObjbyun2.transform.parent = this.gameObject.transform;
                                 Destroy(childObjbyun2, 1.0f);
