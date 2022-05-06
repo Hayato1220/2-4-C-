@@ -104,54 +104,54 @@ public class CopyGion : MonoBehaviour
                 pushflag = false;      //何回も処理しないように pushflag を false にする
 
                 /* ステージをクリアするごとに擬音を解放していく */
-                if (getstage1flag == true)
-                {
-                    number++;
-                    Debug.Log("ふわふわ解放");
-                    if (number > 1)
-                    {
-                        number = 0;
-                    }
-                }
-                else if (getstage1flag == false && getstage2flag == true)
-                {
-                    number++;
-                    Debug.Log("スケスケ解放");
-                    if (number > 2)
-                    {
-                        number = 0;
-                    }
-                }
-                else if (getstage1flag == false && getstage2flag == false && getstage3flag == true)
-                {
-                    number++;
-                    Debug.Log("ビュンビュン解放");
-                    if (number > 3)
-                    {
-                        number = 0;
-                    }
-                }
-                else if (getstage1flag == false && getstage2flag == false && getstage3flag == false && getstage4flag == true)
-                {
-                    number++;
-                    Debug.Log("バラバラとネバネバ解放");
-                    if (number > 5)
-                    {
-                        number = 0;
-                    }
-                }
+                //if (getstage1flag == true)
+                //{
+                //    number++;
+                //    Debug.Log("ふわふわ解放");
+                //    if (number > 1)
+                //    {
+                //        number = 0;
+                //    }
+                //}
+                //else if (getstage1flag == false && getstage2flag == true)
+                //{
+                //    number++;
+                //    Debug.Log("スケスケ解放");
+                //    if (number > 2)
+                //    {
+                //        number = 0;
+                //    }
+                //}
+                //else if (getstage1flag == false && getstage2flag == false && getstage3flag == true)
+                //{
+                //    number++;
+                //    Debug.Log("ビュンビュン解放");
+                //    if (number > 3)
+                //    {
+                //        number = 0;
+                //    }
+                //}
+                //else if (getstage1flag == false && getstage2flag == false && getstage3flag == false && getstage4flag == true)
+                //{
+                //    number++;
+                //    Debug.Log("バラバラとネバネバ解放");
+                //    if (number > 5)
+                //    {
+                //        number = 0;
+                //    }
+                //}
 
                 /* ここのコメントアウト直したら全部の擬音使えます */
                 //もし number が5以下なら
-                //if (number < 5)
-                //{
-                //    number++;         // number を1ずつ増やす
-                //}
-                ////もし number が5以下以外なら
-                //else
-                //{
-                //    number = 0;      // number を0にして最初に戻す
-                //}
+                if (number < 5)
+                {
+                    number++;         // number を1ずつ増やす
+                }
+                //もし number が5以下以外なら
+                else
+                {
+                    number = 0;      // number を0にして最初に戻す
+                }
             }
         }
         //Xボタンを押していない間は
