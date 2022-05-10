@@ -9,6 +9,7 @@ public class CopyGion : MonoBehaviour
     private bool getstage3flag;         // ステージ 3 をクリアしたことを管理するフラグを受け取る用変数
     private bool getstage4flag;         // ステージ 4 をクリアしたことを管理するフラグを受け取る用変数  
 
+    private bool nebapush;
     private bool subepush;              //すべすべを使ったかどうかの管理用フラグ
 
     private bool barapush;              //バラバラを使ったかどうかの管理用フラグ
@@ -50,6 +51,9 @@ public class CopyGion : MonoBehaviour
     string ObjName;                     // 触れたオブジェクトの名前を受け取る変数
 
 
+    private AudioSource Asource;
+    public AudioClip nebasound;
+
     /* エフェクト（パーティクル）用変数 */
     //int ObjCount;                     // 子オブジェクトを数える用変数
 
@@ -61,6 +65,7 @@ public class CopyGion : MonoBehaviour
         subepush = true;   // subepush を true で初期化
         barapush = true;   // barapush を true で初期化
         byunpush = true;   //　byunpush を true で初期化
+        nebapush = true;
         number = 0;         //リトライした時に number を初期化
 
         byun_P2 = Resources.Load("byunEffect") as GameObject;
@@ -523,7 +528,17 @@ public class CopyGion : MonoBehaviour
                         //もしBボタンを押したら
                         if (Input.GetButton("B"))
                         {
-                            ObjCollider.material = nebaneba;    //触れているオブジェクトの material に nebaneba を入れる
+                            if (nebapush == true)
+                            {
+                                ObjCollider.material = nebaneba;    //触れているオブジェクトの material に nebaneba を入れる
+                                Asource = GetComponent<AudioSource>();
+                                Asource.PlayOneShot(nebasound, 10.0f);
+                                nebapush = false;
+                            }
+                        }
+                        else
+                        {
+                            nebapush = true;
                         }
                     }
                     break;
