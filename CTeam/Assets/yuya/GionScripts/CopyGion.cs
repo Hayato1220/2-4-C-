@@ -531,8 +531,7 @@ public class CopyGion : MonoBehaviour
                             if (nebapush == true)
                             {
                                 ObjCollider.material = nebaneba;    //触れているオブジェクトの material に nebaneba を入れる
-                                Asource = GetComponent<AudioSource>();
-                                Asource.PlayOneShot(nebasound, 10.0f);
+                                other.gameObject.AddComponent<nebaSE>();
                                 nebapush = false;
                             }
                         }
