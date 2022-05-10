@@ -7,7 +7,7 @@ public class Damaged : MonoBehaviour
 {
 
     //public
-    public float speed = 10.0f;
+    public float speed = 2.0f;
     public bool getDamaged;
 
     //private
@@ -42,7 +42,7 @@ public class Damaged : MonoBehaviour
     Color GetAlphaColor(Color color)
     {
         time += Time.deltaTime * 5.0f * speed;
-        color.a = Mathf.Sin(time) * 0.5f + 0.5f;
+        color.a = Mathf.Sin(time) * 0.5f + 0.1f;
 
         return color;
     }

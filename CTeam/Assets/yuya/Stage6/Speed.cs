@@ -17,8 +17,6 @@ public class Speed : MonoBehaviour
 
 
 
-
-
     void Start()
     {
         speedflag = false;                          // speedflag を false で初期化
@@ -56,11 +54,19 @@ public class Speed : MonoBehaviour
             ////もし speedflag が true なら
             //if (speedflag == true)
             //{
+            speedflag = true;
 
-                Destroy(DestroyWall);       // DestroyWall に入れたオブジェクトを破壊する
+            Destroy(DestroyWall);       // DestroyWall に入れたオブジェクトを破壊する
 
-                Destroy(this.gameObject);   //スクリプトがアタッチされているオブジェクトを破壊する
+            Destroy(this.gameObject);   //スクリプトがアタッチされているオブジェクトを破壊する
+
             //}
         }
+    }
+
+
+    public static bool GetSpeedFlag()
+    {
+        return speedflag;
     }
 }

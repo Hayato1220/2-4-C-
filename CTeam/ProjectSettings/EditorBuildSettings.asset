@@ -9,8 +9,8 @@ EditorBuildSettings:
     path: Assets/shota/Scenes/shota.unity
     guid: f0768881fd6ff294098f743adeba5c8a
   - enabled: 1
-    path: Assets/Ara/Scene/Stage1Ara.unity
-    guid: 73895888e185c8548987fe340969d7c5
+    path: Assets/Ara/Scene/AraKouStage.unity
+    guid: c29272bdef3619d49a116cc4718091c1
   - enabled: 1
     path: Assets/asato/Scenes/taitoru.unity
     guid: 9e554247e1689c24993da36e180d7c51

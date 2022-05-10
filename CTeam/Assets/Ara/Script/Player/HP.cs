@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class HP : MonoBehaviour
 {
@@ -54,6 +55,11 @@ public class HP : MonoBehaviour
         //{
         //    image.color = Color.clear;
         //}
+
+        if(currentHp <= 0)
+        {
+            SceneManager.LoadScene("GameOverAra");
+        }
     }
 
     //ColliderオブジェクトのIsTriggerにチェック入れること。
@@ -88,7 +94,7 @@ public class HP : MonoBehaviour
         {
             okDamaged = true;
 
-            Invoke("TenmetuNo", 1f);
+            Invoke("TenmetuNo", 0.5f);
 
             float damage = 10f;
             Debug.Log("damage : " + damage);

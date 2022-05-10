@@ -165,7 +165,7 @@ public class PlayerConAra : MonoBehaviour
     private void Jump()
     {
         //　接地している場合
-        if (isGrounded)
+        if (isGrounded && rigidBody.velocity.y >= 0)
         {
             //　ジャンプ処理
             if (Input.GetButton("Y"))

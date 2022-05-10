@@ -109,10 +109,10 @@ Material:
     - _Parallax: 0.02
     - _ReceiveShadowRate: 1
     - _RimFactor: 1
-    - _RimFresnelPower: 1
-    - _RimLift: 0.1
+    - _RimFresnelPower: 100
+    - _RimLift: 1
     - _RimLightingMix: 0
-    - _RimReverse: 0.8
+    - _RimReverse: 1
     - _ShadeShift: 0
     - _ShadeToony: 0.9
     - _ShadingGradeRate: 1
@@ -125,7 +125,7 @@ Material:
     - _UvAnimScrollY: 0
     - _ZWrite: 1
     m_Colors:
-    - _Color: {r: 0.5019608, g: 1, b: 0.65572244, a: 1}
+    - _Color: {r: 0, g: 0, b: 0, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _OutlineColor: {r: 0, g: 0, b: 0, a: 1}
     - _RimColor: {r: 0, g: 1, b: 1, a: 1}

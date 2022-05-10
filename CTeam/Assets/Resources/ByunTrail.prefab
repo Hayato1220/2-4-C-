@@ -4795,7 +4795,7 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4133847996067549845}
   serializedVersion: 6
-  lengthInSec: 2
+  lengthInSec: 1
   simulationSpeed: 1
   stopAction: 0
   cullingMode: 0
@@ -5737,27 +5737,18 @@ ParticleSystem:
         m_Curve:
         - serializedVersion: 3
           time: 0
-          value: 0
-          inSlope: 2.413811
-          outSlope: 2.413811
-          tangentMode: 34
+          value: 0.53845966
+          inSlope: 0.8853232
+          outSlope: 0.8853232
+          tangentMode: 0
           weightedMode: 0
           inWeight: 0
-          outWeight: 0.33333334
+          outWeight: 0.2085308
         - serializedVersion: 3
-          time: 0.20154288
-          value: 0.48648643
-          inSlope: 0.34724993
-          outSlope: 0.34724993
-          tangentMode: 34
-          weightedMode: 0
-          inWeight: 0.33333334
-          outWeight: 0.33333334
-        - serializedVersion: 3
-          time: 0.48449716
+          time: 1
           value: 0
-          inSlope: -1.7193111
-          outSlope: -1.7193111
+          inSlope: -0.53845966
+          outSlope: -0.53845966
           tangentMode: 34
           weightedMode: 0
           inWeight: 0.33333334
@@ -8703,7 +8694,7 @@ ParticleSystem:
     shadowBias: 1
     worldSpace: 0
     dieWithParticles: 0
-    sizeAffectsWidth: 0
+    sizeAffectsWidth: 1
     sizeAffectsLifetime: 0
     inheritParticleColor: 0
     generateLightingData: 1
@@ -9473,7 +9464,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10301, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 0}
   - {fileID: 2100000, guid: 6002e95516a2c694381d35482b44d61e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
