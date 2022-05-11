@@ -9,6 +9,7 @@ public class CopyGion : MonoBehaviour
     private bool getstage3flag;         // ステージ 3 をクリアしたことを管理するフラグを受け取る用変数
     private bool getstage4flag;         // ステージ 4 をクリアしたことを管理するフラグを受け取る用変数  
 
+    private bool nebapush;
     private bool subepush;              //すべすべを使ったかどうかの管理用フラグ
 
     private bool barapush;              //バラバラを使ったかどうかの管理用フラグ
@@ -50,6 +51,12 @@ public class CopyGion : MonoBehaviour
     string ObjName;                     // 触れたオブジェクトの名前を受け取る変数
 
 
+    const string SNDNAME_neba = "Sound/nebaneba4";
+
+    AudioClip audioClip_neba;
+
+    AudioSource audioSource_neba;
+
     /* エフェクト（パーティクル）用変数 */
     //int ObjCount;                     // 子オブジェクトを数える用変数
 
@@ -61,9 +68,13 @@ public class CopyGion : MonoBehaviour
         subepush = true;   // subepush を true で初期化
         barapush = true;   // barapush を true で初期化
         byunpush = true;   //　byunpush を true で初期化
+        nebapush = true;
         number = 0;         //リトライした時に number を初期化
 
         byun_P2 = Resources.Load("byunEffect") as GameObject;
+
+        audioClip_neba = Resources.Load(SNDNAME_neba, typeof(AudioClip)) as AudioClip;
+        audioSource_neba = gameObject.AddComponent<AudioSource>();
     }
 
     Ray ray2;
@@ -523,7 +534,21 @@ public class CopyGion : MonoBehaviour
                         //もしBボタンを押したら
                         if (Input.GetButton("B"))
                         {
-                            ObjCollider.material = nebaneba;    //触れているオブジェクトの material に nebaneba を入れる
+                            if (nebapush == true)
+                            {
+                                ObjCollider.material = nebaneba;    //触れているオブジェクトの material に nebaneba を入れる
+
+                                //other.gameObject.AddComponent<nebaSE>();
+
+                                audioSource_neba.clip = audioClip_neba;
+                                audioSource_neba.volume = 1.0f;
+                                audioSource_neba.Play();
+                                nebapush = false;
+                            }
+                        }
+                        else
+                        {
+                            nebapush = true;
                         }
                     }
                     break;
