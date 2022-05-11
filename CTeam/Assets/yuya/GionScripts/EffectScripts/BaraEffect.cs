@@ -14,6 +14,7 @@ public class BaraEffect : MonoBehaviour
         bara_P = Resources.Load("BaraEffect") as GameObject;
         childObjbara = (GameObject)Instantiate(bara_P, this.transform.position, Quaternion.identity);
         childObjbara.transform.parent = this.gameObject.transform;
+        Destroy(childObjbara, 1.0f);
     }
 
     void Update()
