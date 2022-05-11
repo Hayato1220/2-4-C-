@@ -9,11 +9,15 @@ public class HuwaEffect : MonoBehaviour
 
     private GameObject childObjhuwa;
 
+    private Rigidbody rb;
+
     Ray ray;
     RaycastHit hit;
 
     void Start()
     {
+        rb = transform.GetComponent<Rigidbody>();
+
         huwa_P = Resources.Load("HuwaEffect") as GameObject;
         childObjhuwa = (GameObject)Instantiate(huwa_P, this.transform.position + this.transform.up * -0.49f, Quaternion.identity);
         childObjhuwa.transform.parent = this.gameObject.transform;
@@ -22,6 +26,11 @@ public class HuwaEffect : MonoBehaviour
     void Update()
     {
         ray = new Ray(transform.position, -transform.up);
+
+        if(rb.velocity.y < -2.8f)
+        {
+            childObjhuwa.SetActive(false);
+        }
 
         if (Physics.Raycast(ray, out hit, 1.0f))
         {

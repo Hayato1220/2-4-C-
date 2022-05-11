@@ -7,7 +7,7 @@ public class Clear1 : MonoBehaviour
 {
     void Update()
     {
-        if (Input.GetButton("Y"))
+        if (Input.GetButton("B"))
         {
             SceneManager.LoadScene("shota");
         }
