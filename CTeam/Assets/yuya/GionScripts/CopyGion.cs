@@ -51,8 +51,11 @@ public class CopyGion : MonoBehaviour
     string ObjName;                     // 触れたオブジェクトの名前を受け取る変数
 
 
-    private AudioSource Asource;
-    public AudioClip nebasound;
+    const string SNDNAME_neba = "Sound/nebaneba4";
+
+    AudioClip audioClip_neba;
+
+    AudioSource audioSource_neba;
 
     /* エフェクト（パーティクル）用変数 */
     //int ObjCount;                     // 子オブジェクトを数える用変数
@@ -69,6 +72,9 @@ public class CopyGion : MonoBehaviour
         number = 0;         //リトライした時に number を初期化
 
         byun_P2 = Resources.Load("byunEffect") as GameObject;
+
+        audioClip_neba = Resources.Load(SNDNAME_neba, typeof(AudioClip)) as AudioClip;
+        audioSource_neba = gameObject.AddComponent<AudioSource>();
     }
 
     Ray ray2;
@@ -109,54 +115,54 @@ public class CopyGion : MonoBehaviour
                 pushflag = false;      //何回も処理しないように pushflag を false にする
 
                 /* ステージをクリアするごとに擬音を解放していく */
-                //if (getstage1flag == true)
-                //{
-                //    number++;
-                //    Debug.Log("ふわふわ解放");
-                //    if (number > 1)
-                //    {
-                //        number = 0;
-                //    }
-                //}
-                //else if (getstage1flag == false && getstage2flag == true)
-                //{
-                //    number++;
-                //    Debug.Log("スケスケ解放");
-                //    if (number > 2)
-                //    {
-                //        number = 0;
-                //    }
-                //}
-                //else if (getstage1flag == false && getstage2flag == false && getstage3flag == true)
-                //{
-                //    number++;
-                //    Debug.Log("ビュンビュン解放");
-                //    if (number > 3)
-                //    {
-                //        number = 0;
-                //    }
-                //}
-                //else if (getstage1flag == false && getstage2flag == false && getstage3flag == false && getstage4flag == true)
-                //{
-                //    number++;
-                //    Debug.Log("バラバラとネバネバ解放");
-                //    if (number > 5)
-                //    {
-                //        number = 0;
-                //    }
-                //}
+                if (getstage1flag == true)
+                {
+                    number++;
+                    Debug.Log("ふわふわ解放");
+                    if (number > 1)
+                    {
+                        number = 0;
+                    }
+                }
+                else if (getstage1flag == false && getstage2flag == true)
+                {
+                    number++;
+                    Debug.Log("スケスケ解放");
+                    if (number > 2)
+                    {
+                        number = 0;
+                    }
+                }
+                else if (getstage1flag == false && getstage2flag == false && getstage3flag == true)
+                {
+                    number++;
+                    Debug.Log("ビュンビュン解放");
+                    if (number > 3)
+                    {
+                        number = 0;
+                    }
+                }
+                else if (getstage1flag == false && getstage2flag == false && getstage3flag == false && getstage4flag == true)
+                {
+                    number++;
+                    Debug.Log("バラバラとネバネバ解放");
+                    if (number > 5)
+                    {
+                        number = 0;
+                    }
+                }
 
                 /* ここのコメントアウト直したら全部の擬音使えます */
                 //もし number が5以下なら
-                if (number < 5)
-                {
-                    number++;         // number を1ずつ増やす
-                }
-                //もし number が5以下以外なら
-                else
-                {
-                    number = 0;      // number を0にして最初に戻す
-                }
+                //if (number < 5)
+                //{
+                //    number++;         // number を1ずつ増やす
+                //}
+                ////もし number が5以下以外なら
+                //else
+                //{
+                //    number = 0;      // number を0にして最初に戻す
+                //}
             }
         }
         //Xボタンを押していない間は
@@ -531,7 +537,12 @@ public class CopyGion : MonoBehaviour
                             if (nebapush == true)
                             {
                                 ObjCollider.material = nebaneba;    //触れているオブジェクトの material に nebaneba を入れる
-                                other.gameObject.AddComponent<nebaSE>();
+
+                                //other.gameObject.AddComponent<nebaSE>();
+
+                                audioSource_neba.clip = audioClip_neba;
+                                audioSource_neba.volume = 1.0f;
+                                audioSource_neba.Play();
                                 nebapush = false;
                             }
                         }

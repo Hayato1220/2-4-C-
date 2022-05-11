@@ -5,21 +5,21 @@ using UnityEngine;
 [DisallowMultipleComponent]
 public class nebaSE : MonoBehaviour
 {
-    const string SNDNAME_DialBtn = "Sound/peta";
+    const string SNDNAME_neba = "Sound/peta";
 
-    AudioClip audioClip_DialBtn;
+    AudioClip audioClip_neba;
 
-    AudioSource audioSource_DialBtn;
+    AudioSource audioSource_neba;
 
     void Start()
     {
-        audioClip_DialBtn = Resources.Load(SNDNAME_DialBtn, typeof(AudioClip)) as AudioClip;
-        audioSource_DialBtn = gameObject.AddComponent<AudioSource>();
+        audioClip_neba = Resources.Load(SNDNAME_neba, typeof(AudioClip)) as AudioClip;
+        audioSource_neba = gameObject.AddComponent<AudioSource>();
         //GameObject.DontDestroyOnLoad(this.gameObject);
 
-        audioSource_DialBtn.clip = audioClip_DialBtn;
-        audioSource_DialBtn.volume = 1.0f;
-        audioSource_DialBtn.Play();
+        audioSource_neba.clip = audioClip_neba;
+        audioSource_neba.volume = 1.0f;
+        audioSource_neba.Play();
     }
 
     //void Update()
