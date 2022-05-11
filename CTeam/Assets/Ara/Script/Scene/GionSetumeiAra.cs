@@ -19,8 +19,8 @@ public class GionSetumeiAra : MonoBehaviour
     //private float F = 1.0f / T;
     private float rooptime;
 
-    //public AudioSource CursorMove;      //カーソルの選択の音
-    //public AudioSource CursorCheck;     //カーソルの決定の音
+    public AudioSource CursorMove;      //カーソルの選択の音
+    public AudioSource CursorCheck;     //カーソルの決定の音
 
     public Text sube;
     public Text fuwa;
@@ -59,7 +59,7 @@ public class GionSetumeiAra : MonoBehaviour
                 if (pushflag == false)      // pushflag が false の時
                 {
                     pushflag = true;
-                    //CursorMove.Play();      //音を鳴らす
+                    CursorMove.Play();      //音を鳴らす
                     if (++MenuNumber > 5)    // MenuNumber　を先に1プラスした時に、 ３以上なら
                     {
                         MenuNumber = 0;     //メニューカーソルがリトライの位置に戻る
@@ -73,7 +73,7 @@ public class GionSetumeiAra : MonoBehaviour
                 if (pushflag == false)
                 {
                     pushflag = true;
-                    //CursorMove.Play();      //音を鳴らす
+                    CursorMove.Play();      //音を鳴らす
                     if (--MenuNumber < 0)
                     {
                         MenuNumber = 5;
@@ -86,7 +86,7 @@ public class GionSetumeiAra : MonoBehaviour
                 if (pushflag == false)      // pushflag が false の時
                 {
                     pushflag = true;
-                    //CursorMove.Play();      
+                    CursorMove.Play();
                     if (MenuNumber == 0)    
                     {
                         MenuNumber = 3;    
@@ -106,7 +106,7 @@ public class GionSetumeiAra : MonoBehaviour
                 if (pushflag == false)      // pushflag が false の時
                 {
                     pushflag = true;
-                    //CursorMove.Play();      
+                    CursorMove.Play();
                     if (MenuNumber == 3)
                     {
                         MenuNumber = 0;
@@ -146,7 +146,7 @@ public class GionSetumeiAra : MonoBehaviour
 
                     if (Input.GetButton("B"))
                     {
-                        //CursorCheck.Play();     //音を鳴らす
+                        CursorCheck.Play();     //音を鳴らす
                         pushScene = true;
                         StartCoroutine(SubeCoroutine());
                     }
@@ -167,7 +167,7 @@ public class GionSetumeiAra : MonoBehaviour
 
                     if (Input.GetButton("B"))
                     {
-                        //CursorCheck.Play();     //音を鳴らす
+                        CursorCheck.Play();     //音を鳴らす
                         pushScene = true;
                         StartCoroutine(FuwaCoroutine());
                     }
@@ -188,7 +188,7 @@ public class GionSetumeiAra : MonoBehaviour
 
                     if (Input.GetButton("B"))
                     {
-                        //CursorCheck.Play();     //音を鳴らす
+                        CursorCheck.Play();     //音を鳴らす
                         pushScene = true;
                         StartCoroutine(SukeCoroutine());
                     }
@@ -209,7 +209,7 @@ public class GionSetumeiAra : MonoBehaviour
 
                     if (Input.GetButton("B"))
                     {
-                        //CursorCheck.Play();     //音を鳴らす
+                        CursorCheck.Play();     //音を鳴らす
                         pushScene = true;
                         StartCoroutine(ByunCoroutine());
                     }
@@ -230,7 +230,7 @@ public class GionSetumeiAra : MonoBehaviour
 
                     if (Input.GetButton("B"))
                     {
-                        //CursorCheck.Play();     //音を鳴らす
+                        CursorCheck.Play();     //音を鳴らす
                         pushScene = true;
                         StartCoroutine(BaraCoroutine());
                     }
@@ -251,7 +251,7 @@ public class GionSetumeiAra : MonoBehaviour
 
                     if (Input.GetButton("B"))
                     {
-                        //CursorCheck.Play();     //音を鳴らす
+                        CursorCheck.Play();     //音を鳴らす
                         pushScene = true;
                         StartCoroutine(NebaCoroutine());
                     }
