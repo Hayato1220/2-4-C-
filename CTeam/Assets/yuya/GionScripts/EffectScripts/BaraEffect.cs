@@ -16,9 +16,4 @@ public class BaraEffect : MonoBehaviour
         childObjbara.transform.parent = this.gameObject.transform;
         Destroy(childObjbara, 1.0f);
     }
-
-    void Update()
-    {
-
-    }
 }

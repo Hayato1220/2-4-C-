@@ -569,6 +569,7 @@ public class CopyGion : MonoBehaviour
         }
     }
 
+
     
     /*
      * 他のオブジェクトに触れている間の処理
