@@ -58,11 +58,17 @@ public class CopyGion : MonoBehaviour
 
     AudioSource audioSource;
 
+    private GameObject neba_P;
+
+    private GameObject childObjneba;
+
     const string SNDNAME_suke = "Sound/sukesuke";
 
     AudioClip audioClip_suke;
 
     AudioSource audioSource_suke;
+
+
 
 
     /* エフェクト（パーティクル）用変数 */
@@ -81,6 +87,7 @@ public class CopyGion : MonoBehaviour
         number = 0;         //リトライした時に number を初期化
 
         byun_P2 = Resources.Load("byunEffect") as GameObject;
+        neba_P = Resources.Load("NebaEffect") as GameObject;
 
         audioClip_neba = Resources.Load(SNDNAME_neba, typeof(AudioClip)) as AudioClip;
         audioSource = gameObject.AddComponent<AudioSource>();
@@ -543,7 +550,7 @@ public class CopyGion : MonoBehaviour
                     if (nebaflag == true)
                     {
                         //もしBボタンを押したら
-                        if (Input.GetButtonDown("B"))
+                        if (Input.GetButton("B"))
                         {
                             if (nebapush == true)
                             {
@@ -551,10 +558,13 @@ public class CopyGion : MonoBehaviour
 
                                 ObjCollider.material = nebaneba;    //触れているオブジェクトの material に nebaneba を入れる
 
+                                childObjneba = (GameObject)Instantiate(neba_P, other.transform.position, Quaternion.identity);
+                                childObjneba.transform.parent = other.gameObject.transform;
+                                Destroy(childObjneba, 5.0f);
                                 //other.gameObject.AddComponent<nebaSE>();
 
                                 audioSource.clip = audioClip_neba;
-                                audioSource.volume = 0.5f;
+                                audioSource.volume = 1.0f;
                                 audioSource.Play();
                                 
                             }
