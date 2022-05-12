@@ -259,6 +259,7 @@ MonoBehaviour:
   Speed: 0.02
   Rote: {x: 0, y: 0, z: 1}
   material: {fileID: 2100000, guid: 9857b895c3c098849939f3b2e5d51b7e, type: 2}
+  getAll: 0
 --- !u!4 &6912930 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4000010442612372, guid: 605c5179c270f51458f90168a90b72a3,
@@ -7677,7 +7678,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   batu: {fileID: 912647360}
   maru: {fileID: 828567185}
-  cube: {fileID: 4395705049985079859, guid: 336c2eb546efb9245a2abb55d4bc1f95, type: 3}
 --- !u!65 &335353166
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -12658,7 +12658,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7777778, y: 1}
+    m_SensorSize: {x: 2.2975, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -15377,6 +15377,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b71cfc1f4b9b6c24e98066d5a0d18c66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Clip1: {fileID: 0}
+  Clip2: {fileID: 0}
   pausePanel: {fileID: 1033251925}
 --- !u!114 &620424643
 MonoBehaviour:
@@ -20863,6 +20865,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Speed: 0.01
+  getAll: 0
 --- !u!64 &824776089
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -22958,6 +22961,10 @@ MonoBehaviour:
   ok: 0
   targetpos: {x: 0, y: 0, z: 0}
   Speed: 0.01
+  Bynok: 0
+  BynokTarget1: 0
+  BynokTarget2: 0
+  BynokTarget3: 0
 --- !u!135 &892581977
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -25651,7 +25658,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   batu: {fileID: 1659240105}
   maru: {fileID: 1396237481}
-  cube: {fileID: 4395705049985079859, guid: 336c2eb546efb9245a2abb55d4bc1f95, type: 3}
 --- !u!65 &1003434475
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -27155,6 +27161,133 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: ffcfb94d14e168644aaeb99a0c1bffe6, type: 3}
+--- !u!1 &1051733647
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1051733648}
+  - component: {fileID: 1051733649}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1051733648
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1051733647}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1975614975}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &1051733649
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1051733647}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 86f9eb755baa8094aacdc8473acab668, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 0.49
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &1052330802 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 115016, guid: afd19ab1d4bb70b499bb2f62171a522d,
@@ -28910,6 +29043,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Speed: 0.01
+  getAll: 0
 --- !u!64 &1121996020
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -31839,8 +31973,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7791013ef9a9f645a1b70fdb09adce9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sube_P: {fileID: 0}
-  byun_P: {fileID: 0}
   slip: {fileID: 13400000, guid: 3d766f7153558864cb1c2a9a005eb840, type: 2}
   nebaneba: {fileID: 13400000, guid: 0d22bbfe7d2b5944eb39f8cd2ca1d012, type: 2}
 --- !u!114 &1243085887
@@ -31921,6 +32053,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slider: {fileID: 0}
+  player: {fileID: 0}
+  SavePoint: {x: 0, y: 0, z: 0}
 --- !u!82 &1243085892
 AudioSource:
   m_ObjectHideFlags: 0
@@ -40020,7 +40154,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   batu: {fileID: 34541431}
   maru: {fileID: 1059177892}
-  cube: {fileID: 4395705049985079859, guid: 336c2eb546efb9245a2abb55d4bc1f95, type: 3}
 --- !u!65 &1547577041
 BoxCollider:
   m_ObjectHideFlags: 0

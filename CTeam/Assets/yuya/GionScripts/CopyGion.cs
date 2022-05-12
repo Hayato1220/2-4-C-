@@ -57,6 +57,13 @@ public class CopyGion : MonoBehaviour
 
     AudioSource audioSource_neba;
 
+    //ビュンビュンのSE
+    const string SNDNAME = "Sound/byun";
+
+    AudioClip audioClip;
+
+    AudioSource audioSource;
+
     /* エフェクト（パーティクル）用変数 */
     //int ObjCount;                     // 子オブジェクトを数える用変数
 
@@ -511,6 +518,10 @@ public class CopyGion : MonoBehaviour
 
 
                                 other.gameObject.AddComponent<ByunEffect>();    //触れているオブジェクトに対して ByunEffect スクリプトを入れている
+
+                                audioSource.clip = audioClip;
+                                audioSource.volume = 1.0f;
+                                audioSource.Play();
 
                                 //プレイヤーの子オブジェクトにエフェクトを入れて発生させる、 1 秒後に破壊
                                 childObjbyun2 = (GameObject)Instantiate(byun_P2, this.transform.position + this.transform.forward * 0.5f + this.transform.up * 0.7f, Quaternion.identity);
