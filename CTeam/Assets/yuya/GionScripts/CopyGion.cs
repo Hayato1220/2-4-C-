@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class CopyGion : MonoBehaviour
 {
-    private bool getstage1flag;
-    private bool getstage2flag;
-    private bool getstage3flag;
-    private bool getstage4flag;
+    private bool getstage1flag;         // ステージ 1 をクリアしたことを管理するフラグを受け取る用変数
+    private bool getstage2flag;         // ステージ 2 をクリアしたことを管理するフラグを受け取る用変数
+    private bool getstage3flag;         // ステージ 3 をクリアしたことを管理するフラグを受け取る用変数
+    private bool getstage4flag;         // ステージ 4 をクリアしたことを管理するフラグを受け取る用変数  
 
+    private bool nebapush;
     private bool subepush;              //すべすべを使ったかどうかの管理用フラグ
 
     private bool barapush;              //バラバラを使ったかどうかの管理用フラグ
@@ -47,28 +48,44 @@ public class CopyGion : MonoBehaviour
 
     public PhysicMaterial nebaneba;
 
-    string ObjName;                     //触れたオブジェクトの名前を受け取る変数
+    string ObjName;                     // 触れたオブジェクトの名前を受け取る変数
+
+
+    const string SNDNAME_neba = "Sound/nebaneba4";
+
+    AudioClip audioClip_neba;
+
+    AudioSource audioSource_neba;
 
     /* エフェクト（パーティクル）用変数 */
-    int ObjCount;
+    //int ObjCount;                     // 子オブジェクトを数える用変数
 
+    private GameObject byun_P2;         // ビュンビュンの 2 個目のエフェクトを入れる用変数
+    private GameObject childObjbyun2;   // Instantiate で発生させたエフェクトを入れる用変数
 
     void Start()
     {
-        subepush = false;
-        barapush = false;   // barapush を false で初期化
-        byunpush = false;   //　byunpush を false で初期化
+        subepush = true;   // subepush を true で初期化
+        barapush = true;   // barapush を true で初期化
+        byunpush = true;   //　byunpush を true で初期化
+        nebapush = true;
         number = 0;         //リトライした時に number を初期化
+
+        byun_P2 = Resources.Load("byunEffect") as GameObject;
+
+        audioClip_neba = Resources.Load(SNDNAME_neba, typeof(AudioClip)) as AudioClip;
+        audioSource_neba = gameObject.AddComponent<AudioSource>();
     }
 
-
+    Ray ray2;
+    RaycastHit hit;
 
     void Update()
     {
-        getstage1flag = Stage1.GetStage1Flag();
-        getstage2flag = Stage2.GetStage2Flag();
-        getstage3flag = Stage3.GetStage3Flag();
-        getstage4flag = Stage4.GetStage4Flag();
+        getstage1flag = Stage1.GetStage1Flag();     // Stage1 スクリプトの stage1flag を受け取る
+        getstage2flag = Stage2.GetStage2Flag();     // Stage2 スクリプトの stage2flag を受け取る
+        getstage3flag = Stage3.GetStage3Flag();     // Stage3 スクリプトの stage3flag を受け取る
+        getstage4flag = Stage4.GetStage4Flag();     // Stage4 スクリプトの stage4flag を受け取る
 
         /*
          * Time.timeScale == 0 の時に擬音の切り替えができないように
@@ -90,7 +107,7 @@ public class CopyGion : MonoBehaviour
     void GionChange()
     {
         //もしXボタンを押したら
-        if (Input.GetButton("X"))
+        if (Input.GetButtonDown("X"))
         {
             // pushflag が true なら
             if (pushflag == true)
@@ -98,52 +115,54 @@ public class CopyGion : MonoBehaviour
                 pushflag = false;      //何回も処理しないように pushflag を false にする
 
                 /* ステージをクリアするごとに擬音を解放していく */
-                //if (getstage1flag == true)
-                //{
-                //    number++;
-                //    Debug.Log("ふわふわ解放");
-                //    if (number > 1)
-                //    {
-                //        number = 0;
-                //    }
-                //}
-                //else if (getstage1flag == false && getstage2flag == true)
-                //{
-                //    number++;
-                //    Debug.Log("スケスケ解放");
-                //    if (number > 2)
-                //    {
-                //        number = 0;
-                //    }
-                //} else if (getstage1flag == false && getstage2flag == false && getstage3flag == true)
-                //{
-                //    number++;
-                //    Debug.Log("ビュンビュン解放");
-                //    if (number > 3)
-                //    {
-                //        number = 0;
-                //    }
-                //}else if(getstage1flag == false && getstage2flag == false && getstage3flag == false && getstage4flag == true)
-                //{
-                //    number++;
-                //    Debug.Log("バラバラとネバネバ解放");
-                //    if(number > 5)
-                //    {
-                //        number = 0;
-                //    }
-                //}
+                if (getstage1flag == true)
+                {
+                    number++;
+                    Debug.Log("ふわふわ解放");
+                    if (number > 1)
+                    {
+                        number = 0;
+                    }
+                }
+                else if (getstage1flag == false && getstage2flag == true)
+                {
+                    number++;
+                    Debug.Log("スケスケ解放");
+                    if (number > 2)
+                    {
+                        number = 0;
+                    }
+                }
+                else if (getstage1flag == false && getstage2flag == false && getstage3flag == true)
+                {
+                    number++;
+                    Debug.Log("ビュンビュン解放");
+                    if (number > 3)
+                    {
+                        number = 0;
+                    }
+                }
+                else if (getstage1flag == false && getstage2flag == false && getstage3flag == false && getstage4flag == true)
+                {
+                    number++;
+                    Debug.Log("バラバラとネバネバ解放");
+                    if (number > 5)
+                    {
+                        number = 0;
+                    }
+                }
 
                 /* ここのコメントアウト直したら全部の擬音使えます */
                 //もし number が5以下なら
-                if (number < 5)
-                {
-                    number++;         // number を1ずつ増やす
-                }
-                //もし number が5以下以外なら
-                else
-                {
-                    number = 0;      // number を0にして最初に戻す
-                }
+                //if (number < 5)
+                //{
+                //    number++;         // number を1ずつ増やす
+                //}
+                ////もし number が5以下以外なら
+                //else
+                //{
+                //    number = 0;      // number を0にして最初に戻す
+                //}
             }
         }
         //Xボタンを押していない間は
@@ -248,7 +267,7 @@ public class CopyGion : MonoBehaviour
             rb = other.gameObject.GetComponent<Rigidbody>();                //触れたオブジェクトの Rigidbody を取得
 
 
-            ObjCount = other.gameObject.transform.childCount;
+            //ObjCount = other.gameObject.transform.childCount;
 
             /* * * * * * * * * *
              * 0:すべすべ      *
@@ -490,26 +509,13 @@ public class CopyGion : MonoBehaviour
 
                                 rb.AddForce((transform.forward * 10.0f) + (transform.up * 7.0f), ForceMode.VelocityChange);     //触れているオブジェクトを質量に関係なく飛ばす
 
-                                other.gameObject.AddComponent<ByunEffect>();
 
-                                //if (ObjCount == 0)
-                                //{
-                                //    childObjbyun = (GameObject)Instantiate(byun_P, other.transform.position, Quaternion.identity);
-                                //    childObjbyun.transform.parent = other.gameObject.transform;
-                                //}
-                                //else
-                                //{
-                                //    Destroy(other.transform.GetChild(0).gameObject);
+                                other.gameObject.AddComponent<ByunEffect>();    //触れているオブジェクトに対して ByunEffect スクリプトを入れている
 
-                                //    childObjbyun = (GameObject)Instantiate(byun_P, other.transform.position, Quaternion.identity);
-                                //    childObjbyun.transform.parent = other.gameObject.transform;
-                                //}
-
-                                /*
-                                 * 飛んで行ったオブジェクトに入っている
-                                 * 子オブジェクトを地面に着いたら破壊したい
-                                 */
-                                //Destroy(other.gameObject.transform.GetChild(0).gameObject);
+                                //プレイヤーの子オブジェクトにエフェクトを入れて発生させる、 1 秒後に破壊
+                                childObjbyun2 = (GameObject)Instantiate(byun_P2, this.transform.position + this.transform.forward * 0.5f + this.transform.up * 0.7f, Quaternion.identity);
+                                childObjbyun2.transform.parent = this.gameObject.transform;
+                                Destroy(childObjbyun2, 1.0f);
                             }
 
                         }
@@ -528,7 +534,21 @@ public class CopyGion : MonoBehaviour
                         //もしBボタンを押したら
                         if (Input.GetButton("B"))
                         {
-                            ObjCollider.material = nebaneba;    //触れているオブジェクトの material に nebaneba を入れる
+                            if (nebapush == true)
+                            {
+                                ObjCollider.material = nebaneba;    //触れているオブジェクトの material に nebaneba を入れる
+
+                                //other.gameObject.AddComponent<nebaSE>();
+
+                                audioSource_neba.clip = audioClip_neba;
+                                audioSource_neba.volume = 1.0f;
+                                audioSource_neba.Play();
+                                nebapush = false;
+                            }
+                        }
+                        else
+                        {
+                            nebapush = true;
                         }
                     }
                     break;

@@ -6,6 +6,9 @@ public class Stage4 : MonoBehaviour
 {
     private static bool stage4flag;
 
+    public GameObject cube1;
+    public GameObject cube2;
+
     void Start()
     {
         stage4flag = false;
@@ -18,6 +21,8 @@ public class Stage4 : MonoBehaviour
         {
             Debug.Log("Stage4クリア");
             stage4flag = true;
+            Destroy(cube1);
+            Destroy(cube2);
         }
     }
 

@@ -9,7 +9,7 @@ public class Start : MonoBehaviour
     {
         if (Input.GetButton("B"))
         {
-            SceneManager.LoadScene("AraKouStage");
+            SceneManager.LoadScene("HelpAra");
         }
     }
 }

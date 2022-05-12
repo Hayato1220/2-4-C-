@@ -7,6 +7,8 @@ public class Stage2 : MonoBehaviour
     private static bool stage2flag;
     bool getstage3flag;
 
+    public GameObject cube;
+
     void Start()
     {
         stage2flag = false;
@@ -30,6 +32,7 @@ public class Stage2 : MonoBehaviour
         {
             Debug.Log("Stage2クリア");
             stage2flag = true;
+            Destroy(cube);
         }
     }
 
