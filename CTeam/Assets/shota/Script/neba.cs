@@ -10,9 +10,4 @@ public class neba : MonoBehaviour
     {
         neba_P = Resoursces.Load("NebaEffect") as GameObject;
     }
-
-    void Update()
-    {
-        
-    }
 }
