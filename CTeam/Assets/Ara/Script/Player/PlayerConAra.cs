@@ -242,8 +242,7 @@ public class PlayerConAra : MonoBehaviour
         {
             myCollider.material = kabeslip;
         }
-
-        if(isGrounded == false && collision.gameObject.tag == "Object")
+        else if(isGrounded == false && collision.gameObject.tag == "Object")
         {
             myCollider.material = kabeslip;
 
@@ -253,10 +252,10 @@ public class PlayerConAra : MonoBehaviour
             myCollider.material = hutu;
 
         }
-        else if (collision.gameObject.tag == "Untagged")
-        {
-            myCollider.material = null;
-        }
+        //else if (collision.gameObject.tag == "Untagged")
+        //{
+        //    myCollider.material = null;
+        //}
 
     }
 
