@@ -192,7 +192,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 0.63950616, y: 1}
+    m_SensorSize: {x: 1.5506173, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -530,6 +530,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DestroyWall: {fileID: 1372399260}
+  kabeslip: {fileID: 0}
 --- !u!54 &59098015
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -6128,7 +6129,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 755114631}
-  m_LocalRotation: {x: 0.16037008, y: -0.000000010736988, z: 0.0000000015583843, w: 0.98705703}
+  m_LocalRotation: {x: 0.16037008, y: -0.000000035515964, z: -1.15718546e-10, w: 0.98705703}
   m_LocalPosition: {x: 8, y: 2.39168, z: -4.4435716}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -6530,6 +6531,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slider: {fileID: 453759634}
+  player: {fileID: 0}
+  SavePoint: {x: 0, y: 0, z: 0}
 --- !u!114 &781046069
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6579,6 +6582,7 @@ MonoBehaviour:
   distanceToLanding: 2.5
   distanceToTheGround: 2.5
   kabeslip: {fileID: 0}
+  IsDamaged: 0
 --- !u!114 &781046072
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6588,12 +6592,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 781046067}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c70cc86b81239e84f9ff570fbe895fc3, type: 3}
+  m_Script: {fileID: 11500000, guid: 89df9d7c9c972e94cae98dc5ca981b6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   slip: {fileID: 13400000, guid: 3d766f7153558864cb1c2a9a005eb840, type: 2}
   nebaneba: {fileID: 13400000, guid: 0d22bbfe7d2b5944eb39f8cd2ca1d012, type: 2}
-  particle: {fileID: 0}
 --- !u!136 &781046073
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -7526,6 +7529,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DestroyWall: {fileID: 1372399260}
+  kabeslip: {fileID: 0}
 --- !u!54 &891607444
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -9334,6 +9338,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DestroyWall: {fileID: 813788855}
+  kabeslip: {fileID: 0}
 --- !u!54 &1148366374
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -12131,7 +12136,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 0.63950616, y: 1}
+    m_SensorSize: {x: 1.5506173, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -12865,6 +12870,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 1
+  CursorMove: {fileID: 0}
+  CursorCheck: {fileID: 0}
   retry: {fileID: 0}
   title: {fileID: 0}
   gameOut: {fileID: 0}
@@ -13109,7 +13116,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 0.63950616, y: 1}
+    m_SensorSize: {x: 1.5506173, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -13125,7 +13132,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1725376314}
-  m_LocalRotation: {x: 0.17113332, y: 0.000000008476276, z: -0.0000000014722927, w: 0.9852479}
+  m_LocalRotation: {x: 0.17113332, y: -0.000000008476276, z: 0.0000000014722927, w: 0.9852479}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -16487,7 +16494,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 0.63950616, y: 1}
+    m_SensorSize: {x: 1.5506173, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
