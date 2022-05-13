@@ -278,7 +278,11 @@ public class PlayerConAra : MonoBehaviour
         {
             IsDamaged = true;
         }
-        if (collision.gameObject.tag == "Clear")
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Clear")
         {
             SceneManager.LoadScene("taitoru");
         }
