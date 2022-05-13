@@ -111,6 +111,13 @@ public class CopyGion : MonoBehaviour
 
             GionChangeMove();   //使う擬音のフラグ管理
 
+            if(nebaflag == false)
+            {
+                if(childObjneba == true)
+                {
+                    childObjneba.SetActive(false);
+                }
+            }
         }
     }
 
@@ -169,15 +176,15 @@ public class CopyGion : MonoBehaviour
 
                 ///* ここのコメントアウト直したら全部の擬音使えます */
                 //もし number が5以下なら
-                //if (number < 5)
-                //{
-                //    number++;         // number を1ずつ増やす
-                //}
-                ////もし number が5以下以外なら
-                //else
-                //{
-                //    number = 0;      // number を0にして最初に戻す
-                //}
+                if (number < 5)
+                {
+                    number++;         // number を1ずつ増やす
+                }
+                //もし number が5以下以外なら
+                else
+                {
+                    number = 0;      // number を0にして最初に戻す
+                }
             }
         }
         //Xボタンを押していない間は
@@ -357,6 +364,10 @@ public class CopyGion : MonoBehaviour
                         //もし Bボタンを押したら
                         if (Input.GetButton("B"))
                         {
+                            if(childObjneba == true)
+                            {
+                                Destroy(childObjneba);
+                            }
                             //もし ObjName が"FourCube"なら
                             if (ObjName == "FourCube")
                             {
@@ -555,15 +566,16 @@ public class CopyGion : MonoBehaviour
 
                                 ObjCollider.material = nebaneba;    //触れているオブジェクトの material に nebaneba を入れる
 
-                                childObjneba = (GameObject)Instantiate(neba_P, other.transform.position, Quaternion.identity);
-                                childObjneba.transform.parent = other.gameObject.transform;
-                                Destroy(childObjneba, 5.0f);
-                                //other.gameObject.AddComponent<nebaSE>();
+                                if (childObjneba == false)
+                                {
+                                    childObjneba = (GameObject)Instantiate(neba_P, other.transform.position, Quaternion.identity);
+                                    childObjneba.transform.parent = other.gameObject.transform;
+                                    Destroy(childObjneba, 4.0f);
+                                }
 
                                 audioSource.clip = audioClip_neba;
                                 audioSource.volume = 0.5f;
                                 audioSource.Play();
-                                
                             }
                         }
                         else
