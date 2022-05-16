@@ -7,10 +7,15 @@ public class Stage4 : MonoBehaviour
     private static bool stage4flag;
 
     public GameObject cube1;
-    public GameObject cube2;
+
+    private AudioSource audioS;
+    public AudioClip GetSound;
+
 
     void Start()
     {
+        audioS = GetComponent<AudioSource>();
+
         stage4flag = false;
     }
 
@@ -19,10 +24,10 @@ public class Stage4 : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
+            audioS.PlayOneShot(GetSound);
             Debug.Log("Stage4クリア");
             stage4flag = true;
             Destroy(cube1);
-            Destroy(cube2);
         }
     }
 

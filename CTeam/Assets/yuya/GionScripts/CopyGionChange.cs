@@ -17,27 +17,27 @@ public class CopyGionChange : MonoBehaviour
         switch (getnumber)
         {
             case 0:
-                changetext.text = "擬音:すべすべ";
+                changetext.text = "すべすべ";
                 break;
 
             case 1:
-                changetext.text = "擬音:ふわふわ";
+                changetext.text = "ふわふわ";
                 break;
 
             case 2:
-                changetext.text = "擬音:すけすけ";
+                changetext.text = "すけすけ";
                 break;
 
             case 3:
-                changetext.text = "擬音:びゅんびゅん";
+                changetext.text = "びゅんびゅん";
                 break;
 
             case 4:
-                changetext.text = "擬音:ばらばら";
+                changetext.text = "ばらばら";
                 break;
 
             case 5:
-                changetext.text = "擬音:ねばねば";
+                changetext.text = "ねばねば";
                 break;
 
         }

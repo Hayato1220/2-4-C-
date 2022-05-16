@@ -38,7 +38,7 @@ public class CopyGion : MonoBehaviour
     private bool subeflag = false;      //すべすべを管理する bool 型変数
     private bool huwaflag = false;      //ふわふわを管理する bool 型変数
     private bool baraflag = false;      //バラバラを管理する bool 型変数
-    private bool byunflag = false;      //ビューンを管理する bool 型変数
+    private static bool byunflag = false;      //ビューンを管理する bool 型変数
     private bool sukeflag = false;      //スケスケを管理する bool 型変数
     private bool nebaflag = false;      //ネバネバを管理する bool 型変数
 
@@ -52,35 +52,26 @@ public class CopyGion : MonoBehaviour
     string ObjName;                     // 触れたオブジェクトの名前を受け取る変数
 
 
-    const string SNDNAME_neba = "Sound/nebaneba4";
-
-    AudioClip audioClip_neba;
 
     AudioSource audioSource;
 
-    private GameObject neba_P;
-
-    private GameObject childObjneba;
+    const string SNDNAME_neba = "Sound/nebaneba4";
+    AudioClip audioClip_neba;
 
     const string SNDNAME_suke = "Sound/sukesuke";
-
     AudioClip audioClip_suke;
 
-    AudioSource audioSource_suke;
-
-
-    //ビュンビュンのSE
-    const string SNDNAME = "Sound/byun";
-
-    AudioClip audioClip;
-
-    AudioSource audioSource_byun;
 
     /* エフェクト（パーティクル）用変数 */
     //int ObjCount;                     // 子オブジェクトを数える用変数
 
     private GameObject byun_P2;         // ビュンビュンの 2 個目のエフェクトを入れる用変数
     private GameObject childObjbyun2;   // Instantiate で発生させたエフェクトを入れる用変数
+
+    private GameObject neba_P;
+    private GameObject childObjneba;
+
+
 
     void Start()
     {
@@ -100,8 +91,7 @@ public class CopyGion : MonoBehaviour
         audioClip_suke = Resources.Load(SNDNAME_suke, typeof(AudioClip)) as AudioClip;
     }
 
-    Ray ray2;
-    RaycastHit hit;
+
 
     void Update()
     {
@@ -109,6 +99,8 @@ public class CopyGion : MonoBehaviour
         getstage2flag = Stage2.GetStage2Flag();     // Stage2 スクリプトの stage2flag を受け取る
         getstage3flag = Stage3.GetStage3Flag();     // Stage3 スクリプトの stage3flag を受け取る
         getstage4flag = Stage4.GetStage4Flag();     // Stage4 スクリプトの stage4flag を受け取る
+
+
 
         /*
          * Time.timeScale == 0 の時に擬音の切り替えができないように
@@ -119,6 +111,13 @@ public class CopyGion : MonoBehaviour
 
             GionChangeMove();   //使う擬音のフラグ管理
 
+            if(nebaflag == false)
+            {
+                if(childObjneba == true)
+                {
+                    childObjneba.SetActive(false);
+                }
+            }
         }
     }
 
@@ -176,7 +175,7 @@ public class CopyGion : MonoBehaviour
                 }
 
                 ///* ここのコメントアウト直したら全部の擬音使えます */
-                ////もし number が5以下なら
+                //もし number が5以下なら
                 //if (number < 5)
                 //{
                 //    number++;         // number を1ずつ増やす
@@ -365,6 +364,10 @@ public class CopyGion : MonoBehaviour
                         //もし Bボタンを押したら
                         if (Input.GetButton("B"))
                         {
+                            if(childObjneba == true)
+                            {
+                                Destroy(childObjneba);
+                            }
                             //もし ObjName が"FourCube"なら
                             if (ObjName == "FourCube")
                             {
@@ -535,10 +538,6 @@ public class CopyGion : MonoBehaviour
 
                                 other.gameObject.AddComponent<ByunEffect>();    //触れているオブジェクトに対して ByunEffect スクリプトを入れている
 
-                                audioSource.clip = audioClip;
-                                audioSource.volume = 1.0f;
-                                audioSource.Play();
-
                                 //プレイヤーの子オブジェクトにエフェクトを入れて発生させる、 1 秒後に破壊
                                 childObjbyun2 = (GameObject)Instantiate(byun_P2, this.transform.position + this.transform.forward * 0.5f + this.transform.up * 0.7f, Quaternion.identity);
                                 childObjbyun2.transform.parent = this.gameObject.transform;
@@ -567,15 +566,16 @@ public class CopyGion : MonoBehaviour
 
                                 ObjCollider.material = nebaneba;    //触れているオブジェクトの material に nebaneba を入れる
 
-                                childObjneba = (GameObject)Instantiate(neba_P, other.transform.position, Quaternion.identity);
-                                childObjneba.transform.parent = other.gameObject.transform;
-                                Destroy(childObjneba, 5.0f);
-                                //other.gameObject.AddComponent<nebaSE>();
+                                if (childObjneba == false)
+                                {
+                                    childObjneba = (GameObject)Instantiate(neba_P, other.transform.position, Quaternion.identity);
+                                    childObjneba.transform.parent = other.gameObject.transform;
+                                    Destroy(childObjneba, 4.0f);
+                                }
 
                                 audioSource.clip = audioClip_neba;
                                 audioSource.volume = 0.5f;
                                 audioSource.Play();
-                                
                             }
                         }
                         else
@@ -645,5 +645,10 @@ public class CopyGion : MonoBehaviour
     public static int ChangeNumber()
     {
         return number;
+    }
+
+    public static bool GetByunFlag()
+    {
+        return byunflag;
     }
 }
