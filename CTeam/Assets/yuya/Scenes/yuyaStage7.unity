@@ -521,6 +521,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b71cfc1f4b9b6c24e98066d5a0d18c66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Clip1: {fileID: 0}
+  Clip2: {fileID: 0}
   pausePanel: {fileID: 443459787}
 --- !u!1 &48277795
 GameObject:
@@ -6432,6 +6434,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slider: {fileID: 453759634}
+  player: {fileID: 0}
+  SavePoint: {x: 0, y: 0, z: 0}
 --- !u!114 &781046069
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6481,6 +6485,8 @@ MonoBehaviour:
   distanceToLanding: 2.5
   distanceToTheGround: 2.5
   kabeslip: {fileID: 0}
+  hutu: {fileID: 0}
+  IsDamaged: 0
 --- !u!114 &781046072
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6488,9 +6494,9 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 781046067}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c70cc86b81239e84f9ff570fbe895fc3, type: 3}
+  m_Script: {fileID: 11500000, guid: d7791013ef9a9f645a1b70fdb09adce9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   slip: {fileID: 13400000, guid: 3d766f7153558864cb1c2a9a005eb840, type: 2}
@@ -6525,6 +6531,21 @@ Rigidbody:
   m_Interpolate: 2
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!114 &781046075
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 781046067}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c70cc86b81239e84f9ff570fbe895fc3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slip: {fileID: 13400000, guid: 3d766f7153558864cb1c2a9a005eb840, type: 2}
+  nebaneba: {fileID: 13400000, guid: 0d22bbfe7d2b5944eb39f8cd2ca1d012, type: 2}
+  particle: {fileID: 0}
 --- !u!4 &781046082 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8216669308748850337, guid: 9512ed6804d76934eb592ea99bd354b6,
@@ -7488,6 +7509,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DestroyWall: {fileID: 1372399260}
+  kabeslip: {fileID: 0}
 --- !u!54 &891607444
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -12892,6 +12914,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0.08
+  CursorMove: {fileID: 0}
+  CursorCheck: {fileID: 0}
   retry: {fileID: 762951608}
   title: {fileID: 1147597696}
   gameOut: {fileID: 2117894849}
