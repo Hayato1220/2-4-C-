@@ -173,6 +173,7 @@ public class PlayerConAra : MonoBehaviour
             if (Input.GetButton("Y"))
             {
                 GetComponent<AudioSource>().Play();  // 効果音を鳴らす
+                GetComponent<AudioSource>().volume = 0.05f;
                 isGrounded = false;
                 animator.SetFloat("Speed", 0f);
                 animator.SetBool("IsGrounded", isGrounded);

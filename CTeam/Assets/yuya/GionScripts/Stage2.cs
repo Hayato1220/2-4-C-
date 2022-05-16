@@ -39,6 +39,7 @@ public class Stage2 : MonoBehaviour
             audioS.PlayOneShot(GetSound);
             Debug.Log("Stage2クリア");
             stage2flag = true;
+            Destroy(GetComponent<BoxCollider>());
             Destroy(cube);
         }
     }

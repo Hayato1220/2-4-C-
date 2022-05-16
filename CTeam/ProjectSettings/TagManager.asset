@@ -18,6 +18,7 @@ TagManager:
   - EnemyBullet
   - Clear
   - Save
+  - EnemyHammer
   layers:
   - Default
   - TransparentFX

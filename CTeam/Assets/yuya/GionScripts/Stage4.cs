@@ -27,6 +27,7 @@ public class Stage4 : MonoBehaviour
             audioS.PlayOneShot(GetSound);
             Debug.Log("Stage4クリア");
             stage4flag = true;
+            Destroy(GetComponent<BoxCollider>());
             Destroy(cube1);
         }
     }
