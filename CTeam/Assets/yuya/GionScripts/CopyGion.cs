@@ -69,14 +69,12 @@ public class CopyGion : MonoBehaviour
     AudioSource audioSource_suke;
 
 
-
-
     //ビュンビュンのSE
     const string SNDNAME = "Sound/byun";
 
     AudioClip audioClip;
 
-    AudioSource audioSource;
+    AudioSource audioSource_byun;
 
     /* エフェクト（パーティクル）用変数 */
     //int ObjCount;                     // 子オブジェクトを数える用変数
