@@ -25,19 +25,19 @@ public class CopyGionChange : MonoBehaviour
                 break;
 
             case 2:
-                changetext.text = "擬音:スケスケ";
+                changetext.text = "擬音:すけすけ";
                 break;
 
             case 3:
-                changetext.text = "擬音:ビュンビュン";
+                changetext.text = "擬音:びゅんびゅん";
                 break;
 
             case 4:
-                changetext.text = "擬音:バラバラ";
+                changetext.text = "擬音:ばらばら";
                 break;
 
             case 5:
-                changetext.text = "擬音:ネバネバ";
+                changetext.text = "擬音:ねばねば";
                 break;
 
         }

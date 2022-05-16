@@ -40,6 +40,8 @@ public class PlayerConAra : MonoBehaviour
     Rigidbody m_Rigidbody;
     private Transform spine;
     public PhysicMaterial kabeslip;
+    public PhysicMaterial hutu;
+
 
     public bool IsDamaged;
 
@@ -240,11 +242,31 @@ public class PlayerConAra : MonoBehaviour
         {
             myCollider.material = kabeslip;
         }
+        else if(isGrounded == false && collision.gameObject.tag == "Object")
+        {
+            myCollider.material = kabeslip;
+
+        }
+        else if(collision.gameObject.tag == "Object")
+        {
+            myCollider.material = hutu;
+
+        }
+        //else if (collision.gameObject.tag == "Untagged")
+        //{
+        //    myCollider.material = null;
+        //}
+
     }
 
     private void OnCollisionExit(Collision collision)
     {
         if (collision.gameObject.tag == "Wall")
+        {
+            myCollider.material = null;
+        }
+
+        if (collision.gameObject.tag == "Object")
         {
             myCollider.material = null;
         }

@@ -11,6 +11,7 @@ public class CopyGion : MonoBehaviour
 
     private bool nebapush;
     private bool subepush;              //すべすべを使ったかどうかの管理用フラグ
+    private bool sukepush;
 
     private bool barapush;              //バラバラを使ったかどうかの管理用フラグ
     private GameObject baraObj;         //バラバラにしたオブジェクトを入れる変数
@@ -55,7 +56,20 @@ public class CopyGion : MonoBehaviour
 
     AudioClip audioClip_neba;
 
-    AudioSource audioSource_neba;
+    AudioSource audioSource;
+
+    private GameObject neba_P;
+
+    private GameObject childObjneba;
+
+    const string SNDNAME_suke = "Sound/sukesuke";
+
+    AudioClip audioClip_suke;
+
+    AudioSource audioSource_suke;
+
+
+
 
     //ビュンビュンのSE
     const string SNDNAME = "Sound/byun";
@@ -76,12 +90,16 @@ public class CopyGion : MonoBehaviour
         barapush = true;   // barapush を true で初期化
         byunpush = true;   //　byunpush を true で初期化
         nebapush = true;
+        sukepush = true;
         number = 0;         //リトライした時に number を初期化
 
         byun_P2 = Resources.Load("byunEffect") as GameObject;
+        neba_P = Resources.Load("NebaEffect") as GameObject;
 
         audioClip_neba = Resources.Load(SNDNAME_neba, typeof(AudioClip)) as AudioClip;
-        audioSource_neba = gameObject.AddComponent<AudioSource>();
+        audioSource = gameObject.AddComponent<AudioSource>();
+
+        audioClip_suke = Resources.Load(SNDNAME_suke, typeof(AudioClip)) as AudioClip;
     }
 
     Ray ray2;
@@ -159,8 +177,8 @@ public class CopyGion : MonoBehaviour
                     }
                 }
 
-                /* ここのコメントアウト直したら全部の擬音使えます */
-                //もし number が5以下なら
+                ///* ここのコメントアウト直したら全部の擬音使えます */
+                ////もし number が5以下なら
                 //if (number < 5)
                 //{
                 //    number++;         // number を1ずつ増やす
@@ -547,14 +565,19 @@ public class CopyGion : MonoBehaviour
                         {
                             if (nebapush == true)
                             {
+                                nebapush = false;
+
                                 ObjCollider.material = nebaneba;    //触れているオブジェクトの material に nebaneba を入れる
 
+                                childObjneba = (GameObject)Instantiate(neba_P, other.transform.position, Quaternion.identity);
+                                childObjneba.transform.parent = other.gameObject.transform;
+                                Destroy(childObjneba, 5.0f);
                                 //other.gameObject.AddComponent<nebaSE>();
 
-                                audioSource_neba.clip = audioClip_neba;
-                                audioSource_neba.volume = 1.0f;
-                                audioSource_neba.Play();
-                                nebapush = false;
+                                audioSource.clip = audioClip_neba;
+                                audioSource.volume = 0.5f;
+                                audioSource.Play();
+                                
                             }
                         }
                         else
@@ -566,6 +589,7 @@ public class CopyGion : MonoBehaviour
             }
         }
     }
+
 
     
     /*
@@ -588,7 +612,21 @@ public class CopyGion : MonoBehaviour
                         //もしBボタンを押したら
                         if (Input.GetButton("B"))
                         {
+                            if(sukepush == true)
+                            {
+                                sukepush = false;
+                                audioSource.clip = audioClip_suke;
+                                audioSource.volume = 1.0f;
+                                audioSource.PlayOneShot(audioClip_suke);
+                            }
+
+
                             mr.material.color = mr.material.color - new Color32(0, 0, 0, 5);
+                        }
+                        else
+                        {
+                            //audioSource.Stop();
+                            sukepush = true;
                         }
 
                         if (mr.material.color.a <= 0)
