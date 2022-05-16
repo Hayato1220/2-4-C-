@@ -176,15 +176,15 @@ public class CopyGion : MonoBehaviour
 
                 ///* ここのコメントアウト直したら全部の擬音使えます */
                 //もし number が5以下なら
-                if (number < 5)
-                {
-                    number++;         // number を1ずつ増やす
-                }
-                //もし number が5以下以外なら
-                else
-                {
-                    number = 0;      // number を0にして最初に戻す
-                }
+                //if (number < 5)
+                //{
+                //    number++;         // number を1ずつ増やす
+                //}
+                ////もし number が5以下以外なら
+                //else
+                //{
+                //    number = 0;      // number を0にして最初に戻す
+                //}
             }
         }
         //Xボタンを押していない間は
