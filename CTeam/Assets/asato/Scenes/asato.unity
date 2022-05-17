@@ -12658,7 +12658,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 2.2975, y: 1}
+    m_SensorSize: {x: 2.3239796, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -14078,6 +14078,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 887beec084710fc45a282ebf11b10d0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spot: {fileID: 0}
 --- !u!65 &580015229
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -19688,7 +19689,6 @@ GameObject:
   - component: {fileID: 797080993}
   - component: {fileID: 797080992}
   - component: {fileID: 797080991}
-  - component: {fileID: 797080990}
   m_Layer: 0
   m_Name: Cube (2)
   m_TagString: Untagged
@@ -19710,19 +19710,6 @@ Transform:
   m_Father: {fileID: 1182386176}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &797080990
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 797080988}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &797080991
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19735,6 +19722,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c4babbebcfbfac4fa2d06e659c2cc24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spot: {fileID: 0}
 --- !u!65 &797080992
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -27172,7 +27160,7 @@ GameObject:
   - component: {fileID: 1051733648}
   - component: {fileID: 1051733649}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: ByunSE
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27203,7 +27191,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 86f9eb755baa8094aacdc8473acab668, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 0.49
   m_Pitch: 1
   Loop: 0
@@ -32008,6 +31996,7 @@ MonoBehaviour:
   distanceToLanding: 2.5
   distanceToTheGround: 2.5
   kabeslip: {fileID: 13400000, guid: c3826fb33992151419b1a390466036e5, type: 2}
+  hutu: {fileID: 0}
   IsDamaged: 0
 --- !u!114 &1243085889
 MonoBehaviour:
@@ -32052,7 +32041,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e844a5123e4ea0e469d3593387b512e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slider: {fileID: 0}
+  slider: {fileID: 513096748}
   player: {fileID: 0}
   SavePoint: {x: 0, y: 0, z: 0}
 --- !u!82 &1243085892
@@ -46336,6 +46325,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b70b359b70db3d49911bf59864335ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spot: {fileID: 0}
 --- !u!65 &1822919004
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -52429,6 +52419,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a65df0135edd03c4694860f1c13efe7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spot: {fileID: 0}
 --- !u!65 &2074846095
 BoxCollider:
   m_ObjectHideFlags: 0

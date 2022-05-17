@@ -61,7 +61,8 @@ public class CopyGion : MonoBehaviour
     const string SNDNAME_suke = "Sound/sukesuke";
     AudioClip audioClip_suke;
 
-
+    const string SNDNAME_byun = "sound/byunbyun";
+    AudioClip audioClip_byun;
     /* エフェクト（パーティクル）用変数 */
     //int ObjCount;                     // 子オブジェクトを数える用変数
 
@@ -89,6 +90,9 @@ public class CopyGion : MonoBehaviour
         audioSource = gameObject.AddComponent<AudioSource>();
 
         audioClip_suke = Resources.Load(SNDNAME_suke, typeof(AudioClip)) as AudioClip;
+
+        audioClip_byun = Resources.Load(SNDNAME_byun, typeof(AudioClip)) as AudioClip;
+        audioSource = gameObject.AddComponent<AudioSource>();
     }
 
 
@@ -542,6 +546,10 @@ public class CopyGion : MonoBehaviour
                                 childObjbyun2 = (GameObject)Instantiate(byun_P2, this.transform.position + this.transform.forward * 0.5f + this.transform.up * 0.7f, Quaternion.identity);
                                 childObjbyun2.transform.parent = this.gameObject.transform;
                                 Destroy(childObjbyun2, 1.0f);
+
+                                audioSource.clip = audioClip_byun;
+                                audioSource.volume = 0.5f;
+                                audioSource.Play();
                             }
 
                         }
