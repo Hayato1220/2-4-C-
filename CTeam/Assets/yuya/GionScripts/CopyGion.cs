@@ -364,10 +364,11 @@ public class CopyGion : MonoBehaviour
                         //もし Bボタンを押したら
                         if (Input.GetButton("B"))
                         {
-                            if(childObjneba == true)
+                            if (childObjneba == true)
                             {
                                 Destroy(childObjneba);
                             }
+
                             //もし ObjName が"FourCube"なら
                             if (ObjName == "FourCube")
                             {
@@ -475,10 +476,45 @@ public class CopyGion : MonoBehaviour
                                     }
                                 }
                             }
-                            else    // ObjName == "FourCube" 以外なら
+                            else if (other.gameObject.tag == "Red" || other.gameObject.tag == "Green" || other.gameObject.tag == "Blue" || other.gameObject.tag == "White")
                             {
+
+
                                 //もし触れているオブジェクトの X(横幅)の大きさが0.125(四等分)を超えていなかったら
                                 if (ObjScale2.x > 0.4)
+                                {
+                                    //もし barapush が true なら
+                                    if (barapush == true)
+                                    {
+                                        barapush = false;   //ボタンを長押しが機能しないように false にする
+
+                                        other.gameObject.AddComponent<BaraEffect>();
+
+                                        //触れているオブジェクトを半分にする
+                                        for (int i = 0; i < 2; i++)
+                                        {
+
+                                            baraObj = Instantiate(other.gameObject, Objpos + (transform.up * 1.5f), Quaternion.identity);   // Instantiate(クローンのもとになるオブジェクト, 位置, 回転)してオブジェクトを生成
+
+                                            Vector3 ObjScale = other.gameObject.transform.localScale;   // ObjScale に、触れているオブジェクトの大きさを入れる
+
+                                            ObjScale.x = ObjScale.x / 2.0f;                             // ObjScale の X(横幅)の大きさを半分にする
+                                            ObjScale.y = ObjScale.y / 2.0f;
+                                            ObjScale.z = ObjScale.z / 2.0f;
+
+                                            baraObj.transform.localScale = ObjScale;                    //生成するオブジェクトに ObjScale の値を入れる
+
+                                            //// Instantiate(クローンのもとになるオブジェクト, 位置, 回転)
+                                            //baraObj2 = Instantiate(other.gameObject, Objpos + (transform.up * 1.5f), Quaternion.identity);
+                                        }
+                                        Destroy(other.gameObject);  //触れていたオブジェクトを消す
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                //もし触れているオブジェクトの X(横幅)の大きさが0.125(四等分)を超えていなかったら
+                                if (ObjScale2.x > 0.125)
                                 {
                                     //もし barapush が true なら
                                     if (barapush == true)
