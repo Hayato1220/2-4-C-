@@ -478,7 +478,7 @@ public class CopyGion : MonoBehaviour
                             else    // ObjName == "FourCube" 以外なら
                             {
                                 //もし触れているオブジェクトの X(横幅)の大きさが0.125(四等分)を超えていなかったら
-                                if (ObjScale2.x > 0.125)
+                                if (ObjScale2.x > 0.4)
                                 {
                                     //もし barapush が true なら
                                     if (barapush == true)
