@@ -62,6 +62,7 @@ public class Seisei : MonoBehaviour
             cubecount = 0;
         }
 
+
         if (ok == true)
         {
 
@@ -75,10 +76,11 @@ public class Seisei : MonoBehaviour
                 targetpos.x -= Speed;
                 transform.position = new Vector3(targetpos.x, targetpos.y, targetpos.z);
             }
+
         }
-        else if(ok == false)
+        else if (ok == false)
         {
-            if(targetpos.x < -8f)
+            if (targetpos.x < -8f)
             {
                 targetpos.x += Speed;
                 transform.position = new Vector3(targetpos.x, targetpos.y, targetpos.z);
@@ -92,15 +94,8 @@ public class Seisei : MonoBehaviour
         {
             if (Input.GetButton("A"))
             {
-                if (pushflag == true)
-                {
-                    pushflag = false;
-                    ok = true;
-                    audioS.PlayOneShot(Button);
-                }
+                ok = true;
             }
-            pushflag = true;
-
         }
     }
 
@@ -117,6 +112,7 @@ public class Seisei : MonoBehaviour
         Instantiate(obj, new Vector3(-6, 5, 96), Quaternion.identity);
         cubecount++;
         Invoke("zeroCount", 2);
+        audioS.PlayOneShot(Button);
     }
 
     public static int okcount()
