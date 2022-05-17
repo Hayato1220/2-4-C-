@@ -23,6 +23,10 @@ public class Seisei : MonoBehaviour
 
     public bool BynokTarget3;
 
+    [SerializeField] private AudioSource audioS;
+    [SerializeField] private AudioClip Button;
+    private bool pushflag;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -38,6 +42,8 @@ public class Seisei : MonoBehaviour
 
         cubecount = 0;
 
+        audioS = GetComponent<AudioSource>();
+        pushflag = false;
     }
 
     // Update is called once per frame
@@ -86,8 +92,14 @@ public class Seisei : MonoBehaviour
         {
             if (Input.GetButton("A"))
             {
-                ok = true;
+                if (pushflag == true)
+                {
+                    pushflag = false;
+                    ok = true;
+                    audioS.PlayOneShot(Button);
+                }
             }
+            pushflag = true;
 
         }
     }
