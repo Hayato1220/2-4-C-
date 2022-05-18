@@ -10,6 +10,8 @@ public class TobiraBreak : MonoBehaviour
     public bool get2;
     public bool get3;
 
+    public GameObject precube;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -30,6 +32,7 @@ public class TobiraBreak : MonoBehaviour
         if(Alltarget == true)
         {
             Destroy(gameObject);
+            Destroy(precube);
         }
     }
 

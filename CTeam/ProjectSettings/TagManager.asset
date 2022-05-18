@@ -19,6 +19,7 @@ TagManager:
   - Clear
   - Save
   - EnemyHammer
+  - BreakCube
   layers:
   - Default
   - TransparentFX
