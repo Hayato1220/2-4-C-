@@ -9,86 +9,88 @@ public class CopyGion : MonoBehaviour
     private bool getstage3flag;         // ステージ 3 をクリアしたことを管理するフラグを受け取る用変数
     private bool getstage4flag;         // ステージ 4 をクリアしたことを管理するフラグを受け取る用変数  
 
-    private bool nebapush;
-    private bool subepush;              //すべすべを使ったかどうかの管理用フラグ
+    private bool subepush;              // すべすべを使ったかどうかの管理用フラグ
     private bool sukepush;
+    private bool nebapush;
 
-    private bool barapush;              //バラバラを使ったかどうかの管理用フラグ
-    private GameObject baraObj;         //バラバラにしたオブジェクトを入れる変数
+    private bool barapush;              // バラバラを使ったかどうかの管理用フラグ
+    private GameObject baraObj;         // バラバラにしたオブジェクトを入れる変数
 
 
-    public static bool byunpush;        //ビュンビュンを使ったかどうかの管理用フラグ
-    private GameObject childObjbyun;    //触っているオブジェクトに入っている子オブジェクトを入れる変数
+    public static bool byunpush;        // ビュンビュンを使ったかどうかの管理用フラグ
+    private GameObject childObjbyun;    // 触っているオブジェクトに入っている子オブジェクトを入れる変数
 
 
     /* 4つの色を持つオブジェクトをバラバラにした後に入れる変数 */
-    private GameObject redCube;         //赤色のオブジェクトを入れる変数
-    private GameObject greenCube;       //緑色のオブジェクトを入れる変数
-    private GameObject blueCube;        //青色のオブジェクトを入れる変数
-    private GameObject whiteCube;       //白色のオブジェクトを入れる変数
+    private GameObject redCube;         // 赤色のオブジェクトを入れる変数
+    private GameObject greenCube;       // 緑色のオブジェクトを入れる変数
+    private GameObject blueCube;        // 青色のオブジェクトを入れる変数
+    private GameObject whiteCube;       // 白色のオブジェクトを入れる変数
 
 
-    private GameObject obj;             //このスクリプトがアタッチされているオブジェクトを参照する
-    private BoxCollider ObjCollider;    //衝突したオブジェクトの BoxCollider を参照する
-    public PhysicMaterial slip;         //他の PhysicMaterial を　slip に入れる
+    private GameObject obj;             // このスクリプトがアタッチされているオブジェクトを参照する
+    private BoxCollider ObjCollider;    // 衝突したオブジェクトの BoxCollider を参照する
+    public PhysicMaterial slip;         // 他の PhysicMaterial を　slip に入れる
 
-    private static int number;          //擬音の動作を切り替える時に使う変数
-    bool pushflag = false;              //切り替えるボタンが押されたかどうか管理する bool 型変数
+    private static int number;          // 擬音の動作を切り替える時に使う変数
+    bool pushflag = false;              // 切り替えるボタンが押されたかどうか管理する bool 型変数
 
-    private bool subeflag = false;      //すべすべを管理する bool 型変数
-    private bool huwaflag = false;      //ふわふわを管理する bool 型変数
-    private bool baraflag = false;      //バラバラを管理する bool 型変数
-    private static bool byunflag = false;      //ビューンを管理する bool 型変数
-    private bool sukeflag = false;      //スケスケを管理する bool 型変数
-    private bool nebaflag = false;      //ネバネバを管理する bool 型変数
+    private bool subeflag = false;               // すべすべを管理する bool 型変数
+    private bool huwaflag = false;               // ふわふわを管理する bool 型変数
+    private bool baraflag = false;               // バラバラを管理する bool 型変数
+    private static bool byunflag = false;        // ビューンを管理する bool 型変数
+    private bool sukeflag = false;               // スケスケを管理する bool 型変数
+    private bool nebaflag = false;               // ネバネバを管理する bool 型変数
 
 
-    private MeshRenderer mr;
+    private MeshRenderer mr;                    // MeshRenderer を取得する用変数
 
-    private Rigidbody rb;
+    private Rigidbody rb;                       // Rigidbody を取得する用変数
 
-    public PhysicMaterial nebaneba;
+    public PhysicMaterial nebaneba;             // 摩擦を無くす Material を入れる用変数
 
-    string ObjName;                     // 触れたオブジェクトの名前を受け取る変数
+    string ObjName;                             // 触れたオブジェクトの名前を受け取る変数
 
 
 
     AudioSource audioSource;
 
-    const string SNDNAME_neba = "Sound/nebaneba4";
-    AudioClip audioClip_neba;
+    const string SNDNAME_neba = "Sound/nebaneba4";      // Resources フォルダーからどれを取得するか検索
+    AudioClip audioClip_neba;                           // ねばねばの効果音を入れる用変数
 
-    const string SNDNAME_suke = "Sound/sukesuke";
-    AudioClip audioClip_suke;
+    const string SNDNAME_suke = "Sound/sukesuke";       // Resources フォルダーからどれを取得するか検索
+    AudioClip audioClip_suke;                           // すけすけの効果音を入れる用変数
 
 
     /* エフェクト（パーティクル）用変数 */
     //int ObjCount;                     // 子オブジェクトを数える用変数
 
-    private GameObject byun_P2;         // ビュンビュンの 2 個目のエフェクトを入れる用変数
-    private GameObject childObjbyun2;   // Instantiate で発生させたエフェクトを入れる用変数
+    private GameObject byun_P2;         // びゅんびゅんの 2 個目のエフェクトを入れる用変数
+    private GameObject childObjbyun2;   // Instantiate で発生させたびゅんびゅんのエフェクトを入れる用変数
 
-    private GameObject neba_P;
-    private GameObject childObjneba;
+    private GameObject neba_P;          // ねばねばのエフェクトを入れる用変数
+    private GameObject childObjneba;    // Instatiate で発生させたねばねばのエフェクトを入れる用変数
 
 
 
     void Start()
     {
-        subepush = true;   // subepush を true で初期化
-        barapush = true;   // barapush を true で初期化
-        byunpush = true;   //　byunpush を true で初期化
-        nebapush = true;
-        sukepush = true;
+        subepush = true;    // subepush を true で初期化  
+        barapush = true;    // barapush を true で初期化
+        byunpush = true;    // byunpush を true で初期化
+        nebapush = true;    // nebapush を true で初期化
+        sukepush = true;    // sukepush を true で初期化
         number = 0;         //リトライした時に number を初期化
 
-        byun_P2 = Resources.Load("byunEffect") as GameObject;
-        neba_P = Resources.Load("NebaEffect") as GameObject;
 
-        audioClip_neba = Resources.Load(SNDNAME_neba, typeof(AudioClip)) as AudioClip;
-        audioSource = gameObject.AddComponent<AudioSource>();
+        byun_P2 = Resources.Load("byunEffect") as GameObject;       // byun_P2 に Resources フォルダの中にある "byunEffect" を入れる
+        neba_P = Resources.Load("NebaEffect") as GameObject;        // neba_P に Resources フォルダの中にある "NebaEffect" を入れる
 
-        audioClip_suke = Resources.Load(SNDNAME_suke, typeof(AudioClip)) as AudioClip;
+
+        audioClip_neba = Resources.Load(SNDNAME_neba, typeof(AudioClip)) as AudioClip;      // audioClip_neba に SNDNAME_neba を入れる
+        audioSource = gameObject.AddComponent<AudioSource>();                               // audioSource に、追加した AudioSource コンポーネントを取得
+
+        audioClip_suke = Resources.Load(SNDNAME_suke, typeof(AudioClip)) as AudioClip;      // audioClip_suke に SNDNAME_suke を入れる
     }
 
 
@@ -111,11 +113,13 @@ public class CopyGion : MonoBehaviour
 
             GionChangeMove();   //使う擬音のフラグ管理
 
-            if(nebaflag == false)
+            // nebaflag が false なら
+            if (nebaflag == false)
             {
-                if(childObjneba == true)
+                // childObjneba があったら
+                if (childObjneba == true)
                 {
-                    childObjneba.SetActive(false);
+                    childObjneba.SetActive(false);      // childObjneba を非表示にする
                 }
             }
         }
@@ -146,6 +150,7 @@ public class CopyGion : MonoBehaviour
                         number = 0;
                     }
                 }
+                /* 2 ステージ目 */
                 else if (getstage1flag == false && getstage2flag == true)
                 {
                     number++;
@@ -155,6 +160,7 @@ public class CopyGion : MonoBehaviour
                         number = 0;
                     }
                 }
+                /* 3 ステージ目 */
                 else if (getstage1flag == false && getstage2flag == false && getstage3flag == true)
                 {
                     number++;
@@ -164,6 +170,7 @@ public class CopyGion : MonoBehaviour
                         number = 0;
                     }
                 }
+                /* 4 ステージ目 */
                 else if (getstage1flag == false && getstage2flag == false && getstage3flag == false && getstage4flag == true)
                 {
                     number++;
@@ -273,7 +280,7 @@ public class CopyGion : MonoBehaviour
      */
     void OnCollisionStay(Collision other)
     {
-        //もし当たったオブジェクトのタグが"Object"なら
+        //もし当たったオブジェクトのタグが "Object, Red, Green, Blue, White" なら
         if (other.gameObject.tag == "Object" || other.gameObject.tag == "Red" || other.gameObject.tag == "Green" || other.gameObject.tag == "Blue" || other.gameObject.tag == "White")
         {
             ObjCollider = other.gameObject.GetComponent<BoxCollider>();     // objCollider に触れているオブジェクトの BoxCollider を取得する
@@ -294,9 +301,9 @@ public class CopyGion : MonoBehaviour
             /* * * * * * * * * *
              * 0:すべすべ      *
              * 1:ふわふわ      *
-             * 2:バラバラ      *
-             * 3:スケスケ      *
-             * 4:ビュンビュン  *
+             * 2:スケスケ      *
+             * 3:びゅんびゅん  *
+             * 4:バラバラ      *
              * 5:ネバネバ      *
              * * * * * * * * * */
             switch (number)
@@ -315,11 +322,11 @@ public class CopyGion : MonoBehaviour
 
                                 ObjCollider.material = slip;    // ObjCollider の PhysicMaterial を slip に入っているものを入れる
 
-                                other.gameObject.AddComponent<SubeEffect>();
+                                other.gameObject.AddComponent<SubeEffect>();                    // 触れているオブジェクトに SubeEffect スクリプトを追加
 
-                                var s_metallic = other.gameObject.GetComponent<Renderer>();
-                                s_metallic.material.SetFloat("_Metallic", 0.929f);
-                                s_metallic.material.SetFloat("_Glossiness", 0.86f);
+                                var s_metallic = other.gameObject.GetComponent<Renderer>();     // s_metallic に触れているオブジェクトの Renderer を取得する
+                                s_metallic.material.SetFloat("_Metallic", 0.929f);              // 取得した Metallic の値を変更
+                                s_metallic.material.SetFloat("_Glossiness", 0.86f);             // 取得した Smoothness の値を変更
                             }
                         }
                         subepush = true;
@@ -342,14 +349,16 @@ public class CopyGion : MonoBehaviour
                                 // もし触れているオブジェクトの高さが8以下なら
                                 if (Objpos.y < 8)
                                 {
-                                    other.gameObject.AddComponent<HuwaEffect>();
-                                    rb.velocity = transform.up * 2;     //オブジェクトを上に上げる
+                                    other.gameObject.AddComponent<HuwaEffect>();        // 触れているオブジェクトに HuwaEffect スクリプトを追加
+                                    rb.velocity = transform.up * 2;                     //オブジェクトを上に上げる
+
                                 }
                             }
                             else // ObjName に入っている名前が"FloorMove"以外なら
                             {
-                                other.gameObject.AddComponent<HuwaEffect>();
-                                rb.velocity = transform.up * 2;         //オブジェクトを上に上げる
+                                other.gameObject.AddComponent<HuwaEffect>();            // 触れているオブジェクトに HuwaEffect スクリプトを追加
+                                rb.velocity = transform.up * 2;                         //オブジェクトを上に上げる
+
                             }
                         }
                     }

@@ -28,8 +28,11 @@ public class ByunEffect : MonoBehaviour
 
         if (Physics.Raycast(ray, out hit, 1.0f))
         {
-            childObjbyun.SetActive(false);
-            Debug.DrawRay(ray.origin, ray.direction, Color.red, 3.0f);
+            if (hit.collider.gameObject.layer == LayerMask.NameToLayer("Ground"))
+            {
+                childObjbyun.SetActive(false);
+                Debug.DrawRay(ray.origin, ray.direction, Color.red, 3.0f);
+            }
         }
         else
         {
