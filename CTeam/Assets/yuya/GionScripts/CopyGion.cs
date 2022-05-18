@@ -61,7 +61,7 @@ public class CopyGion : MonoBehaviour
     const string SNDNAME_suke = "Sound/sukesuke";
     AudioClip audioClip_suke;
 
-    const string SNDNAME_byun = "sound/byunbyun";
+    const string SNDNAME_byun = "Sound/byunbyun";
     AudioClip audioClip_byun;
     /* エフェクト（パーティクル）用変数 */
     //int ObjCount;                     // 子オブジェクトを数える用変数
@@ -547,11 +547,11 @@ public class CopyGion : MonoBehaviour
                                 childObjbyun2.transform.parent = this.gameObject.transform;
                                 Destroy(childObjbyun2, 1.0f);
 
-                                audioSource.clip = audioClip_byun;
-                                audioSource.volume = 0.5f;
-                                audioSource.Play();
+                                
                             }
-
+                            audioSource.clip = audioClip_byun;
+                            audioSource.volume = 1.0f;
+                            audioSource.Play();
                         }
                         else    //Bボタンが押されていない間は
                         {
