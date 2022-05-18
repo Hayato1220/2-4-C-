@@ -8,6 +8,8 @@ public class Seisei : MonoBehaviour
 
     public bool ok;
 
+    public bool getAll;
+
     public Vector3 targetpos;
 
     [SerializeField]
@@ -36,6 +38,8 @@ public class Seisei : MonoBehaviour
 
         Bynok = false;
 
+        getAll = false;
+
         BynokTarget1 = false;
         BynokTarget2 = false;
         BynokTarget3 = false;
@@ -55,6 +59,13 @@ public class Seisei : MonoBehaviour
         BynokTarget1 = CreateTarget1.Getok1();
         BynokTarget2 = CreateTarget2.Getok2();
         BynokTarget3 = CreateTarget3.Getok3();
+
+        getAll = TobiraBreak.Move();
+
+        if(getAll == true)
+        {
+            cubecount = 100;
+        }
 
 
         if (Bynok == true || BynokTarget1 == true || BynokTarget2 == true || BynokTarget3 == true)
