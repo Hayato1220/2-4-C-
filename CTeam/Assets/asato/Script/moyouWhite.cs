@@ -4,12 +4,17 @@ using UnityEngine;
 
 public class moyouWhite : MonoBehaviour
 {
+    public GameObject spot;
+
     private static bool dousyoku;
 
     // Start is called before the first frame update
     void Start()
     {
         dousyoku = false;
+
+        spot.SetActive(false);
+
     }
 
     // Update is called once per frame
@@ -22,7 +27,20 @@ public class moyouWhite : MonoBehaviour
     {
         if (other.gameObject.tag == "White")
         {
+
+            spot.SetActive(true);
+
             dousyoku = true;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.tag == "White")
+        {
+            spot.SetActive(false);
+
+            dousyoku = false;
         }
     }
 

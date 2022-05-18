@@ -23,6 +23,10 @@ public class Seisei : MonoBehaviour
 
     public bool BynokTarget3;
 
+    [SerializeField] private AudioSource audioS;
+    [SerializeField] private AudioClip Button;
+    private bool pushflag;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -38,6 +42,8 @@ public class Seisei : MonoBehaviour
 
         cubecount = 0;
 
+        audioS = GetComponent<AudioSource>();
+        pushflag = false;
     }
 
     // Update is called once per frame
@@ -56,6 +62,7 @@ public class Seisei : MonoBehaviour
             cubecount = 0;
         }
 
+
         if (ok == true)
         {
 
@@ -69,10 +76,11 @@ public class Seisei : MonoBehaviour
                 targetpos.x -= Speed;
                 transform.position = new Vector3(targetpos.x, targetpos.y, targetpos.z);
             }
+
         }
-        else if(ok == false)
+        else if (ok == false)
         {
-            if(targetpos.x < -8f)
+            if (targetpos.x < -8f)
             {
                 targetpos.x += Speed;
                 transform.position = new Vector3(targetpos.x, targetpos.y, targetpos.z);
@@ -88,7 +96,6 @@ public class Seisei : MonoBehaviour
             {
                 ok = true;
             }
-
         }
     }
 
@@ -105,6 +112,7 @@ public class Seisei : MonoBehaviour
         Instantiate(obj, new Vector3(-6, 5, 96), Quaternion.identity);
         cubecount++;
         Invoke("zeroCount", 2);
+        audioS.PlayOneShot(Button);
     }
 
     public static int okcount()

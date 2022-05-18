@@ -8,8 +8,15 @@ public class Stage3 : MonoBehaviour
     bool getstage4flag;
 
     public GameObject cube;
+
+    private AudioSource audioS;
+    public AudioClip GetSound;
+
+
     void Start()
     {
+        audioS = GetComponent<AudioSource>();
+
         stage3flag = false;
     }
 
@@ -29,8 +36,10 @@ public class Stage3 : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
+            audioS.PlayOneShot(GetSound);
             Debug.Log("Stage3クリア");
             stage3flag = true;
+            Destroy(GetComponent<BoxCollider>());
             Destroy(cube);
         }
     }

@@ -22,6 +22,9 @@ public class HP : MonoBehaviour
     //private float time;
     //public float speed = 10.0f;
 
+    //[SerializeField] private AudioSource audioS;
+    //[SerializeField] private AudioClip yari;
+
 
     void Start()
     {
@@ -41,6 +44,7 @@ public class HP : MonoBehaviour
 
         //image.color = Color.clear;
 
+        //audioS = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -87,6 +91,7 @@ public class HP : MonoBehaviour
             slider.value = currentHp / maxHp; 
             Debug.Log("slider.value : " + slider.value);
 
+            //audioS.PlayOneShot(yari);
         }
 
         //Enemyタグのオブジェクトに触れると発動
@@ -105,6 +110,24 @@ public class HP : MonoBehaviour
             slider.value = currentHp / maxHp;
             Debug.Log("slider.value : " + slider.value);
 
+            //audioS.PlayOneShot(yari, 0.5f);
+        }
+
+        //Enemyタグのオブジェクトに触れると発動
+        if (collider.gameObject.tag == "EnemyHammer")
+        {
+            okDamaged = true;
+
+            Invoke("TenmetuNo", 0.5f);
+
+            float damage = 10f;
+            Debug.Log("damage : " + damage);
+
+            currentHp = currentHp - damage;
+            Debug.Log("After currentHp : " + currentHp);
+
+            slider.value = currentHp / maxHp;
+            Debug.Log("slider.value : " + slider.value);
         }
 
         if (collider.gameObject.tag == "Save")

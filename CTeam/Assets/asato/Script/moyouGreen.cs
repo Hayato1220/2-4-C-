@@ -4,13 +4,16 @@ using UnityEngine;
 
 public class moyouGreen : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public GameObject spot;
+
     private static bool dousyoku;
 
-    // Start is called before the first frame update
     void Start()
     {
         dousyoku = false;
+
+        spot.SetActive(false);
+
     }
 
     // Update is called once per frame
@@ -24,6 +27,19 @@ public class moyouGreen : MonoBehaviour
         if (other.gameObject.tag == "Green")
         {
             dousyoku = true;
+
+            spot.SetActive(true);
+
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.tag == "Green")
+        {
+            spot.SetActive(false);
+
+            dousyoku = false;
         }
     }
 

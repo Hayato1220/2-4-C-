@@ -4534,6 +4534,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 887beec084710fc45a282ebf11b10d0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spot: {fileID: 0}
 --- !u!65 &134661693
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -26292,7 +26293,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cube1: {fileID: 0}
-  cube2: {fileID: 0}
 --- !u!4 &1045887874 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4000011282690112, guid: e19241b9a3453e740be235c892acf28d,
@@ -26484,6 +26484,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a65df0135edd03c4694860f1c13efe7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spot: {fileID: 0}
 --- !u!65 &1047364424
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -37396,6 +37397,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c4babbebcfbfac4fa2d06e659c2cc24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spot: {fileID: 0}
 --- !u!65 &1519832120
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -37665,6 +37667,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cube: {fileID: 0}
+  GetSound: {fileID: 8300000, guid: 64ce0483cb0c82842b424bbe4c861d0f, type: 3}
 --- !u!1 &1524957029
 GameObject:
   m_ObjectHideFlags: 0
@@ -43335,6 +43338,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b70b359b70db3d49911bf59864335ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spot: {fileID: 0}
 --- !u!65 &1758310437
 BoxCollider:
   m_ObjectHideFlags: 0

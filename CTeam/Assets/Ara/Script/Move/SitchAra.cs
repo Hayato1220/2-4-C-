@@ -12,12 +12,18 @@ public class SitchAra : MonoBehaviour
 
     public static bool Onsitch;
 
+    [SerializeField] private AudioSource audioS;
+    [SerializeField] private AudioClip Button;
+
     // Start is called before the first frame update
     void Start()
     {
         Onsitch = false;
 
         targetpos = transform.position;
+
+        audioS = GetComponent<AudioSource>();
+
     }
 
     // Update is called once per frame
@@ -45,6 +51,15 @@ public class SitchAra : MonoBehaviour
                 transform.position = new Vector3(targetpos.x, targetpos.y, targetpos.z);
 
             }
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            audioS.PlayOneShot(Button);
+
         }
     }
 
