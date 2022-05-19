@@ -5,13 +5,13 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/shota/Scenes/shota.unity
     guid: f0768881fd6ff294098f743adeba5c8a
-  - enabled: 1
+  - enabled: 0
     path: Assets/Ara/Scene/HelpAra.unity
     guid: 4c2e07d54e379ae49a41acf9347961f4
-  - enabled: 1
+  - enabled: 0
     path: Assets/Ara/Scene/GionAra.unity
     guid: 29f62c5349cb3a84e94467f08d80f1df
   - enabled: 1
@@ -41,4 +41,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Ara/Scene/GameOverAra.unity
     guid: 05c541ef83ba1764c80b3e8660b9f183
+  - enabled: 1
+    path: Assets/Ara/Scene/TestAraStage.unity
+    guid: c73c571cd83cfb1478c04726940ba314
   m_configObjects: {}
