@@ -81,7 +81,7 @@ public class GionSetumeiAra : MonoBehaviour
 
                 }
             }
-            else if(!Input.GetButton("B") && Input.GetAxis("L_Stick_H") == 1)
+            else if(!Input.GetButton("B") && Input.GetAxis("L_Stick_H") == 1 || (!Input.GetButton("B") && Input.GetAxis("PadKey_H") == 1))
             {
                 if (pushflag == false)      // pushflag が false の時
                 {
@@ -99,9 +99,21 @@ public class GionSetumeiAra : MonoBehaviour
                     {
                         MenuNumber = 5;
                     }
+                    else if (MenuNumber == 3)
+                    {
+                        MenuNumber = 0;
+                    }
+                    else if (MenuNumber == 4)
+                    {
+                        MenuNumber = 1;
+                    }
+                    else if (MenuNumber == 5)
+                    {
+                        MenuNumber = 2;
+                    }
                 }
             }
-            else if (!Input.GetButton("B") && Input.GetAxis("L_Stick_H") == -1)
+            else if (!Input.GetButton("B") && Input.GetAxis("L_Stick_H") == -1 || (!Input.GetButton("B") && Input.GetAxis("PadKey_H") == -1))
             {
                 if (pushflag == false)      // pushflag が false の時
                 {
@@ -118,6 +130,18 @@ public class GionSetumeiAra : MonoBehaviour
                     else if (MenuNumber == 5)
                     {
                         MenuNumber = 2;
+                    }
+                    else if (MenuNumber == 2)
+                    {
+                        MenuNumber = 5;
+                    }
+                    else if (MenuNumber == 1)
+                    {
+                        MenuNumber = 4;
+                    }
+                    else if (MenuNumber == 0)
+                    {
+                        MenuNumber = 3;
                     }
                 }
             }
